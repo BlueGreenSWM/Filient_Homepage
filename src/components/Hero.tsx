@@ -113,15 +113,13 @@ export function Hero() {
             </button>
 
             <div className="aspect-video bg-black flex items-center justify-center">
-              <video
-                controls
-                autoPlay
+              <iframe
+                src="https://www.youtube.com/embed/a6qRC__E0ZM?autoplay=1"
+                title="Filient Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
                 className="w-full h-full"
-              >
-                <source src="/demo-video.mov" type="video/quicktime" />
-                <source src="/demo-video.mov" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              />
             </div>
           </motion.div>
         </motion.div>
