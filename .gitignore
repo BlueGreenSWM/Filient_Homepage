@@ -35,8 +35,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# video files (optional - remove if you want to include demo video in repo)
-*.mov
+# video files (excluding demo-video)
 *.mp4
 *.avi
 *.webm
+화면*.mov
+!public/demo-video.mov
