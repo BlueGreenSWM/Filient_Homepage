@@ -4,12 +4,13 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { usePlatformDetection } from '@/hooks/usePlatformDetection'
+import { useLanguage } from '@/contexts/LanguageContext'
 import { Button } from './common/Button'
-import { ArrowRight, Mail } from 'lucide-react'
 
 export function Download() {
   const { ref, isVisible } = useScrollAnimation()
   const platform = usePlatformDetection()
+  const { t } = useLanguage()
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
 
@@ -41,23 +42,23 @@ export function Download() {
   }
 
   return (
-    <section className="py-24 border-t border-gray-900" ref={ref as any}>
+    <section className="py-24 bg-gray-50 border-t border-gray-200" ref={ref as any}>
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Ready to save
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            {t.download.title}
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
-              230 hours a year?
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+              {t.download.titleHighlight}
             </span>
           </h2>
 
-          <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            Join thousands who've already simplified their file management with AI.
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            {t.download.subtitle}
           </p>
 
           {platform.isMac ? (
@@ -68,10 +69,10 @@ export function Download() {
                 onClick={handleDownload}
                 className="min-w-[200px]"
               >
-                Download for Mac
+                {t.download.downloadCta}
               </Button>
               <p className="text-sm text-gray-500">
-                macOS 12.0+ • Free 14-day trial
+                {t.download.requirements}
               </p>
             </div>
           ) : (
@@ -82,17 +83,17 @@ export function Download() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="flex-1 bg-gray-900 text-white rounded-lg px-4 py-2 border border-gray-800 focus:outline-none focus:border-indigo-500"
+                    placeholder={t.download.emailPlaceholder}
+                    className="flex-1 bg-white text-gray-900 rounded-lg px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     required
                   />
                   <Button type="submit" variant="primary">
-                    Join Waitlist
+                    {t.download.waitlistCta}
                   </Button>
                 </form>
               ) : (
-                <div className="bg-green-900/20 text-green-400 rounded-lg p-4">
-                  Thanks! We'll notify you when Filient is ready for {platform.platform}.
+                <div className="bg-green-50 text-green-700 rounded-lg p-4 border border-green-200">
+                  {t.download.waitlistSuccess.replace('{{platform}}', platform.platform)}
                 </div>
               )}
             </div>
@@ -103,13 +104,13 @@ export function Download() {
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 pt-16 border-t border-gray-900"
+          className="mt-16 pt-16 border-t border-gray-200"
         >
-          <p className="text-sm text-gray-500 mb-4">As featured in</p>
+          <p className="text-sm text-gray-500 mb-4">{t.download.featuredIn}</p>
           <div className="flex items-center justify-center gap-8 opacity-50">
-            <div className="text-gray-400">TechCrunch</div>
-            <div className="text-gray-400">Product Hunt</div>
-            <div className="text-gray-400">Hacker News</div>
+            {t.download.publications.map((pub, idx) => (
+              <div key={idx} className="text-gray-600 font-medium">{pub}</div>
+            ))}
           </div>
         </motion.div>
       </div>
