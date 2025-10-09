@@ -29,12 +29,25 @@ export function usePlatformDetection(): PlatformInfo {
       const isWindows = platformStr.toUpperCase().indexOf('WIN') >= 0
       const isLinux = platformStr.toUpperCase().indexOf('LINUX') >= 0
 
+      // Determine platform string with mobile detection
+      const getPlatformString = () => {
+        if (isMobile) {
+          if (/iPhone|iPad|iPod/i.test(userAgent)) return 'iOS'
+          if (/Android/i.test(userAgent)) return 'Android'
+          return 'Mobile'
+        }
+        if (isMac) return 'macOS'
+        if (isWindows) return 'Windows'
+        if (isLinux) return 'Linux'
+        return 'unknown'
+      }
+
       setPlatform({
         isMac,
         isWindows,
         isLinux,
         isMobile,
-        platform: isMac ? 'macOS' : isWindows ? 'Windows' : isLinux ? 'Linux' : 'unknown'
+        platform: getPlatformString()
       })
     }
 
