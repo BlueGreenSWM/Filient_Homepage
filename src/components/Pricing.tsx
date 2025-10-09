@@ -1,15 +1,22 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
+import { useSectionViewTracking } from '@/hooks/useSectionViewTracking'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { Button } from './common/Button'
 import { Check, Calculator, TrendingUp, Zap } from 'lucide-react'
 import { formatNumber, calculateROI } from '@/lib/utils'
+import {
+  trackCalculatorUsed,
+  trackPricingPlanViewed,
+  trackPricingPlanClicked,
+} from '@/lib/analytics'
 
 export function Pricing() {
   const { ref, isVisible } = useScrollAnimation()
+  const sectionRef = useSectionViewTracking('pricing')
   const { t } = useLanguage()
   const [hourlyRate, setHourlyRate] = useState(50)
   const [hoursWasted, setHoursWasted] = useState(230)
@@ -20,8 +27,23 @@ export function Pricing() {
   const netSavings = yearlyROI - filienCost
   const roiPercentage = ((netSavings / filienCost) * 100).toFixed(0)
 
+  // Track calculator usage with debounce
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (hourlyRate > 0 && hoursWasted > 0) {
+        trackCalculatorUsed(hourlyRate, hoursWasted, yearlyROI)
+      }
+    }, 2000) // 2 second debounce
+
+    return () => clearTimeout(timer)
+  }, [hourlyRate, hoursWasted, yearlyROI])
+
   return (
-    <section className="py-24 bg-white border-t border-gray-200" ref={ref as any}>
+    <section
+      className="py-24 bg-white border-t border-gray-200"
+      ref={sectionRef as any}
+      data-section="pricing"
+    >
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -152,6 +174,7 @@ export function Pricing() {
                 <Button
                   variant={plan.popular ? 'primary' : 'outline'}
                   className="w-full"
+                  onClick={() => trackPricingPlanClicked(plan.name, plan.price, plan.cta)}
                 >
                   {plan.cta}
                 </Button>

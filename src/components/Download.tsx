@@ -1,29 +1,60 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
+import { useSectionViewTracking } from '@/hooks/useSectionViewTracking'
 import { usePlatformDetection } from '@/hooks/usePlatformDetection'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { Button } from './common/Button'
+import {
+  trackDownloadInitiated,
+  trackDownloadStarted,
+  trackDownloadCompleted,
+  trackDownloadFailed,
+  trackWaitlistFormViewed,
+  trackWaitlistEmailStarted,
+  trackWaitlistSubmitted,
+  getCurrentScrollDepth,
+} from '@/lib/analytics'
 
 export function Download() {
   const { ref, isVisible } = useScrollAnimation()
+  const sectionRef = useSectionViewTracking('download')
   const platform = usePlatformDetection()
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+
+  // Track waitlist form view for non-Mac users
+  useEffect(() => {
+    if (!platform.isMac && platform.platform !== 'unknown') {
+      trackWaitlistFormViewed(platform.platform, 'auto')
+    }
+  }, [platform.isMac, platform.platform])
 
   const handleWaitlist = (e: React.FormEvent) => {
     e.preventDefault()
     if (email) {
+      const emailDomain = email.split('@')[1] || 'unknown'
+      trackWaitlistSubmitted(platform.platform, emailDomain, language)
       setSubmitted(true)
       console.log('Waitlist email:', email)
     }
   }
 
   const handleDownload = async () => {
+    const scrollDepth = getCurrentScrollDepth()
+
+    // Track download initiated
+    trackDownloadInitiated('download', platform.platform, language, scrollDepth)
+
+    const downloadStartTime = Date.now()
+
     try {
+      // Track download started
+      trackDownloadStarted(platform.platform, navigator.userAgent)
+
       const response = await fetch('/api/download')
       if (response.ok) {
         const blob = await response.blob()
@@ -35,14 +66,27 @@ export function Download() {
         a.click()
         window.URL.revokeObjectURL(url)
         document.body.removeChild(a)
+
+        // Track download completed
+        const downloadTime = Math.round((Date.now() - downloadStartTime) / 1000)
+        trackDownloadCompleted('45MB', downloadTime)
+      } else {
+        const errorText = await response.text()
+        trackDownloadFailed('api_error', errorText)
       }
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      trackDownloadFailed('network_error', errorMessage)
       console.error('Download failed:', error)
     }
   }
 
   return (
-    <section className="py-24 bg-gray-50 border-t border-gray-200" ref={ref as any}>
+    <section
+      className="py-24 bg-gray-50 border-t border-gray-200"
+      ref={sectionRef as any}
+      data-section="download"
+    >
       <div className="max-w-4xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -83,6 +127,7 @@ export function Download() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    onFocus={() => trackWaitlistEmailStarted()}
                     placeholder={t.download.emailPlaceholder}
                     className="flex-1 bg-white text-gray-900 rounded-lg px-4 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     required

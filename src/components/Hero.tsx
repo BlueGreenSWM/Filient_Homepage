@@ -1,19 +1,49 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from './common/Button'
 import { usePlatformDetection } from '@/hooks/usePlatformDetection'
+import { useSectionViewTracking } from '@/hooks/useSectionViewTracking'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { X, Play } from 'lucide-react'
+import {
+  trackVideoOpened,
+  trackVideoStart,
+  trackCTAClicked,
+  getTimeOnPage,
+} from '@/lib/analytics'
 
 export function Hero() {
+  const sectionRef = useSectionViewTracking('hero')
   const platform = usePlatformDetection()
   const { t } = useLanguage()
   const [showDemo, setShowDemo] = useState(false)
 
+  const handleDemoOpen = () => {
+    const timeOnPage = getTimeOnPage()
+    trackVideoOpened('hero', timeOnPage)
+    setShowDemo(true)
+  }
+
+  const handleVideoReady = () => {
+    trackVideoStart('a6qRC__E0ZM')
+  }
+
+  const handleDownloadClick = () => {
+    trackCTAClicked(t.hero.downloadCta, 'hero', 'primary')
+  }
+
+  const handleWaitlistClick = () => {
+    trackCTAClicked(t.hero.waitlistCta, 'hero', 'primary')
+  }
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section
+      ref={sectionRef as any}
+      data-section="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+    >
       {/* Light theme background with subtle pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <div className="absolute inset-0 opacity-40">
@@ -61,14 +91,19 @@ export function Hero() {
         >
           {platform.isMac ? (
             <>
-              <Button variant="primary" size="lg" className="min-w-[200px]">
+              <Button
+                variant="primary"
+                size="lg"
+                className="min-w-[200px]"
+                onClick={handleDownloadClick}
+              >
                 {t.hero.downloadCta}
               </Button>
               <Button
                 variant="outline"
                 size="lg"
                 className="min-w-[200px]"
-                onClick={() => setShowDemo(true)}
+                onClick={handleDemoOpen}
               >
                 <Play className="w-4 h-4 mr-2" />
                 {t.hero.watchDemo}
@@ -76,14 +111,19 @@ export function Hero() {
             </>
           ) : (
             <>
-              <Button variant="primary" size="lg" className="min-w-[200px]">
+              <Button
+                variant="primary"
+                size="lg"
+                className="min-w-[200px]"
+                onClick={handleWaitlistClick}
+              >
                 {t.hero.waitlistCta}
               </Button>
               <Button
                 variant="outline"
                 size="lg"
                 className="min-w-[200px]"
-                onClick={() => setShowDemo(true)}
+                onClick={handleDemoOpen}
               >
                 <Play className="w-4 h-4 mr-2" />
                 {t.hero.watchDemo}
@@ -135,6 +175,7 @@ export function Hero() {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full h-full"
+                onLoad={handleVideoReady}
               />
             </div>
           </motion.div>

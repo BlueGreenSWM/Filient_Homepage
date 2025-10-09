@@ -4,15 +4,25 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { Languages } from 'lucide-react'
+import { trackLanguageChanged, getCurrentSection, getTimeOnPage } from '@/lib/analytics'
 
 export function LanguageToggle() {
   const { language, setLanguage } = useLanguage()
+
+  const handleLanguageChange = (newLanguage: 'en' | 'ko') => {
+    if (newLanguage !== language) {
+      const section = getCurrentSection()
+      const timeOnPage = getTimeOnPage()
+      trackLanguageChanged(language, newLanguage, timeOnPage, section)
+      setLanguage(newLanguage)
+    }
+  }
 
   return (
     <div className="fixed top-6 right-6 z-50">
       <div className="flex items-center gap-2 bg-white rounded-full shadow-lg border border-gray-200 p-1">
         <button
-          onClick={() => setLanguage('en')}
+          onClick={() => handleLanguageChange('en')}
           className={`relative px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
             language === 'en'
               ? 'text-white'
@@ -32,7 +42,7 @@ export function LanguageToggle() {
           </span>
         </button>
         <button
-          onClick={() => setLanguage('ko')}
+          onClick={() => handleLanguageChange('ko')}
           className={`relative px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
             language === 'ko'
               ? 'text-white'
