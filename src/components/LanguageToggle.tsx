@@ -3,11 +3,12 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { Languages } from 'lucide-react'
+import { Languages, BookOpen } from 'lucide-react'
 import { trackLanguageChanged, getCurrentSection, getTimeOnPage } from '@/lib/analytics'
+import Link from 'next/link'
 
 export function LanguageToggle() {
-  const { language, setLanguage } = useLanguage()
+  const { language, setLanguage, t } = useLanguage()
 
   const handleLanguageChange = (newLanguage: 'en' | 'ko') => {
     if (newLanguage !== language) {
@@ -19,7 +20,17 @@ export function LanguageToggle() {
   }
 
   return (
-    <div className="fixed top-6 right-6 z-50">
+    <div className="fixed top-6 right-6 z-50 flex items-center gap-3">
+      {/* User Guide Button */}
+      <Link
+        href="/docs"
+        className="flex items-center gap-2 bg-white rounded-full shadow-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:border-blue-200 transition-all duration-200"
+      >
+        <BookOpen className="w-4 h-4" />
+        <span>{t?.nav?.userGuide || (language === 'ko' ? '사용 가이드' : 'User Guide')}</span>
+      </Link>
+
+      {/* Language Toggle */}
       <div className="flex items-center gap-2 bg-white rounded-full shadow-lg border border-gray-200 p-1">
         <button
           onClick={() => handleLanguageChange('en')}

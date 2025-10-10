@@ -1,5 +1,9 @@
 export const translations = {
   en: {
+    nav: {
+      docs: "Docs",
+      userGuide: "User Guide"
+    },
     hero: {
       title: "File organization",
       titleHighlight: "powered by AI",
@@ -189,6 +193,10 @@ export const translations = {
     }
   },
   ko: {
+    nav: {
+      docs: "문서",
+      userGuide: "사용 가이드"
+    },
     hero: {
       title: "파일 정리",
       titleHighlight: "AI로 자동화",
