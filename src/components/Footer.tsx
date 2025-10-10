@@ -33,7 +33,7 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-6 text-sm text-gray-500">
-            <Link href="#" className="hover:text-gray-900 transition-colors">
+            <Link href="/privacy" className="hover:text-gray-900 transition-colors">
               {t.footer.links.privacy}
             </Link>
             <Link href="#" className="hover:text-gray-900 transition-colors">
