@@ -40,3 +40,6 @@ next-env.d.ts
 *.mp4
 *.avi
 *.webm
+
+# playwright
+.playwright-mcp
