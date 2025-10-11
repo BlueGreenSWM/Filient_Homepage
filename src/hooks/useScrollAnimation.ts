@@ -13,7 +13,8 @@ export function useScrollAnimation(
 ) {
   const { threshold = 0.1, rootMargin = '0px', triggerOnce = true } = options
   const ref = useRef<HTMLElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
+  // Start with true so content is always visible (no animation on first load)
+  const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
     const element = ref.current

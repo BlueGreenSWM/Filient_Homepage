@@ -18,8 +18,11 @@ export function usePlatformDetection(): PlatformInfo {
     isMobile: false,
     platform: 'unknown'
   })
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+
     const detectPlatform = () => {
       const userAgent = navigator.userAgent
       const platformStr = navigator.platform
@@ -53,6 +56,17 @@ export function usePlatformDetection(): PlatformInfo {
 
     detectPlatform()
   }, [])
+
+  // Return default values until mounted
+  if (!mounted) {
+    return {
+      isMac: true, // Default to Mac to show download button
+      isWindows: false,
+      isLinux: false,
+      isMobile: false,
+      platform: 'macOS'
+    }
+  }
 
   return platform
 }
