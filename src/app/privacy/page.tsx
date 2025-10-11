@@ -262,13 +262,13 @@ export default function PrivacyPolicy() {
               <div className="space-y-4">
                 {article.content.map((section, sIndex) => (
                   <div key={sIndex}>
-                    {section.subtitle && (
+                    {'subtitle' in section && section.subtitle && (
                       <h3 className="font-medium text-gray-800 mb-3">
                         {section.subtitle}
                       </h3>
                     )}
 
-                    {section.table ? (
+                    {'table' in section && section.table ? (
                       <div className="overflow-x-auto">
                         <table className="w-full border-collapse">
                           <thead>
@@ -294,21 +294,23 @@ export default function PrivacyPolicy() {
                         </table>
                       </div>
                     ) : (
-                      <ul className={`${section.items?.[0]?.bold ? 'space-y-2' : 'space-y-1'}`}>
-                        {section.items?.map((item, iIndex) => (
-                          <li key={iIndex} className="flex items-start">
-                            <span className="text-blue-500 mr-2 mt-1.5 text-xs">•</span>
-                            <div className="flex-1">
-                              {item.bold && (
-                                <span className="font-medium text-gray-800 mr-2">
-                                  {item.bold}:
-                                </span>
-                              )}
-                              <span className="text-gray-600">{item.text}</span>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
+                      'items' in section && section.items && (
+                        <ul className={`${'bold' in section.items[0] && section.items[0].bold ? 'space-y-2' : 'space-y-1'}`}>
+                          {section.items.map((item: { bold?: string; text: string }, iIndex: number) => (
+                            <li key={iIndex} className="flex items-start">
+                              <span className="text-blue-500 mr-2 mt-1.5 text-xs">•</span>
+                              <div className="flex-1">
+                                {'bold' in item && item.bold && (
+                                  <span className="font-medium text-gray-800 mr-2">
+                                    {item.bold}:
+                                  </span>
+                                )}
+                                <span className="text-gray-600">{item.text}</span>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      )
                     )}
                   </div>
                 ))}
