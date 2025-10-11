@@ -30,8 +30,28 @@ export function Hero() {
     trackVideoStart('a6qRC__E0ZM')
   }
 
-  const handleDownloadClick = () => {
+  const handleDownloadClick = async () => {
     trackCTAClicked(t.hero.downloadCta, 'hero', 'primary')
+
+    // Trigger actual download
+    try {
+      const response = await fetch('/api/download')
+      if (response.ok) {
+        const blob = await response.blob()
+        const url = window.URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = 'Filient.dmg'
+        document.body.appendChild(a)
+        a.click()
+        window.URL.revokeObjectURL(url)
+        document.body.removeChild(a)
+      } else {
+        console.error('Download failed:', await response.text())
+      }
+    } catch (error) {
+      console.error('Download error:', error)
+    }
   }
 
   const handleWaitlistClick = () => {
