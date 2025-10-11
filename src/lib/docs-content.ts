@@ -124,8 +124,7 @@ Filient is an intelligent file organization automation solution for macOS. It he
 ## 1. Filient 설치하기
 
 ### 다운로드
-1. [Filient 공식 웹사이트](https://filient.com/download)에서 최신 버전 다운로드
-2. 또는 Mac App Store에서 "Filient" 검색 후 설치
+[Filient 공식 웹사이트](https://filient.ai)에서 최신 버전 다운로드
 
 ### 설치 과정
 1. 다운로드한 \`Filient.dmg\` 파일 열기
@@ -150,7 +149,8 @@ Filient가 파일을 관리하려면 macOS 시스템 권한이 필요합니다.
 
 ### 언어 설정
 1. 설정 페이지 이동 (사이드바 하단 ⚙️ 아이콘)
-2. **언어** 섹션에서 원하는 언어 선택
+2. **언어** 섹션에서 원하는 언어 선택:
+
    - 한국어
    - English
 
@@ -158,7 +158,7 @@ Filient가 파일을 관리하려면 macOS 시스템 권한이 필요합니다.
 
 ### 폴더 추가 방법
 
-**방법 1: 폴더 선택기 사용**
+**방법 1: 폴더 선택기 사용**\n
 1. 사이드바의 **"폴더 추가"** 버튼 클릭
 2. Finder 창에서 관리할 폴더 선택
 3. **"선택"** 버튼 클릭
@@ -173,8 +173,7 @@ Filient가 파일을 관리하려면 macOS 시스템 권한이 필요합니다.
 ## 1. Installing Filient
 
 ### Download
-1. Download the latest version from [Filient official website](https://filient.com/download)
-2. Or search for "Filient" in Mac App Store and install
+Download the latest version from [Filient official website](https://filient.ai)
 
 ### Installation Process
 1. Open the downloaded \`Filient.dmg\` file
