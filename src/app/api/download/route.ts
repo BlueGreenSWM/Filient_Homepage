@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import path from 'path'
-import fs from 'fs'
+import { getLatestVersion, getS3FileStream, extractS3KeyFromUrl, convertZipUrlToDmg } from '@/lib/s3-utils'
 
 export async function GET(request: NextRequest) {
   try {
@@ -17,40 +16,47 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // Path to the DMG file in public directory
-    const dmgPath = path.join(process.cwd(), 'public', 'downloads', 'Filient.dmg')
+    // 최신 버전 정보 가져오기
+    const latestVersion = await getLatestVersion()
 
-    // Check if file exists
-    if (!fs.existsSync(dmgPath)) {
-      // For demo purposes, return a placeholder response
-      return NextResponse.json(
-        {
-          message: 'DMG file not found. In production, this would serve the actual Filient.dmg file.',
-          note: 'Please add Filient.dmg to public/downloads/ directory'
-        },
-        { status: 404 }
-      )
+    // ZIP URL을 DMG URL로 변환
+    const dmgUrl = convertZipUrlToDmg(latestVersion.downloadUrl)
+
+    // S3 키 추출
+    const s3Key = extractS3KeyFromUrl(dmgUrl)
+
+    console.log(`Download initiated: ${latestVersion.version} at ${new Date().toISOString()} from ${userAgent}`)
+
+    // S3에서 파일 스트림 가져오기
+    const s3Response = await getS3FileStream(s3Key)
+
+    if (!s3Response.Body) {
+      throw new Error('Empty response from S3')
     }
 
-    // Read the file
-    const fileBuffer = fs.readFileSync(dmgPath)
+    // Stream을 ReadableStream으로 변환
+    const stream = s3Response.Body.transformToWebStream()
 
-    // Track download (in production, you'd log this to analytics)
-    console.log(`Download initiated at ${new Date().toISOString()} from ${userAgent}`)
+    // 파일명 생성
+    const fileName = `Filient-${latestVersion.version}.dmg`
 
-    // Return the file
-    return new NextResponse(fileBuffer, {
+    // 스트리밍 응답 반환
+    return new NextResponse(stream as any, {
       status: 200,
       headers: {
         'Content-Type': 'application/x-apple-diskimage',
-        'Content-Disposition': 'attachment; filename="Filient.dmg"',
-        'Content-Length': fileBuffer.length.toString(),
+        'Content-Disposition': `attachment; filename="${fileName}"`,
+        'Content-Length': s3Response.ContentLength?.toString() || '',
+        'Cache-Control': 'public, max-age=3600', // 1시간 캐시
       },
     })
   } catch (error) {
     console.error('Download error:', error)
     return NextResponse.json(
-      { error: 'Failed to process download request' },
+      {
+        error: 'Failed to process download request',
+        message: error instanceof Error ? error.message : 'Unknown error'
+      },
       { status: 500 }
     )
   }

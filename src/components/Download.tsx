@@ -17,6 +17,7 @@ import {
   trackWaitlistSubmitted,
   getCurrentScrollDepth,
 } from '@/lib/analytics'
+import type { LatestVersionResponse } from '@/types/appcast'
 
 export function Download() {
   const { ref, isVisible } = useScrollAnimation()
@@ -25,6 +26,27 @@ export function Download() {
   const { t, language } = useLanguage()
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [latestVersion, setLatestVersion] = useState<LatestVersionResponse | null>(null)
+  const [versionLoading, setVersionLoading] = useState(true)
+
+  // Fetch latest version on mount
+  useEffect(() => {
+    const fetchLatestVersion = async () => {
+      try {
+        const response = await fetch('/api/latest-version')
+        if (response.ok) {
+          const data: LatestVersionResponse = await response.json()
+          setLatestVersion(data)
+        }
+      } catch (error) {
+        console.error('Failed to fetch latest version:', error)
+      } finally {
+        setVersionLoading(false)
+      }
+    }
+
+    fetchLatestVersion()
+  }, [])
 
   // Track waitlist form view for non-Mac users
   useEffect(() => {
@@ -69,7 +91,8 @@ export function Download() {
 
         // Track download completed
         const downloadTime = Math.round((Date.now() - downloadStartTime) / 1000)
-        trackDownloadCompleted('45MB', downloadTime)
+        const fileSize = latestVersion?.fileSizeMB || '24MB'
+        trackDownloadCompleted(fileSize, downloadTime)
       } else {
         const errorText = await response.text()
         trackDownloadFailed('api_error', errorText)
@@ -112,12 +135,20 @@ export function Download() {
                 size="lg"
                 onClick={handleDownload}
                 className="min-w-[200px]"
+                disabled={versionLoading}
               >
-                {t.download.downloadCta}
+                {versionLoading ? 'Loading...' : t.download.downloadCta}
               </Button>
-              <p className="text-sm text-gray-500">
-                {t.download.requirements}
-              </p>
+              <div className="space-y-1">
+                {latestVersion && !versionLoading && (
+                  <p className="text-sm text-gray-600 font-medium">
+                    Version {latestVersion.version} • {latestVersion.fileSizeMB}
+                  </p>
+                )}
+                <p className="text-sm text-gray-500">
+                  {t.download.requirements}
+                </p>
+              </div>
             </div>
           ) : (
             <div className="max-w-md mx-auto">
