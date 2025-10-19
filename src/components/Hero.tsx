@@ -3,6 +3,7 @@
 import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from './common/Button'
+import { EmailDownloadModal } from './EmailDownloadModal'
 import { usePlatformDetection } from '@/hooks/usePlatformDetection'
 import { useSectionViewTracking } from '@/hooks/useSectionViewTracking'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -17,8 +18,10 @@ import {
 export function Hero() {
   const sectionRef = useSectionViewTracking('hero')
   const platform = usePlatformDetection()
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const [showDemo, setShowDemo] = useState(false)
+  const [showEmailModal, setShowEmailModal] = useState(false)
+  const [isDownloading, setIsDownloading] = useState(false)
 
   const handleDemoOpen = () => {
     const timeOnPage = getTimeOnPage()
@@ -30,11 +33,30 @@ export function Hero() {
     trackVideoStart('a6qRC__E0ZM')
   }
 
-  const handleDownloadClick = async () => {
+  const handleDownloadClick = () => {
     trackCTAClicked(t.hero.downloadCta, 'hero', 'primary')
+    setShowEmailModal(true)
+  }
 
-    // Trigger actual download
+  const handleEmailSubmit = async (email: string) => {
+    setIsDownloading(true)
+
     try {
+      // Track email submission
+      trackCTAClicked(`Email submitted: ${email}`, 'hero_email_modal', 'download')
+
+      // Save email to Airtable
+      await fetch('/api/collect-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          platform: platform.platform,
+          language
+        })
+      })
+
+      // Trigger actual download
       const response = await fetch('/api/download')
       if (response.ok) {
         const blob = await response.blob()
@@ -46,11 +68,19 @@ export function Hero() {
         a.click()
         window.URL.revokeObjectURL(url)
         document.body.removeChild(a)
+
+        // Close modal after successful download
+        setTimeout(() => {
+          setShowEmailModal(false)
+          setIsDownloading(false)
+        }, 1000)
       } else {
         console.error('Download failed:', await response.text())
+        setIsDownloading(false)
       }
     } catch (error) {
       console.error('Download error:', error)
+      setIsDownloading(false)
     }
   }
 
@@ -163,6 +193,14 @@ export function Hero() {
           <div className="badge badge-success">Local Processing</div>
         </motion.div>
       </div>
+
+      {/* Email Download Modal */}
+      <EmailDownloadModal
+        isOpen={showEmailModal}
+        onClose={() => setShowEmailModal(false)}
+        onSubmit={handleEmailSubmit}
+        isLoading={isDownloading}
+      />
 
       {/* Demo Modal */}
       {showDemo && (

@@ -181,7 +181,15 @@ export const translations = {
       waitlistCta: "Join Waitlist",
       waitlistSuccess: "Thanks! We'll notify you when Filient is ready for {{platform}}.",
       featuredIn: "As featured in",
-      publications: ["TechCrunch", "Product Hunt", "Hacker News"]
+      publications: ["TechCrunch", "Product Hunt", "Hacker News"],
+      modalTitle: "Download Filient",
+      modalDescription: "Enter your email to start downloading",
+      emailLabel: "Email Address",
+      emailRequired: "Email is required",
+      emailInvalid: "Please enter a valid email address",
+      startDownload: "Start Download",
+      downloading: "Downloading...",
+      privacyNote: "We respect your privacy. No spam, ever."
     },
     footer: {
       links: {
@@ -374,7 +382,15 @@ export const translations = {
       waitlistCta: "대기자 명단 등록",
       waitlistSuccess: "감사합니다! {{platform}}용 Filient가 준비되면 알려드리겠습니다.",
       featuredIn: "다음 매체에 소개됨",
-      publications: ["TechCrunch", "Product Hunt", "Hacker News"]
+      publications: ["TechCrunch", "Product Hunt", "Hacker News"],
+      modalTitle: "Filient 다운로드",
+      modalDescription: "다운로드를 시작하려면 이메일을 입력하세요",
+      emailLabel: "이메일 주소",
+      emailRequired: "이메일을 입력해주세요",
+      emailInvalid: "올바른 이메일 주소를 입력해주세요",
+      startDownload: "다운로드 시작",
+      downloading: "다운로드 중...",
+      privacyNote: "개인정보를 존중합니다. 스팸 메일을 보내지 않습니다."
     },
     footer: {
       links: {

@@ -7,6 +7,7 @@ import { useSectionViewTracking } from '@/hooks/useSectionViewTracking'
 import { usePlatformDetection } from '@/hooks/usePlatformDetection'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { Button } from './common/Button'
+import { EmailDownloadModal } from './EmailDownloadModal'
 import {
   trackDownloadInitiated,
   trackDownloadStarted,
@@ -28,6 +29,8 @@ export function Download() {
   const [submitted, setSubmitted] = useState(false)
   const [latestVersion, setLatestVersion] = useState<LatestVersionResponse | null>(null)
   const [versionLoading, setVersionLoading] = useState(true)
+  const [showEmailModal, setShowEmailModal] = useState(false)
+  const [isDownloading, setIsDownloading] = useState(false)
 
   // Fetch latest version on mount
   useEffect(() => {
@@ -65,15 +68,28 @@ export function Download() {
     }
   }
 
-  const handleDownload = async () => {
+  const handleDownloadClick = () => {
     const scrollDepth = getCurrentScrollDepth()
-
-    // Track download initiated
     trackDownloadInitiated('download', platform.platform, language, scrollDepth)
+    setShowEmailModal(true)
+  }
 
+  const handleEmailSubmit = async (email: string) => {
+    setIsDownloading(true)
     const downloadStartTime = Date.now()
 
     try {
+      // Save email to Airtable
+      await fetch('/api/collect-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          platform: platform.platform,
+          language
+        })
+      })
+
       // Track download started
       trackDownloadStarted(platform.platform, navigator.userAgent)
 
@@ -93,14 +109,22 @@ export function Download() {
         const downloadTime = Math.round((Date.now() - downloadStartTime) / 1000)
         const fileSize = latestVersion?.fileSizeMB || '24MB'
         trackDownloadCompleted(fileSize, downloadTime)
+
+        // Close modal after successful download
+        setTimeout(() => {
+          setShowEmailModal(false)
+          setIsDownloading(false)
+        }, 1000)
       } else {
         const errorText = await response.text()
         trackDownloadFailed('api_error', errorText)
+        setIsDownloading(false)
       }
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error'
       trackDownloadFailed('network_error', errorMessage)
       console.error('Download failed:', error)
+      setIsDownloading(false)
     }
   }
 
@@ -133,7 +157,7 @@ export function Download() {
               <Button
                 variant="primary"
                 size="lg"
-                onClick={handleDownload}
+                onClick={handleDownloadClick}
                 className="min-w-[200px]"
                 disabled={versionLoading}
               >
@@ -190,6 +214,14 @@ export function Download() {
           </div>
         </motion.div>
       </div>
+
+      {/* Email Download Modal */}
+      <EmailDownloadModal
+        isOpen={showEmailModal}
+        onClose={() => setShowEmailModal(false)}
+        onSubmit={handleEmailSubmit}
+        isLoading={isDownloading}
+      />
     </section>
   )
 }
