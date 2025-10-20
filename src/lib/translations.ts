@@ -6,7 +6,7 @@ export const translations = {
     },
     hero: {
       title: "File organization",
-      titleHighlight: "powered by AI",
+      titleHighlight: "with AI",
       subtitle: "Tell Filient what to do in plain English. No complex rules, no manual setup. Just describe how you want your files organized.",
       downloadCta: "Download for Mac",
       waitlistCta: "Join Waitlist",
@@ -207,7 +207,7 @@ export const translations = {
     },
     hero: {
       title: "파일 정리",
-      titleHighlight: "AI로 자동화",
+      titleHighlight: "AI와 함께",
       subtitle: "Filient에게 자연스러운 한국어로 원하는 것을 말하세요. 복잡한 규칙도, 수동 설정도 필요 없습니다. 파일을 어떻게 정리하고 싶은지 설명만 하세요.",
       downloadCta: "Mac용 다운로드",
       waitlistCta: "대기자 명단 등록",
