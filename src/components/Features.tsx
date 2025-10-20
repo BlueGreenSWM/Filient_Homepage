@@ -57,25 +57,6 @@ export function Features() {
             )
           })}
         </div>
-
-        {/* Example commands */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 card p-8"
-        >
-          <h3 className="text-xl font-semibold text-gray-900 mb-6">{t.features.examplesTitle}</h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            {t.features.examples.map((example, idx) => (
-              <div key={idx} className="p-4 rounded-lg bg-blue-50 border border-blue-100">
-                <code className="text-sm text-blue-700 font-mono">
-                  {example}
-                </code>
-              </div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   )

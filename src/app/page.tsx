@@ -7,7 +7,6 @@ import { Comparison } from '@/components/Comparison'
 import { HowItWorks } from '@/components/HowItWorks'
 import { Download } from '@/components/Download'
 import { Footer } from '@/components/Footer'
-import { Pricing } from '@/components/Pricing'
 import { useScrollDepthTracking } from '@/hooks/useScrollDepthTracking'
 
 export default function Home() {
@@ -18,10 +17,9 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50">
       <Hero />
       <Stats />
-      <Features />
       <HowItWorks />
+      <Features />
       <Comparison />
-      <Pricing />
       <Download />
       <Footer />
     </main>
