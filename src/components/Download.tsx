@@ -128,6 +128,49 @@ export function Download() {
     }
   }
 
+  const handleSkipEmail = async () => {
+    setIsDownloading(true)
+    const downloadStartTime = Date.now()
+
+    try {
+      // Track download started (without email collection)
+      trackDownloadStarted(platform.platform, navigator.userAgent)
+
+      const response = await fetch('/api/download')
+      if (response.ok) {
+        const blob = await response.blob()
+        const url = window.URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = 'Filient.dmg'
+        document.body.appendChild(a)
+        a.click()
+        window.URL.revokeObjectURL(url)
+        document.body.removeChild(a)
+
+        // Track download completed
+        const downloadTime = Math.round((Date.now() - downloadStartTime) / 1000)
+        const fileSize = latestVersion?.fileSizeMB || '24MB'
+        trackDownloadCompleted(fileSize, downloadTime)
+
+        // Close modal after successful download
+        setTimeout(() => {
+          setShowEmailModal(false)
+          setIsDownloading(false)
+        }, 1000)
+      } else {
+        const errorText = await response.text()
+        trackDownloadFailed('api_error', errorText)
+        setIsDownloading(false)
+      }
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      trackDownloadFailed('network_error', errorMessage)
+      console.error('Download failed:', error)
+      setIsDownloading(false)
+    }
+  }
+
   return (
     <section
       className="py-24 bg-gray-50 border-t border-gray-200"
@@ -228,6 +271,7 @@ export function Download() {
         isOpen={showEmailModal}
         onClose={() => setShowEmailModal(false)}
         onSubmit={handleEmailSubmit}
+        onSkipEmail={handleSkipEmail}
         isLoading={isDownloading}
       />
     </section>

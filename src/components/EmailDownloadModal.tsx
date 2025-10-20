@@ -9,10 +9,11 @@ interface EmailDownloadModalProps {
   isOpen: boolean
   onClose: () => void
   onSubmit: (email: string) => void
+  onSkipEmail: () => void
   isLoading?: boolean
 }
 
-export function EmailDownloadModal({ isOpen, onClose, onSubmit, isLoading = false }: EmailDownloadModalProps) {
+export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isLoading = false }: EmailDownloadModalProps) {
   const { t } = useLanguage()
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
@@ -64,7 +65,7 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, isLoading = fals
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="relative w-full max-w-md bg-white rounded-2xl overflow-hidden shadow-2xl"
+            className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
@@ -145,6 +146,18 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, isLoading = fals
               <p className="mt-4 text-xs text-gray-500 text-center">
                 {t.download?.privacyNote || 'We respect your privacy. No spam, ever.'}
               </p>
+
+              {/* Skip email link - Always visible */}
+              <div className="text-center mt-2">
+                <button
+                  type="button"
+                  onClick={onSkipEmail}
+                  disabled={isLoading}
+                  className="text-xs text-gray-400 hover:text-gray-600 underline transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {t.download?.downloadWithoutEmail || 'Download without email'}
+                </button>
+              </div>
             </div>
           </motion.div>
         </motion.div>
