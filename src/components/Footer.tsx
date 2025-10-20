@@ -3,7 +3,6 @@
 import React from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { Github, Twitter } from 'lucide-react'
 
 export function Footer() {
   const { t } = useLanguage()
@@ -14,22 +13,6 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-6">
             <h3 className="text-xl font-bold text-gray-900">Filient</h3>
-            <div className="flex gap-4">
-              <a
-                href="#"
-                className="text-gray-500 hover:text-blue-600 transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-500 hover:text-blue-600 transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-            </div>
           </div>
 
           <div className="flex items-center gap-6 text-sm text-gray-500">
