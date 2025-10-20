@@ -84,6 +84,41 @@ export function Hero() {
     }
   }
 
+  const handleSkipEmail = async () => {
+    setIsDownloading(true)
+
+    try {
+      // Track skip email action
+      trackCTAClicked('Skip email download', 'hero_email_modal', 'skip')
+
+      // Trigger actual download without email collection
+      const response = await fetch('/api/download')
+      if (response.ok) {
+        const blob = await response.blob()
+        const url = window.URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = 'Filient.dmg'
+        document.body.appendChild(a)
+        a.click()
+        window.URL.revokeObjectURL(url)
+        document.body.removeChild(a)
+
+        // Close modal after successful download
+        setTimeout(() => {
+          setShowEmailModal(false)
+          setIsDownloading(false)
+        }, 1000)
+      } else {
+        console.error('Download failed:', await response.text())
+        setIsDownloading(false)
+      }
+    } catch (error) {
+      console.error('Download error:', error)
+      setIsDownloading(false)
+    }
+  }
+
   const handleWaitlistClick = () => {
     trackCTAClicked(t.hero.waitlistCta, 'hero', 'primary')
   }
@@ -227,6 +262,7 @@ export function Hero() {
         isOpen={showEmailModal}
         onClose={() => setShowEmailModal(false)}
         onSubmit={handleEmailSubmit}
+        onSkipEmail={handleSkipEmail}
         isLoading={isDownloading}
       />
 
