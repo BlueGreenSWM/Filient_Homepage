@@ -200,7 +200,8 @@ export function Download() {
           )}
         </motion.div>
 
-        <motion.div
+        {/* Featured publications - commented out until we get featured */}
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -212,7 +213,7 @@ export function Download() {
               <div key={idx} className="text-gray-600 font-medium">{pub}</div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
 
       {/* Email Download Modal */}
