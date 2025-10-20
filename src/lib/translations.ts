@@ -7,7 +7,8 @@ export const translations = {
     hero: {
       title: "File organization",
       titleHighlight: "with AI",
-      subtitle: "Tell Filient what to do in plain English. No complex rules, no manual setup. Just describe how you want your files organized.",
+      subtitle: "Just tell Filient how you want your files organized.",
+      subtitle2: "Set up through conversation without complex rules or manual work.",
       downloadCta: "Download for Mac",
       waitlistCta: "Join Waitlist",
       watchDemo: "Watch Demo"
@@ -71,13 +72,13 @@ export const translations = {
         {
           number: "02",
           title: "Tell it what to do",
-          description: "Write rules in plain English. No technical knowledge required.",
+          description: "Create rules through conversation. No technical knowledge required.",
           example: "\"Put all invoices in the Accounting folder and rename them with the date\""
         },
         {
           number: "03",
           title: "Files organize themselves",
-          description: "Filient runs in the background, organizing files as they arrive.",
+          description: "Filient runs in the background and automatically organizes files based on your schedule settings.",
           example: "Invoice_2024.pdf → Accounting/2024-01-15_Invoice.pdf"
         }
       ],
@@ -213,7 +214,8 @@ export const translations = {
     hero: {
       title: "파일 정리",
       titleHighlight: "AI와 함께",
-      subtitle: "Filient에게 자연스러운 한국어로 원하는 것을 말하세요. 복잡한 규칙도, 수동 설정도 필요 없습니다. 파일을 어떻게 정리하고 싶은지 설명만 하세요.",
+      subtitle: "Filient에게 파일을 어떻게 정리하고 싶은지 설명만 하세요.",
+      subtitle2: "복잡한 규칙도 수작업 없이 대화만으로 설정 해보세요.",
       downloadCta: "Mac용 다운로드",
       waitlistCta: "대기자 명단 등록",
       watchDemo: "데모 보기"
@@ -277,13 +279,13 @@ export const translations = {
         {
           number: "02",
           title: "원하는 것을 말하세요",
-          description: "평범한 한국어로 규칙을 작성하세요. 기술적 지식이 필요하지 않습니다.",
+          description: "대화를 통해 규칙을 작성하세요. 기술적 지식이 필요하지 않습니다.",
           example: "\"모든 송장을 회계 폴더에 넣고 날짜로 이름 변경\""
         },
         {
           number: "03",
           title: "파일이 스스로 정리됩니다",
-          description: "Filient는 백그라운드에서 실행되어 파일이 도착하면 정리합니다.",
+          description: "Filient는 백그라운드에서 실행되며 사용자가 실행 주기를 설정하면 자동으로 파일이 정리됩니다.",
           example: "송장_2024.pdf → 회계/2024-01-15_송장.pdf"
         }
       ],
