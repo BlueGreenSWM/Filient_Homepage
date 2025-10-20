@@ -148,9 +148,21 @@ export function Download() {
             </span>
           </h2>
 
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
             {t.download.subtitle}
           </p>
+
+          {/* Features list */}
+          <div className="flex items-center justify-center gap-6 mb-8">
+            {t.download.features.map((feature, idx) => (
+              <div key={idx} className="flex items-center gap-2 text-gray-700">
+                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{feature}</span>
+              </div>
+            ))}
+          </div>
 
           {platform.isMac ? (
             <div className="space-y-4">
@@ -163,15 +175,10 @@ export function Download() {
               >
                 {versionLoading ? 'Loading...' : t.download.downloadCta}
               </Button>
-              <div className="space-y-1">
-                {latestVersion && !versionLoading && (
-                  <p className="text-sm text-gray-600 font-medium">
-                    Version {latestVersion.version} • {latestVersion.fileSizeMB}
-                  </p>
-                )}
-                <p className="text-sm text-gray-500">
-                  {t.download.requirements}
-                </p>
+              <div className="flex items-center justify-center gap-3 text-sm text-gray-500">
+                <span>{t.download.requirements}</span>
+                <span>•</span>
+                <span>{t.download.freeStart}</span>
               </div>
             </div>
           ) : (
@@ -200,7 +207,8 @@ export function Download() {
           )}
         </motion.div>
 
-        <motion.div
+        {/* Featured publications - commented out until we get featured */}
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -212,7 +220,7 @@ export function Download() {
               <div key={idx} className="text-gray-600 font-medium">{pub}</div>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
 
       {/* Email Download Modal */}

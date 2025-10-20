@@ -6,7 +6,7 @@ export const translations = {
     },
     hero: {
       title: "File organization",
-      titleHighlight: "powered by AI",
+      titleHighlight: "with AI",
       subtitle: "Tell Filient what to do in plain English. No complex rules, no manual setup. Just describe how you want your files organized.",
       downloadCta: "Download for Mac",
       waitlistCta: "Join Waitlist",
@@ -15,9 +15,9 @@ export const translations = {
     stats: {
       items: [
         { value: 230, suffix: " hours", label: "Saved per year" },
-        { value: 54, suffix: "%", label: "Less time searching" },
-        { value: 10000, suffix: "+", label: "Files organized daily" },
-        { value: 5, suffix: " min", label: "Average setup time" }
+        { value: 54, suffix: "%", label: "Less time exploring files" },
+        { value: 1000, suffix: "+", label: "Auto-organized files" },
+        { value: 1, suffix: " min", label: "Initial setup time" }
       ]
     },
     features: {
@@ -85,8 +85,8 @@ export const translations = {
       noManualFilingDesc: "Filient works 24/7 in the background. Set it up once and never think about file organization again."
     },
     comparison: {
-      title: "Built for humans,",
-      titleHighlight: "not programmers",
+      title: "User-focused,",
+      titleHighlight: "convenient automation",
       tableHeaders: {
         feature: "",
         filient: "Filient",
@@ -172,11 +172,16 @@ export const translations = {
       guarantee: "30-Day Money-Back Guarantee"
     },
     download: {
-      title: "Ready to save",
-      titleHighlight: "230 hours a year?",
-      subtitle: "Join thousands who've already simplified their file management with AI.",
+      title: "Wasting time finding files every day,",
+      titleHighlight: "stop now",
+      subtitle: "Set it up once and it keeps organizing automatically",
+      features: [
+        "Safe undo",
+        "Korean language support"
+      ],
       downloadCta: "Download for Mac",
       requirements: "macOS 12.0+",
+      freeStart: "Free to start",
       emailPlaceholder: "Enter your email",
       waitlistCta: "Join Waitlist",
       waitlistSuccess: "Thanks! We'll notify you when Filient is ready for {{platform}}.",
@@ -207,8 +212,8 @@ export const translations = {
     },
     hero: {
       title: "파일 정리",
-      titleHighlight: "AI로 자동화",
-      subtitle: "Filient에게 평범한 한국어로 원하는 것을 말하세요. 복잡한 규칙도, 수동 설정도 필요 없습니다. 파일을 어떻게 정리하고 싶은지 설명만 하세요.",
+      titleHighlight: "AI와 함께",
+      subtitle: "Filient에게 자연스러운 한국어로 원하는 것을 말하세요. 복잡한 규칙도, 수동 설정도 필요 없습니다. 파일을 어떻게 정리하고 싶은지 설명만 하세요.",
       downloadCta: "Mac용 다운로드",
       waitlistCta: "대기자 명단 등록",
       watchDemo: "데모 보기"
@@ -216,9 +221,9 @@ export const translations = {
     stats: {
       items: [
         { value: 230, suffix: " 시간", label: "연간 절약 시간" },
-        { value: 54, suffix: "%", label: "검색 시간 감소" },
-        { value: 10000, suffix: "+", label: "일일 정리 파일" },
-        { value: 5, suffix: " 분", label: "평균 설정 시간" }
+        { value: 54, suffix: "%", label: "파일 탐색 시간 감소" },
+        { value: 1000, suffix: "+", label: "자동 정리 파일" },
+        { value: 1, suffix: " 분", label: "초기 설정 시간" }
       ]
     },
     features: {
@@ -286,8 +291,8 @@ export const translations = {
       noManualFilingDesc: "Filient는 24시간 내내 백그라운드에서 작동합니다. 한 번 설정하면 파일 정리에 대해 다시 생각할 필요가 없습니다."
     },
     comparison: {
-      title: "인간을 위한,",
-      titleHighlight: "프로그래머용이 아닌",
+      title: "사용자 입장에서 고려한,",
+      titleHighlight: "편리한 자동화",
       tableHeaders: {
         feature: "",
         filient: "Filient",
@@ -373,11 +378,16 @@ export const translations = {
       guarantee: "30일 환불 보장"
     },
     download: {
-      title: "연간",
-      titleHighlight: "230시간을 절약할 준비가 되셨나요?",
-      subtitle: "AI로 파일 관리를 단순화한 수천 명과 함께하세요.",
+      title: "매일 파일 찾느라 시간 낭비,",
+      titleHighlight: "이제 그만하세요",
+      subtitle: "한 번 설정하면 계속 자동 정리",
+      features: [
+        "안전한 되돌리기",
+        "한국어 지원"
+      ],
       downloadCta: "Mac용 다운로드",
       requirements: "macOS 12.0+",
+      freeStart: "무료 시작",
       emailPlaceholder: "이메일을 입력하세요",
       waitlistCta: "대기자 명단 등록",
       waitlistSuccess: "감사합니다! {{platform}}용 Filient가 준비되면 알려드리겠습니다.",

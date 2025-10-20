@@ -109,89 +109,97 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
-            {t.hero.title}
-            <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-              {t.hero.titleHighlight}
-            </span>
-          </h1>
-        </motion.div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left side - Text content */}
+          <div className="text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
+                {t.hero.title}
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                  {t.hero.titleHighlight}
+                </span>
+              </h1>
+            </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed"
-        >
-          {t.hero.subtitle}
-        </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed"
+            >
+              {t.hero.subtitle}
+            </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-          {platform.isMac ? (
-            <>
-              <Button
-                variant="primary"
-                size="lg"
-                className="min-w-[200px]"
-                onClick={handleDownloadClick}
-              >
-                {t.hero.downloadCta}
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="min-w-[200px]"
-                onClick={handleDemoOpen}
-              >
-                <Play className="w-4 h-4 mr-2" />
-                {t.hero.watchDemo}
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button
-                variant="primary"
-                size="lg"
-                className="min-w-[200px]"
-                onClick={handleWaitlistClick}
-              >
-                {t.hero.waitlistCta}
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="min-w-[200px]"
-                onClick={handleDemoOpen}
-              >
-                <Play className="w-4 h-4 mr-2" />
-                {t.hero.watchDemo}
-              </Button>
-            </>
-          )}
-        </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              {platform.isMac ? (
+                <>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    className="min-w-[200px]"
+                    onClick={handleDownloadClick}
+                  >
+                    {t.hero.downloadCta}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="min-w-[200px]"
+                    onClick={handleDemoOpen}
+                  >
+                    <Play className="w-4 h-4 mr-2" />
+                    {t.hero.watchDemo}
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    className="min-w-[200px]"
+                    onClick={handleWaitlistClick}
+                  >
+                    {t.hero.waitlistCta}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="min-w-[200px]"
+                    onClick={handleDemoOpen}
+                  >
+                    <Play className="w-4 h-4 mr-2" />
+                    {t.hero.watchDemo}
+                  </Button>
+                </>
+              )}
+            </motion.div>
+          </div>
 
-        {/* Feature badges */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 flex flex-wrap gap-4 justify-center"
-        >
-          <div className="badge badge-primary">AI-Powered</div>
-          <div className="badge badge-success">Local Processing</div>
-        </motion.div>
+          {/* Right side - Product image */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative hidden lg:block"
+          >
+            <img
+              src="/docs/images/filient_image.png"
+              alt="Filient Application"
+              className="w-full h-auto rounded-2xl shadow-2xl"
+            />
+          </motion.div>
+        </div>
       </div>
 
       {/* Email Download Modal */}
