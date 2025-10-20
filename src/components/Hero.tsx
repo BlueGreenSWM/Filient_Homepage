@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from './common/Button'
 import { EmailDownloadModal } from './EmailDownloadModal'
@@ -188,6 +188,21 @@ export function Hero() {
                   </Button>
                 </>
               )}
+            </motion.div>
+
+            {/* Disquiet Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="mt-6"
+            >
+              <iframe
+                title="disquiet-badge"
+                src="https://badge.disquiet.io/vote-badge?productUrlSlug=filient&mode=light"
+                className="h-[80px] w-[300px] border-0"
+                style={{ overflow: 'hidden' }}
+              />
             </motion.div>
           </div>
 
