@@ -2,22 +2,47 @@ import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3'
 import { parseStringPromise } from 'xml2js'
 import type { AppcastItem } from '@/types/appcast'
 
-// S3 클라이언트 초기화
-const s3Client = new S3Client({
+// 환경 변수 체크
+const hasAwsCredentials = !!(
+  process.env.AWS_ACCESS_KEY_ID &&
+  process.env.AWS_SECRET_ACCESS_KEY
+)
+
+// S3 클라이언트 초기화 (환경 변수가 있을 때만)
+const s3Client = hasAwsCredentials ? new S3Client({
   region: process.env.AWS_REGION || 'ap-northeast-2',
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID || '',
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || '',
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
   },
-})
+}) : null
 
 const S3_BUCKET_NAME = process.env.S3_BUCKET_NAME || 'filient-updates'
 const APPCAST_KEY = 'appcast.xml'
+
+// Mock 데이터 (개발 환경용)
+const MOCK_APPCAST_DATA: AppcastItem = {
+  version: '1.0.0',
+  shortVersionString: '1.0.0',
+  pubDate: new Date().toISOString(),
+  isCriticalUpdate: false,
+  description: 'Latest version of Filient',
+  downloadUrl: 'https://filient-updates.s3.ap-northeast-2.amazonaws.com/releases/1.0.0/Filient-1.0.0.dmg',
+  fileSize: 25165824, // ~24MB
+  edSignature: '',
+  minimumSystemVersion: '12.0',
+  releaseNotesUrl: undefined,
+}
 
 /**
  * S3에서 appcast.xml 다운로드 및 파싱
  */
 export async function fetchAppcastXML(): Promise<string> {
+  // AWS 자격 증명이 없으면 에러 발생
+  if (!s3Client) {
+    throw new Error('AWS credentials not configured')
+  }
+
   try {
     const command = new GetObjectCommand({
       Bucket: S3_BUCKET_NAME,
@@ -107,23 +132,38 @@ export async function getLatestVersion(): Promise<AppcastItem> {
     return cachedAppcastData.data
   }
 
-  // 새로 가져오기
-  const xmlContent = await fetchAppcastXML()
-  const appcastData = await parseAppcastXML(xmlContent)
-
-  // 캐시 저장
-  cachedAppcastData = {
-    data: appcastData,
-    timestamp: now,
+  // AWS 자격 증명이 없으면 mock 데이터 반환 (개발 환경)
+  if (!hasAwsCredentials) {
+    console.warn('AWS credentials not configured, using mock data')
+    return MOCK_APPCAST_DATA
   }
 
-  return appcastData
+  try {
+    // 새로 가져오기
+    const xmlContent = await fetchAppcastXML()
+    const appcastData = await parseAppcastXML(xmlContent)
+
+    // 캐시 저장
+    cachedAppcastData = {
+      data: appcastData,
+      timestamp: now,
+    }
+
+    return appcastData
+  } catch (error) {
+    console.error('Failed to fetch from S3, falling back to mock data:', error)
+    return MOCK_APPCAST_DATA
+  }
 }
 
 /**
  * S3에서 파일 스트림 가져오기
  */
 export async function getS3FileStream(key: string) {
+  if (!s3Client) {
+    throw new Error('AWS credentials not configured')
+  }
+
   try {
     const command = new GetObjectCommand({
       Bucket: S3_BUCKET_NAME,
