@@ -201,8 +201,11 @@ export const translations = {
       links: {
         privacy: "Privacy",
         terms: "Terms",
-        contact: "Contact"
+        contact: "Contact",
+        feedback: "Feedback"
       },
+      disquiet: "View on Disquiet",
+      kakaoChat: "Join Open Chat",
       copyright: "© {{year}} Filient. All rights reserved."
     }
   },
@@ -408,8 +411,11 @@ export const translations = {
       links: {
         privacy: "개인정보처리방침",
         terms: "이용약관",
-        contact: "문의"
+        contact: "문의",
+        feedback: "피드백"
       },
+      disquiet: "디스콰이엇에서 보기",
+      kakaoChat: "오픈채팅 참여하기",
       copyright: "© {{year}} Filient. 모든 권리 보유."
     }
   }
