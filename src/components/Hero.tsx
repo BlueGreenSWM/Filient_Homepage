@@ -127,14 +127,19 @@ export function Hero() {
               </h1>
             </motion.div>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed"
+              className="mb-8 space-y-2"
             >
-              {t.hero.subtitle}
-            </motion.p>
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+                {t.hero.subtitle}
+              </p>
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+                {t.hero.subtitle2}
+              </p>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
