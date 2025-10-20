@@ -195,7 +195,8 @@ export const translations = {
       emailInvalid: "Please enter a valid email address",
       startDownload: "Start Download",
       downloading: "Downloading...",
-      privacyNote: "We respect your privacy. No spam, ever."
+      privacyNote: "We respect your privacy. No spam, ever.",
+      downloadWithoutEmail: "Download without email"
     },
     footer: {
       links: {
@@ -405,7 +406,8 @@ export const translations = {
       emailInvalid: "올바른 이메일 주소를 입력해주세요",
       startDownload: "다운로드 시작",
       downloading: "다운로드 중...",
-      privacyNote: "개인정보를 존중합니다. 스팸 메일을 보내지 않습니다."
+      privacyNote: "개인정보를 존중합니다. 스팸 메일을 보내지 않습니다.",
+      downloadWithoutEmail: "이메일 없이 다운로드"
     },
     footer: {
       links: {
