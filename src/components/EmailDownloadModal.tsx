@@ -1,9 +1,10 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Mail, Download } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { getTimeOnPage, getCurrentScrollDepth } from '@/lib/analytics'
 
 interface EmailDownloadModalProps {
   isOpen: boolean
@@ -17,6 +18,31 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isL
   const { t } = useLanguage()
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
+  const modalOpenTime = useRef<number>(0)
+  const emailInputStarted = useRef(false)
+
+  // 1. Track modal opened when it becomes visible
+  useEffect(() => {
+    if (isOpen && modalOpenTime.current === 0) {
+      modalOpenTime.current = Date.now()
+
+      // Track modal opened event
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'email_modal_opened', {
+          event_category: 'engagement',
+          time_on_page: getTimeOnPage(),
+          scroll_depth: getCurrentScrollDepth()
+        })
+
+        if (process.env.NODE_ENV === 'development') {
+          console.log('📊 GA4 Event: email_modal_opened', {
+            time_on_page: getTimeOnPage(),
+            scroll_depth: getCurrentScrollDepth()
+          })
+        }
+      }
+    }
+  }, [isOpen])
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -26,13 +52,46 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isL
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
-    // Email validation
+    // 4. Track email validation errors
     if (!email.trim()) {
+      // Track empty email error
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'email_validation_error', {
+          event_category: 'error',
+          error_type: 'empty_email',
+          error_message: 'Email is required',
+          time_on_modal: Math.round((Date.now() - modalOpenTime.current) / 1000)
+        })
+
+        if (process.env.NODE_ENV === 'development') {
+          console.log('📊 GA4 Event: email_validation_error (empty_email)')
+        }
+      }
       setError(t.download?.emailRequired || 'Email is required')
       return
     }
 
     if (!validateEmail(email)) {
+      // Track invalid email format error
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'email_validation_error', {
+          event_category: 'error',
+          error_type: 'invalid_email',
+          error_message: 'Invalid email format',
+          email_length: email.length,
+          has_at_symbol: email.includes('@'),
+          has_dot: email.includes('.'),
+          time_on_modal: Math.round((Date.now() - modalOpenTime.current) / 1000)
+        })
+
+        if (process.env.NODE_ENV === 'development') {
+          console.log('📊 GA4 Event: email_validation_error (invalid_email)', {
+            email_length: email.length,
+            has_at_symbol: email.includes('@'),
+            has_dot: email.includes('.')
+          })
+        }
+      }
       setError(t.download?.emailInvalid || 'Please enter a valid email address')
       return
     }
@@ -42,13 +101,56 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isL
     onSubmit(email)
   }
 
-  const handleClose = () => {
+  const handleClose = (trigger: 'x_button' | 'background_click' | 'esc_key' = 'x_button') => {
     if (!isLoading) {
+      const timeOnModal = Date.now() - modalOpenTime.current
+      const hasEnteredEmail = email.length > 0
+
+      // 1. Track modal closed (abandonment)
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'email_modal_closed', {
+          event_category: 'engagement',
+          close_trigger: trigger,
+          time_on_modal: Math.round(timeOnModal / 1000),
+          email_entered: hasEnteredEmail,
+          email_length: email.length,
+          email_input_started: emailInputStarted.current,
+          had_error: error.length > 0,
+          conversion_completed: false
+        })
+
+        if (process.env.NODE_ENV === 'development') {
+          console.log('📊 GA4 Event: email_modal_closed', {
+            close_trigger: trigger,
+            time_on_modal: Math.round(timeOnModal / 1000),
+            email_entered: hasEnteredEmail,
+            email_input_started: emailInputStarted.current
+          })
+        }
+      }
+
+      // Reset state
       setEmail('')
       setError('')
+      modalOpenTime.current = 0
+      emailInputStarted.current = false
       onClose()
     }
   }
+
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen && !isLoading) {
+        handleClose('esc_key')
+      }
+    }
+
+    if (isOpen) {
+      window.addEventListener('keydown', handleEscape)
+      return () => window.removeEventListener('keydown', handleEscape)
+    }
+  }, [isOpen, isLoading, email, error])
 
   return (
     <AnimatePresence>
@@ -58,7 +160,7 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isL
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-          onClick={handleClose}
+          onClick={() => handleClose('background_click')}
         >
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
@@ -70,9 +172,10 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isL
           >
             {/* Close button */}
             <button
-              onClick={handleClose}
+              onClick={() => handleClose('x_button')}
               disabled={isLoading}
               className="absolute top-4 right-4 z-10 p-2 rounded-lg bg-white/90 text-gray-700 hover:bg-gray-100 transition-colors shadow-sm disabled:opacity-50"
+              aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
@@ -110,11 +213,31 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isL
                         setEmail(e.target.value)
                         setError('')
                       }}
+                      onFocus={() => {
+                        // 3. Track email input started (only once)
+                        if (!emailInputStarted.current) {
+                          emailInputStarted.current = true
+
+                          if (typeof window !== 'undefined' && window.gtag) {
+                            window.gtag('event', 'email_input_started', {
+                              event_category: 'engagement',
+                              time_on_modal: Math.round((Date.now() - modalOpenTime.current) / 1000)
+                            })
+
+                            if (process.env.NODE_ENV === 'development') {
+                              console.log('📊 GA4 Event: email_input_started', {
+                                time_on_modal: Math.round((Date.now() - modalOpenTime.current) / 1000)
+                              })
+                            }
+                          }
+                        }
+                      }}
                       disabled={isLoading}
                       placeholder={t.download?.emailPlaceholder || 'your.email@example.com'}
                       className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all disabled:opacity-50 ${
                         error ? 'border-red-500' : 'border-gray-300'
                       }`}
+                      autoComplete="email"
                     />
                   </div>
                   {error && (
