@@ -7,6 +7,7 @@ import { EmailDownloadModal } from './EmailDownloadModal'
 import { usePlatformDetection } from '@/hooks/usePlatformDetection'
 import { useSectionViewTracking } from '@/hooks/useSectionViewTracking'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { VIDEO_ASSETS } from '@/lib/constants'
 import { X, Play } from 'lucide-react'
 import {
   trackVideoOpened,
@@ -291,14 +292,19 @@ export function Hero() {
             </button>
 
             <div className="aspect-video bg-gray-900 flex items-center justify-center">
-              <iframe
-                src="https://www.youtube.com/embed/a6qRC__E0ZM?autoplay=1"
-                title="Filient Demo"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
+              <video
+                src={VIDEO_ASSETS.DEMO.url}
+                poster={VIDEO_ASSETS.DEMO.thumbnail}
+                controls
+                autoPlay
+                playsInline
                 className="w-full h-full"
-                onLoad={handleVideoReady}
-              />
+                onLoadedData={handleVideoReady}
+                onPlay={() => trackVideoStart('hero_modal')}
+              >
+                <track kind="captions" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </motion.div>
         </motion.div>
