@@ -46,19 +46,19 @@ export function HowItWorks() {
                   transition={{ duration: 0.5, delay: index * 0.15 }}
                   className="card px-3 py-4"
                 >
-                  {/* Number + Icon at Top */}
+                  {/* Icon + Number + Title in one line */}
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-3xl font-bold text-gray-200">{step.number}</span>
                     <div className="p-2.5 rounded-xl bg-blue-600">
                       <Icon className="w-5 h-5 text-white" />
                     </div>
-                  </div>
-
-                  {/* Text Content */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <span className="text-3xl font-bold text-gray-400">{step.number}</span>
+                    <h3 className="text-2xl font-semibold text-gray-900">
                       {step.title}
                     </h3>
+                  </div>
+
+                  {/* Description */}
+                  <div>
                     <p className="text-sm text-gray-600 mb-3 leading-relaxed">
                       {step.description}
                     </p>
