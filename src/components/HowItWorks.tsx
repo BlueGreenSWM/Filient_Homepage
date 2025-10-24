@@ -15,7 +15,7 @@ export function HowItWorks() {
 
   return (
     <section className="py-24 bg-white border-t border-gray-200" ref={ref as any}>
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -31,11 +31,11 @@ export function HowItWorks() {
           </h2>
         </motion.div>
 
-        {/* 30:70 Grid Layout - Desktop: Steps left (30%) + Slider right (70%), Mobile: Stack */}
-        <div className="grid grid-cols-1 lg:grid-cols-[30%_70%] gap-8 items-start">
+        {/* 35:65 Grid Layout - Desktop: Steps left (35%) + Slider right (65%), Mobile: Stack */}
+        <div className="grid grid-cols-1 lg:grid-cols-[35%_65%] gap-8 items-start">
 
           {/* Left: Compact Step Cards */}
-          <div className="space-y-4 lg:order-1 order-2">
+          <div className="space-y-3 lg:order-1 order-2">
             {t.howItWorks.steps.map((step, index) => {
               const Icon = icons[index]
               return (
@@ -44,7 +44,7 @@ export function HowItWorks() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={isVisible ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.5, delay: index * 0.15 }}
-                  className="card p-6"
+                  className="card px-3 py-4"
                 >
                   {/* Number + Icon at Top */}
                   <div className="flex items-center gap-3 mb-3">
@@ -76,7 +76,7 @@ export function HowItWorks() {
           </div>
 
           {/* Right: Before/After Slider */}
-          <div className="flex items-center lg:pl-8 lg:order-2 order-1">
+          <div className="flex items-start lg:pl-8 lg:order-2 order-1">
             <BeforeAfterSlider
               beforeImage="/images/desktop-before.png"
               afterImage="/images/desktop-after.png"
