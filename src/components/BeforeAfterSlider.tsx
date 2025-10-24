@@ -59,7 +59,7 @@ export function BeforeAfterSlider({
               className="object-cover w-full h-full"
             />
           }
-          position={50}
+          position={75}
           className="aspect-[16/9]"
         />
       </motion.div>
