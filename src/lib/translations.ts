@@ -20,6 +20,20 @@ export const translations = {
         "1-minute setup"
       ]
     },
+    quickStart: {
+      userGuide: {
+        icon: "📖",
+        title: "User Guide",
+        subtitle: "New to Filient? Easy step-by-step guide to get you started",
+        cta: "View Guide"
+      },
+      feedback: {
+        icon: "💬",
+        title: "Send Feedback",
+        subtitle: "Your ideas become real features in Filient",
+        cta: "Share Your Thoughts"
+      }
+    },
     stats: {
       items: [
         { value: 230, suffix: " hours", label: "Saved per year" },
@@ -237,6 +251,20 @@ export const translations = {
         "대화만으로 자동 정리 규칙 생성",
         "1분만에 설치 완료"
       ]
+    },
+    quickStart: {
+      userGuide: {
+        icon: "📖",
+        title: "사용자 가이드",
+        subtitle: "처음이어도 괜찮아요, 따라하면 바로 사용할 수 있어요",
+        cta: "가이드 보기"
+      },
+      feedback: {
+        icon: "💬",
+        title: "피드백 보내기",
+        subtitle: "여러분의 아이디어가 실제 기능으로 만들어져요",
+        cta: "의견 남기기"
+      }
     },
     stats: {
       items: [
