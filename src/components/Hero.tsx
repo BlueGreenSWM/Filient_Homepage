@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Button } from './common/Button'
 import { EmailDownloadModal } from './EmailDownloadModal'
 import { FeatureHighlights } from './FeatureHighlights'
+import { DisquietLeaderBadge } from './DisquietLeaderBadge'
 import { usePlatformDetection } from '@/hooks/usePlatformDetection'
 import { useSectionViewTracking } from '@/hooks/useSectionViewTracking'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -203,6 +204,9 @@ export function Hero() {
                   />
                 </div>
               </div>
+
+              {/* Disquiet Leader Badge */}
+              <DisquietLeaderBadge />
 
               {/* Feature Highlights */}
               <FeatureHighlights />
