@@ -5,6 +5,7 @@ export const translations = {
       userGuide: "User Guide"
     },
     hero: {
+      eyebrow: "Stop manual file organization",
       title: "File organization",
       titleHighlight: "with Filient",
       subtitle: "Just tell Filient how you want your files organized.",
@@ -222,6 +223,7 @@ export const translations = {
       userGuide: "사용 가이드"
     },
     hero: {
+      eyebrow: "수동 파일 정리는 이제 그만",
       title: "파일 정리",
       titleHighlight: "Filient와 함께",
       subtitle: "Filient에게 파일을 어떻게 정리하고 싶은지 설명만 하세요.",
