@@ -137,10 +137,20 @@ export function Hero() {
         <div className="grid lg:grid-cols-[40%_60%] gap-12 items-center">
           {/* Left side - Text content */}
           <div className="text-left">
+            {/* Eyebrow Text */}
+            <motion.p
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-lg font-bold text-gray-400 mb-4 uppercase tracking-wide"
+            >
+              {t.hero.eyebrow}
+            </motion.p>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
               <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
                 {t.hero.title}
@@ -154,7 +164,7 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-8 space-y-2"
             >
               <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
@@ -168,7 +178,7 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
               className="flex flex-col items-start"
             >
               {/* CTA Buttons */}
