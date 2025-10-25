@@ -8,31 +8,17 @@ import { usePlatformDetection } from '@/hooks/usePlatformDetection'
 import { useSectionViewTracking } from '@/hooks/useSectionViewTracking'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { VIDEO_ASSETS } from '@/lib/constants'
-import { X, Play } from 'lucide-react'
 import {
-  trackVideoOpened,
-  trackVideoStart,
   trackCTAClicked,
-  getTimeOnPage,
+  trackVideoStart,
 } from '@/lib/analytics'
 
 export function Hero() {
   const sectionRef = useSectionViewTracking('hero')
   const platform = usePlatformDetection()
   const { t, language } = useLanguage()
-  const [showDemo, setShowDemo] = useState(false)
   const [showEmailModal, setShowEmailModal] = useState(false)
   const [isDownloading, setIsDownloading] = useState(false)
-
-  const handleDemoOpen = () => {
-    const timeOnPage = getTimeOnPage()
-    trackVideoOpened('hero', timeOnPage)
-    setShowDemo(true)
-  }
-
-  const handleVideoReady = () => {
-    trackVideoStart('a6qRC__E0ZM')
-  }
 
   const handleDownloadClick = () => {
     trackCTAClicked(t.hero.downloadCta, 'hero', 'primary')
@@ -184,45 +170,23 @@ export function Hero() {
               className="flex flex-col sm:flex-row gap-4"
             >
               {platform.isMac ? (
-                <>
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    className="min-w-[200px]"
-                    onClick={handleDownloadClick}
-                  >
-                    {t.hero.downloadCta}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="min-w-[200px]"
-                    onClick={handleDemoOpen}
-                  >
-                    <Play className="w-4 h-4 mr-2" />
-                    {t.hero.watchDemo}
-                  </Button>
-                </>
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="min-w-[200px]"
+                  onClick={handleDownloadClick}
+                >
+                  {t.hero.downloadCta}
+                </Button>
               ) : (
-                <>
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    className="min-w-[200px]"
-                    onClick={handleWaitlistClick}
-                  >
-                    {t.hero.waitlistCta}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="min-w-[200px]"
-                    onClick={handleDemoOpen}
-                  >
-                    <Play className="w-4 h-4 mr-2" />
-                    {t.hero.watchDemo}
-                  </Button>
-                </>
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="min-w-[200px]"
+                  onClick={handleWaitlistClick}
+                >
+                  {t.hero.waitlistCta}
+                </Button>
               )}
             </motion.div>
 
@@ -242,18 +206,29 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Right side - Product image */}
+          {/* Right side - Demo Video */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative hidden lg:block"
           >
-            <img
-              src="/docs/images/filient_image.png"
-              alt="Filient Application"
-              className="w-full h-auto rounded-2xl shadow-2xl"
-            />
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <video
+                src={VIDEO_ASSETS.DEMO.url}
+                poster={VIDEO_ASSETS.DEMO.thumbnail}
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-auto"
+                onPlay={() => trackVideoStart('hero_inline')}
+              >
+                <track kind="captions" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -266,49 +241,6 @@ export function Hero() {
         onSkipEmail={handleSkipEmail}
         isLoading={isDownloading}
       />
-
-      {/* Demo Modal */}
-      {showDemo && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-          onClick={() => setShowDemo(false)}
-        >
-          <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="relative w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setShowDemo(false)}
-              className="absolute top-4 right-4 z-10 p-2 rounded-lg bg-white/90 text-gray-700 hover:bg-white transition-colors shadow-sm"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="aspect-video bg-gray-900 flex items-center justify-center">
-              <video
-                src={VIDEO_ASSETS.DEMO.url}
-                poster={VIDEO_ASSETS.DEMO.thumbnail}
-                controls
-                autoPlay
-                playsInline
-                className="w-full h-full"
-                onLoadedData={handleVideoReady}
-                onPlay={() => trackVideoStart('hero_modal')}
-              >
-                <track kind="captions" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
     </section>
   )
 }
