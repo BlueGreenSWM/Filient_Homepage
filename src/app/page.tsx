@@ -1,6 +1,7 @@
 "use client"
 
 import { Hero } from '@/components/Hero'
+import { QuickStartSection } from '@/components/QuickStartSection'
 import { Stats } from '@/components/Stats'
 import { Features } from '@/components/Features'
 import { Comparison } from '@/components/Comparison'
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50">
       <Hero />
+      <QuickStartSection />
       <HowItWorks />
       <Features />
       <Comparison />
