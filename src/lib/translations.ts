@@ -6,12 +6,18 @@ export const translations = {
     },
     hero: {
       title: "File organization",
-      titleHighlight: "with AI",
+      titleHighlight: "with Filient",
       subtitle: "Just tell Filient how you want your files organized.",
       subtitle2: "Set up through conversation without complex rules or manual work.",
       downloadCta: "Download for Mac",
       waitlistCta: "Join Waitlist",
-      watchDemo: "Watch Demo"
+      watchDemo: "Watch Demo",
+      disquietBadge: "#1 Product on Disquiet Week 43",
+      highlights: [
+        "Completely free - No credit card required",
+        "Create automation rules through conversation",
+        "1-minute setup"
+      ]
     },
     stats: {
       items: [
@@ -217,12 +223,18 @@ export const translations = {
     },
     hero: {
       title: "파일 정리",
-      titleHighlight: "AI와 함께",
+      titleHighlight: "Filient와 함께",
       subtitle: "Filient에게 파일을 어떻게 정리하고 싶은지 설명만 하세요.",
       subtitle2: "복잡한 규칙도 수작업 없이 대화만으로 설정 해보세요.",
       downloadCta: "Mac용 다운로드",
       waitlistCta: "대기자 명단 등록",
-      watchDemo: "데모 보기"
+      watchDemo: "데모 보기",
+      disquietBadge: "디스콰이엇 43주차 1위",
+      highlights: [
+        "완전 무료 - 카드 등록 불필요",
+        "대화만으로 자동 정리 규칙 생성",
+        "1분만에 설치 완료"
+      ]
     },
     stats: {
       items: [
