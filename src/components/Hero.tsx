@@ -142,7 +142,7 @@ export function Hero() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-base font-semibold text-gray-500 mb-4 uppercase tracking-wide"
+              className="text-lg font-bold text-gray-400 mb-4 uppercase tracking-wide"
             >
               {t.hero.eyebrow}
             </motion.p>
