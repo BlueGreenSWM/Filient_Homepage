@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from './common/Button'
 import { EmailDownloadModal } from './EmailDownloadModal'
+import { FeatureHighlights } from './FeatureHighlights'
 import { usePlatformDetection } from '@/hooks/usePlatformDetection'
 import { useSectionViewTracking } from '@/hooks/useSectionViewTracking'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -132,7 +133,7 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-[40%_60%] gap-12 items-center">
           {/* Left side - Text content */}
           <div className="text-left">
             <motion.div
@@ -167,42 +168,44 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col items-start"
             >
-              {platform.isMac ? (
-                <Button
-                  variant="primary"
-                  size="lg"
-                  className="min-w-[200px]"
-                  onClick={handleDownloadClick}
-                >
-                  {t.hero.downloadCta}
-                </Button>
-              ) : (
-                <Button
-                  variant="primary"
-                  size="lg"
-                  className="min-w-[200px]"
-                  onClick={handleWaitlistClick}
-                >
-                  {t.hero.waitlistCta}
-                </Button>
-              )}
-            </motion.div>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 items-center">
+                {platform.isMac ? (
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    className="min-w-[220px] h-[64px] text-xl font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                    onClick={handleDownloadClick}
+                  >
+                    {t.hero.downloadCta}
+                  </Button>
+                ) : (
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    className="min-w-[220px] h-[64px] text-xl font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                    onClick={handleWaitlistClick}
+                  >
+                    {t.hero.waitlistCta}
+                  </Button>
+                )}
 
-            {/* Disquiet Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="mt-6"
-            >
-              <iframe
-                title="disquiet-badge"
-                src="https://badge.disquiet.io/vote-badge?productUrlSlug=filient&mode=light"
-                className="h-[80px] w-[300px] border-0"
-                style={{ overflow: 'hidden' }}
-              />
+                {/* Disquiet Badge - 가로로 배치, 높이 맞춤 */}
+                <div className="flex items-center h-[72px]">
+                  <iframe
+                    title="disquiet-badge"
+                    src="https://badge.disquiet.io/vote-badge?productUrlSlug=filient&mode=light"
+                    className="h-[72px] w-[240px] border-0"
+                    style={{ overflow: 'hidden', pointerEvents: 'auto' }}
+                    scrolling="no"
+                  />
+                </div>
+              </div>
+
+              {/* Feature Highlights */}
+              <FeatureHighlights />
             </motion.div>
           </div>
 
