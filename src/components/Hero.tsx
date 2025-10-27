@@ -215,11 +215,11 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* Disquiet Leader Badge */}
-              <DisquietLeaderBadge />
-
               {/* Feature Highlights */}
               <FeatureHighlights />
+
+              {/* Disquiet Leader Badge */}
+              <DisquietLeaderBadge />
             </motion.div>
           </div>
 
