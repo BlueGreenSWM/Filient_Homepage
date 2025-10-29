@@ -228,6 +228,7 @@ export const translations = {
       },
       disquiet: "View on Disquiet",
       kakaoChat: "Join Open Chat",
+      xChat: "Contact on X",
       copyright: "© {{year}} Filient. All rights reserved."
     }
   },
@@ -460,6 +461,7 @@ export const translations = {
       },
       disquiet: "디스콰이엇에서 보기",
       kakaoChat: "오픈채팅 참여하기",
+      xChat: "X에서 문의하기",
       copyright: "© {{year}} Filient. 모든 권리 보유."
     }
   }

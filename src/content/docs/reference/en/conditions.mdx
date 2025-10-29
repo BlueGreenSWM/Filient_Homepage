@@ -1,0 +1,96 @@
+# Condition Types
+
+Filient allows you to create sophisticated file management rules by combining various conditions.
+
+## File Property Conditions
+
+### File Name
+Filtering based on file name:
+- **Contains**: Contains specific string
+- **Matches**: Exactly matches specific name
+- **Starts With**: Starts with specific string
+- **Ends With**: Ends with specific string
+- **Regular Expression**: Regex pattern matching
+
+```
+Examples:
+- Files starting with "IMG_"
+- Files ending with ".tmp"
+- Files containing "2024"
+```
+
+### File Extension
+Classification by file format:
+- **Direct Extension Input**: .jpg, .pdf, .docx, etc. separated by comma(,)
+- **Extension Group**: Images, Documents, Videos, etc.
+
+Customization through deletion of each extension after adding is also supported.
+
+```
+Extension Groups:
+- Images: jpg, jpeg, png, gif, bmp, heic, svg, webp, ico, tiff
+- Documents: pdf, docx, doc, hwp, txt, md, xlsx, xls, pptx, ppt
+- Audio: mp3, wav, aac, m4a, flac, wma, ogg, aiff
+- Video: mp4, avi, mkv, mov, wmv, flv, webm, m4v
+
+Other groups like Archives, Code, Executables also exist
+```
+
+### File Size
+Size-based filtering:
+- **Greater Than**: File size exceeds input value
+- **Less Than**: File size is below input value
+- **Equal To**: File size equals input value
+- **Between**: File size is between a and b inclusive
+
+```
+Unit Options:
+- Bytes (B)
+- Kilobytes (KB)
+- Megabytes (MB)
+- Gigabytes (GB)
+```
+
+## Time Conditions
+
+### Time Reference Types
+- File Creation Date: Based on file creation date
+- File Modified Date: Based on last modification date
+- File Access Date: Based on last access date
+- File Added Date: Based on date added to current folder
+
+### Detailed Conditions
+- **After**: True if file's reference date is after input date
+- **Before**: True if file's reference date is before input date
+- **Specific Date**: True if file's reference date matches input date
+- **Period**: True if file's reference date is within input period
+- **Day of Week**: True if file's reference date's day of week matches input day
+- **Recent**: True if file's reference date is within input time from current time
+  - Example: With current date 2025-09-30, within last 15 days = 2025-09-16 ~ 2025-09-30
+- **Since**: True if file's reference date is from input time ago to now
+  - Example: With current date 2025-09-30, from 15 days ago = 2025-09-16 ~ 2025-09-30
+
+## Tag Conditions
+
+- Whether the file has the corresponding tag (name + color)
+
+## All Files
+
+- Perform action on all files in the folder
+
+## Combining Conditions
+
+Elements within a single condition operate with **OR**, and separate conditions operate with **AND**.
+
+### Example
+
+```
+
+Condition 1: Extension = jpg, png, docx
+Condition 2: Name contains the word "Screenshot"
+
+```
+In the above case, actions are performed on files with jpg **OR** png **OR** docx extensions that contain the word "Screenshot".
+
+### NOT Condition
+Select the checkbox in front of a condition to turn it red, applying the **NOT** condition to reverse it.

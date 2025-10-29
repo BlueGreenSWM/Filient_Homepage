@@ -1,0 +1,97 @@
+# Action Types
+
+Filient can execute various automation actions on files that meet conditions.
+
+## Move File Action
+
+### Select Destination Folder
+- **Select Destination Folder**: Specify the folder to move to
+
+### Detailed Settings
+Click the gear button on the right for detailed settings.
+- **Create Subfolders**: Automatically create by date/type if the destination folder doesn't exist (default)
+- **Handling File Conflicts**: Rename (default), Overwrite, Skip
+
+## Copy File Action
+
+### Select Copy Path Folder
+- **Select Destination Folder**: Specify where the copied file will be moved
+
+### Detailed Settings
+Click the gear button on the right for detailed settings.
+- **Create Subfolders**: Automatically create by date/type if the destination folder for the copy doesn't exist (default)
+- **Handling File Conflicts**: Rename (default), Overwrite, Skip
+
+## Alias Action
+Action that creates a shortcut.
+
+### Select Shortcut Path Folder
+- **Select Destination Folder**: Specify the folder where the shortcut will be created
+
+### Detailed Settings
+Click the gear button on the right for detailed settings.
+- **Create Subfolders**: Automatically create by date/type if the destination folder for the copy doesn't exist (default)
+
+
+## Rename Action
+
+File name modification options:
+- **Add/Remove Prefix**: Add to the front of the file name
+- **Add/Remove Suffix**: Add to the end of the file name
+- **Complete Replacement**: Change the entire file name according to a user-specified pattern
+  - Example: ParentFolderName_CreationDate_OriginalFileName
+- **Regular Expression**: Change according to regex pattern
+
+## Delete File Action
+
+- Move file to trash
+- Permanently delete file **(Caution, rollback not possible)**
+
+## Tag Action
+
+- Add specific tag to file
+- Remove specific tag from file
+- Remove all tags from file
+
+## Comment Action
+
+- Add system comment to file
+  - Option 1: Overwrite existing comment
+  - Option 2: Append to existing comment
+- Remove system comment from file
+
+## Organize by Date Action
+Action that organizes files into folders based on a reference date according to year/month/day
+
+If you specify a destination folder, it creates the folder structure based on the set criteria at that destination and moves files
+If not specified, creates the structure and moves files in the current folder
+
+```
+Detailed Options:
+- YYYY: Organize by year
+- YYYY/MM: Organize based on year folder (parent folder)/month folder (subfolder)
+- YYYY-MM: Create folders with year-month names and organize accordingly
+- YYYY/MM/DD: Create folder structure by year/month/day and organize
+- YYYY-MM-DD: Create folders with year-month-day names and organize accordingly
+- YYYY년/MM월: Create folder structure with year+"년"/month+"월" and organize
+- Custom: Create and organize with user-desired text and structure
+  - Example: Creating {Work-}{YYYY}/{MM}{Month} generates structure like Work-2025/03Month
+```
+
+## Organize by Type Action
+Organize based on file extension groups
+Users can choose from 7 default groups or create new groups
+
+If you specify a destination folder, it creates the folder structure based on the set criteria at that destination and moves files
+If not specified, creates the structure and moves files in the current folder
+
+```
+Group Types:
+- Documents
+- Images
+- Audio
+- Video
+- Archives
+- Code
+- Executables
+```
