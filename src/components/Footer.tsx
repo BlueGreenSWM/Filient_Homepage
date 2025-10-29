@@ -4,10 +4,16 @@ import React from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { KakaoIcon } from '@/components/icons/KakaoIcon'
+import { XIcon } from '@/components/icons/XIcon'
 import { DisquietIcon } from '@/components/icons/DisquietIcon'
 
 export function Footer() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+
+  // Email subject based on language
+  const emailSubject = language === 'ko'
+    ? 'Filient%20문의'
+    : 'Filient%20Inquiry'
 
   return (
     <footer className="py-12 border-t border-gray-200 bg-white">
@@ -43,6 +49,20 @@ export function Footer() {
                 {t.footer.kakaoChat || "오픈채팅 참여하기"}
               </span>
             </a>
+
+            {/* X (Twitter) Link */}
+            <a
+              href="https://x.com/filient_app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center transition-transform hover:scale-110"
+              aria-label={t.footer.xChat || "Contact on X"}
+            >
+              <XIcon size={28} />
+              <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                {t.footer.xChat || "Contact on X"}
+              </span>
+            </a>
           </div>
 
           <div className="flex items-center gap-6 text-sm text-gray-500">
@@ -52,9 +72,12 @@ export function Footer() {
             <Link href="#" className="hover:text-gray-900 transition-colors">
               {t.footer.links.terms}
             </Link>
-            <Link href="#" className="hover:text-gray-900 transition-colors">
+            <a
+              href={`mailto:bluegreen.soma@gmail.com?subject=${emailSubject}`}
+              className="hover:text-gray-900 transition-colors"
+            >
               {t.footer.links.contact}
-            </Link>
+            </a>
             <a
               href="https://forms.gle/QZKCSgFT4cwitzt79"
               target="_blank"

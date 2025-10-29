@@ -1,0 +1,247 @@
+# Creating Your First Rule
+
+This guide will walk you through creating your first automation rule in Filient step by step.
+We'll create a simple rule that automatically moves PDF files from the Downloads folder to the Documents folder.
+
+## 📁 Before You Start: Adding a Folder
+
+When you first launch Filient, it starts empty with no folders to manage. You need to add a folder first before creating rules.
+
+### Why Add Folders?
+
+Filient monitors only selected folders to optimize system performance. Instead of scanning the entire system, it efficiently manages files by selectively monitoring only the necessary folders.
+
+### Step 1: Find the Add Folder Interface
+
+When you open the Filient main screen, you'll see the following layout:
+
+- **Left Sidebar**: Folder list and menu area
+- **Folder Area**: Manage added folders
+
+Find the **"Folder Management"** section at the top of the left sidebar.
+
+![Add Folder Button Location](/docs/images/folder-selection.png)
+
+### Step 2: Add a New Folder
+
+#### Click the Add Folder Button
+- Click the **➕ (plus)** button to the right of the Folder Management section header
+
+#### macOS Folder Selection Dialog
+- When you click the button, the standard macOS folder selection window will appear
+
+#### Folder Selection Tips
+- 🎯 **Recommended Starting Folders**: Downloads, Desktop, Documents
+- ⚠️ **Folders to Avoid**: System, Library, Applications
+- 💡 **Smart Choice**: Start with your messiest folder
+
+### Step 3: Confirm Folder Addition
+
+After selecting a folder and clicking the **"Open"** button:
+
+1. **Folder Appears in Sidebar**
+   - Folder icon and name appear in the list
+   - Expand arrow shown if there are subfolders
+
+![Added Folder List](/docs/images/folder-added.png)
+
+---
+
+## 🎯 Creating Your First Rule
+
+Now that you've added a folder, let's create an automation rule.
+
+### 1. Start Creating a Rule
+
+#### Select a Folder
+1. Click the folder you just added in the sidebar
+2. When you select the folder, the rule list for that folder will appear on the right
+3. Click the **"Create New Rule"** button in the upper right
+
+![Rule Creation Button](/docs/images/rule-add-button.png)
+
+#### Choose Rule Creation Method
+
+When the rule creation dialog appears, you can choose one of two methods:
+
+- 📋 **Use Template**: Utilize pre-made templates
+- 📝 **Create Manually** + **AI Assistant**: Set conditions and actions directly (New Rule button)
+
+For this example, we'll select **"Create New Rule"**.
+
+![Rule Creation Method Selection](/docs/images/rule-creation-methods.png)
+
+### 2. Enter Basic Information
+
+When the rule creation screen appears, enter the basic information.
+
+![Rule Basic Information](/docs/images/rule-info.png)
+
+#### Rule Name
+Give it a clear, easy-to-understand name:
+```
+Organize PDF Documents
+```
+
+#### Rule Description (Optional)
+Add a description to easily identify the rule's purpose later:
+```
+Automatically move PDF files from Downloads folder to Documents folder
+```
+
+#### Rule Options
+![Rule Basic Information](/docs/images/rule-options.png)
+- ⬜ **Include Subfolders**: Apply rule to all subfolders within the folder
+- ⬜ **Require Approval Before Execution**: Check if user approval is needed before execution
+- ⬜ **Save Rule as Template**: Check whether to save the created rule as a template (one-time use)
+
+### 3. Set Conditions
+
+Conditions determine which files the rule applies to.
+
+![Condition Setting Screen](/docs/images/condition.png)
+
+#### Adding a Condition
+1. Click the **"➕ Add Condition"** button
+2. Select the condition type from the dropdown: **"File Extension"**
+3. Enter the details: `Documents`
+4. Click the **"OK"** button
+
+![Condition Setting Screen](/docs/images/condition2.png)
+
+#### Additional Condition Examples (Optional)
+If you want more sophisticated filtering, you can add conditions:
+
+**File Size Condition**:
+- Condition Type: **"File Size"**
+- Operator: **Greater than or equal to**
+- Value: **100 KB**
+
+This will only move PDF files that are 100KB or larger.
+
+```
+All conditions within a rule are connected by AND,
+and elements within a single condition are grouped by OR.
+```
+
+### 4. Set Actions
+
+Actions determine what to do with files that match the conditions.
+
+![Action Setting Screen](/docs/images/action.png)
+
+#### Adding an Action
+1. Click the **"➕ Add Action"** button
+2. Select the action type: **"Move File"**
+3. Set the destination folder:
+   - **Folder Path**: `~/Documents`
+   - Or select directly with the **"Select Folder"** button
+4. Click the **"OK"** button
+
+![Action Setting Screen 2](/docs/images/action2.png)
+
+#### Exception Handling
+![Create Folder if Missing](/docs/images/move_option.png)
+
+Click the gear button on the right side of the action to see detailed settings.
+
+If the destination folder (~/Documents/PDF) doesn't exist:
+- ✅ **Auto-create**: Filient automatically creates the folder
+- Hierarchical structures can also be automatically created (e.g., ~/Documents/2024/PDF)
+
+If files conflict with the same name:
+   - **Skip**: Don't move if a file with the same name exists
+   - **Overwrite**: Replace the existing file with the new file
+   - **Rename** (recommended): Save with a number appended (e.g., document(1).pdf)
+
+### 5. Save and Test
+
+#### Save the Rule
+1. Double-check all settings
+2. Click the **"Save"** button
+3. The rule is added to the list and activated
+
+#### Test Run (Recommended)
+
+![Test Button](/docs/images/test_button.png)
+
+You can preview results with a test before actual execution:
+
+1. Select the three dots to the right of the saved rule to open the menu
+2. Click the **"Test"** button
+3. Review the simulation results:
+   - Number of files that will be affected
+   - Success/failure status, etc.
+4. If satisfied with the results, execute through **"Run"** or schedule regular execution through scheduling
+![Test Execution Results](/docs/images/test.png)
+
+### 6. Execute and Review Results
+
+#### Manual Execution
+1. Select the rule and click the **"Run Now"** button
+2. When execution is complete, you can review the execution summary
+   - Success/failure/skipped counts
+
+#### Execution History
+All execution records are saved in history:
+1. Click the **"History"** tab
+2. Review the execution history
+3. Click each record to see detailed information
+4. Use the **"Rollback"** function to undo operations if needed
+
+---
+
+## 🎉 Congratulations!
+
+You've successfully created your first automation rule! Now when PDF files are added to the Downloads folder, they will automatically be moved to the Documents/PDF folder.
+
+### Next Steps
+
+Now that you've mastered the basics, try more advanced features:
+
+#### 📚 Create More Complex Rules
+- Chain multiple actions (move → rename → tag)
+- Combine multiple conditions
+
+#### ⏰ Set Up Automation
+- **Scheduler**: Automatically run every day at 9 AM
+- **Batch Processing**: Execute multiple rules sequentially
+
+#### 🎨 Create Templates
+Save frequently used rules as templates:
+1. Select rule → **"Save as Template"**
+2. Enter template name and description
+3. Reusable in other folders
+
+### Useful Rule Examples
+
+#### 📸 Screenshot Organization
+- **Condition**: File name starts with "스크린샷" or "Screenshot"
+- **Action**: Move to ~/Pictures/Screenshots/2024 folder
+
+#### 🗑️ Temporary File Cleanup
+- **Condition**: Extensions .tmp, .temp, .cache
+- **Action**: Files older than 30 days to trash
+
+#### 📊 Project File Organization
+- **Condition**: Contains specific project keywords
+- **Action**: Move to project folder + add project tag
+
+### Troubleshooting
+
+#### ❓ Rule isn't executing
+- Check if the rule is **activated**
+- Verify conditions are set correctly
+- Check if you have folder access permissions
+- Check error messages in the log
+
+#### ❓ Moved the wrong file
+- Find the execution in the **History** tab
+- Restore with the **"Rollback"** button
+- Modify rule conditions to prevent recurrence
+
+### Learn More
+- [Folder Management](/docs/features/folder-management)
+- [Advanced Rule System](/docs/features/rule-system)
+- [Using AI Assistant](/docs/advanced/ai-assistant)
+- [Automation Scheduler](/docs/advanced/scheduler)
