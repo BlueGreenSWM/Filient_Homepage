@@ -48,30 +48,22 @@ export const translations = {
       subtitle: "No more clicking through complex UIs. Just describe what you want and let AI do the work.",
       items: [
         {
-          title: "Natural Language Rules",
-          description: "Just tell Filient what you want: \"Move all PDFs older than 30 days to Archive\" or \"Organize photos by date and location\""
+          title: "Scheduled Runs",
+          description: "Set a cadence and Filient keeps your folders tidy by running rules automatically.",
+          videoKey: "PERIODIC_EXECUTION"
         },
         {
-          title: "Instant Setup",
-          description: "No complex rule builders or regex patterns. Write what you want in plain English and Filient handles the rest."
+          title: "Rollback Safety",
+          description: "Undo any automation with a single click and restore files exactly as they were.",
+          videoKey: "ROLLBACK"
         },
         {
-          title: "Smart Understanding",
-          description: "Filient understands context. It knows \"old files\" means different things for downloads vs documents."
-        },
-        {
-          title: "Local Processing",
-          description: "Everything runs on your machine. Your files never leave your computer."
-        },
-        {
-          title: "Scheduled Execution",
-          description: "Runs periodically to keep your files organized automatically."
-        },
-        {
-          title: "Retroactive Cleaning",
-          description: "Apply rules to existing files. Clean up years of file chaos in minutes."
+          title: "AI Chatbot",
+          description: "Describe what you need in chat and Filient builds the right automation on the spot.",
+          videoKey: "AI_CHATBOT"
         }
       ],
+      watchVideoLabel: "Watch feature video",
       examplesTitle: "Example commands",
       examples: [
         "\"Delete all files with 'product' in their name\"",
@@ -281,30 +273,22 @@ export const translations = {
       subtitle: "복잡한 UI를 클릭할 필요가 없습니다. 원하는 것을 설명하면 AI가 처리합니다.",
       items: [
         {
-          title: "자연어 규칙",
-          description: "Filient에게 원하는 것을 말하세요: \"30일 이상 된 모든 PDF를 Archive로 이동\" 또는 \"날짜와 위치별로 사진 정리\""
-        },
-        {
-          title: "즉시 설정",
-          description: "복잡한 규칙 빌더나 정규식 패턴이 필요 없습니다. 평범한 한국어로 원하는 것을 작성하면 Filient가 나머지를 처리합니다."
-        },
-        {
-          title: "스마트 이해",
-          description: "Filient는 맥락을 이해합니다. \"오래된 파일\"이 다운로드와 문서에서 다른 의미라는 것을 알고 있습니다."
-        },
-        {
-          title: "로컬 처리",
-          description: "모든 것이 당신의 컴퓨터에서 실행됩니다. 파일은 절대 컴퓨터를 떠나지 않습니다."
-        },
-        {
           title: "주기적 실행",
-          description: "주기적으로 실행되어 파일을 자동으로 정리합니다."
+          description: "스케줄만 지정하면 Filient가 주기적으로 규칙을 실행해 폴더를 자동으로 정리합니다.",
+          videoKey: "PERIODIC_EXECUTION"
         },
         {
-          title: "소급 정리",
-          description: "기존 파일에 규칙을 적용하세요. 수년간의 파일 혼란을 몇 분 안에 정리합니다."
+          title: "롤백",
+          description: "한 번의 클릭으로 적용한 자동화를 되돌리고, 원본 파일 상태를 그대로 복원합니다.",
+          videoKey: "ROLLBACK"
+        },
+        {
+          title: "AI 챗봇",
+          description: "챗봇과 대화하면서 원하는 정리 규칙을 자연어로 만들고 바로 실행할 수 있습니다.",
+          videoKey: "AI_CHATBOT"
         }
       ],
+      watchVideoLabel: "영상 보기",
       examplesTitle: "예시 명령어",
       examples: [
         "\"이름에 'product'가 포함된 모든 파일 삭제\"",
