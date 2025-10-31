@@ -48,9 +48,9 @@ export const translations = {
       subtitle: "No more clicking through complex UIs. Just describe what you want and let AI do the work.",
       items: [
         {
-          title: "Scheduled Runs",
-          description: "Set a cadence and Filient keeps your folders tidy by running rules automatically.",
-          videoKey: "PERIODIC_EXECUTION"
+          title: "AI Chatbot",
+          description: "Describe what you need in chat and Filient builds the right automation on the spot.",
+          videoKey: "AI_CHATBOT"
         },
         {
           title: "Rollback Safety",
@@ -58,9 +58,9 @@ export const translations = {
           videoKey: "ROLLBACK"
         },
         {
-          title: "AI Chatbot",
-          description: "Describe what you need in chat and Filient builds the right automation on the spot.",
-          videoKey: "AI_CHATBOT"
+          title: "Scheduled Runs",
+          description: "Set a cadence and Filient keeps your folders tidy by running rules automatically.",
+          videoKey: "PERIODIC_EXECUTION"
         }
       ],
       watchVideoLabel: "Watch feature video",
@@ -273,9 +273,9 @@ export const translations = {
       subtitle: "복잡한 UI를 클릭할 필요가 없습니다. 원하는 것을 설명하면 AI가 처리합니다.",
       items: [
         {
-          title: "주기적 실행",
-          description: "스케줄만 지정하면 Filient가 주기적으로 규칙을 실행해 폴더를 자동으로 정리합니다.",
-          videoKey: "PERIODIC_EXECUTION"
+          title: "AI 챗봇",
+          description: "챗봇과 대화하면서 원하는 정리 규칙을 자연어로 만들고 바로 실행할 수 있습니다.",
+          videoKey: "AI_CHATBOT"
         },
         {
           title: "롤백",
@@ -283,9 +283,9 @@ export const translations = {
           videoKey: "ROLLBACK"
         },
         {
-          title: "AI 챗봇",
-          description: "챗봇과 대화하면서 원하는 정리 규칙을 자연어로 만들고 바로 실행할 수 있습니다.",
-          videoKey: "AI_CHATBOT"
+          title: "주기적 실행",
+          description: "스케줄만 지정하면 Filient가 주기적으로 규칙을 실행해 폴더를 자동으로 정리합니다.",
+          videoKey: "PERIODIC_EXECUTION"
         }
       ],
       watchVideoLabel: "영상 보기",
