@@ -85,8 +85,8 @@ function FeaturesSection() {
           </p>
         </motion.div>
 
-        {/* Main Content: Cards (35%) + Video (65%) */}
-        <div className="grid lg:grid-cols-[35%_65%] gap-10 items-end">
+        {/* Main Content: Cards (27%) + Video (73%) */}
+        <div className="grid lg:grid-cols-[27%_73%] gap-10 items-end">
           {/* Left: Feature Cards - 모두 붙은 단일 컨테이너 */}
           <div className="bg-white rounded-xl border-2 border-gray-200 overflow-hidden shadow-sm">
             {FEATURES_CONFIG.map((feature, index) => {

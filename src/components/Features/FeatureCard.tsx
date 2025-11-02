@@ -92,8 +92,8 @@ export default function FeatureCard({
 
       {/* Video indicator badge */}
       {!hasVideo && (
-        <div className="absolute top-4 right-4">
-          <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700 border border-blue-300">
+        <div className="absolute top-3 right-3">
+          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-100 text-blue-700 border border-blue-300">
             Coming Soon
           </span>
         </div>
