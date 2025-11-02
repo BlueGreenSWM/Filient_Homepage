@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import { Button } from './common/Button'
 import { EmailDownloadModal } from './EmailDownloadModal'
 import { FeatureHighlights } from './FeatureHighlights'
-import { DisquietLeaderBadge } from './DisquietLeaderBadge'
 import { usePlatformDetection } from '@/hooks/usePlatformDetection'
 import { useSectionViewTracking } from '@/hooks/useSectionViewTracking'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -218,8 +217,24 @@ export function Hero() {
               {/* Feature Highlights */}
               <FeatureHighlights />
 
-              {/* Disquiet Leader Badge */}
-              <DisquietLeaderBadge />
+              {/* Disquiet Rank Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.35 }}
+                className="mt-4 flex items-start"
+              >
+                <div className="flex-shrink-0">
+                  <iframe
+                    title="disquiet-badge"
+                    frameBorder="0"
+                    src="https://badge.disquiet.io/rank-badge?productUrlSlug=filient&mode=light&rank=gold"
+                  />
+                </div>
+                <p className="text-sm font-bold text-gray-400 pt-1 -ml-8">
+                  🏆 {t.hero.disquietBadge}
+                </p>
+              </motion.div>
             </motion.div>
           </div>
 

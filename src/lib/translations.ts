@@ -13,7 +13,7 @@ export const translations = {
       downloadCta: "Download for Mac",
       waitlistCta: "Join Waitlist",
       watchDemo: "Watch Demo",
-      disquietBadge: "#1 Product on Disquiet Week 43",
+      disquietBadge: "#1 on Disquiet Product Leaderboard",
       highlights: [
         "Completely free - No credit card required",
         "Create automation rules through conversation",
@@ -251,7 +251,7 @@ export const translations = {
       downloadCta: "Mac용 다운로드",
       waitlistCta: "대기자 명단 등록",
       watchDemo: "데모 보기",
-      disquietBadge: "디스콰이엇 43주차 1위",
+      disquietBadge: "디스콰이엇 프로덕트 리더보드 1위",
       highlights: [
         "완전 무료 - 카드 등록 불필요",
         "대화만으로 자동 정리 규칙 생성",
