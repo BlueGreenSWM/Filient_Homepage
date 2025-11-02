@@ -6,6 +6,7 @@ import { Stats } from '@/components/Stats'
 import { FeaturesSection } from '@/components/Features'
 import { Comparison } from '@/components/Comparison'
 import { HowItWorks } from '@/components/HowItWorks'
+import { Testimonials } from '@/components/Testimonials'
 import { Download } from '@/components/Download'
 import { Footer } from '@/components/Footer'
 import { useScrollDepthTracking } from '@/hooks/useScrollDepthTracking'
@@ -19,6 +20,7 @@ export default function Home() {
       <Hero />
       <HowItWorks />
       <FeaturesSection />
+      <Testimonials />
       <Comparison />
       <QuickStartSection />
       <Download />

@@ -235,6 +235,68 @@ export const translations = {
       kakaoChat: "Join Open Chat",
       xChat: "Contact on X",
       copyright: "© {{year}} Filient. All rights reserved."
+    },
+    testimonials: {
+      title: "What People Are Saying",
+      subtitle: "Join many users who've revolutionized their file management",
+      reviews: [
+        {
+          id: "review-1",
+          text: "I just told it to organize my downloads by date, and boom - done in seconds. No complicated rules to set up.",
+          author: "김*인",
+          avatarText: "김",
+          avatarColor: "bg-blue-500"
+        },
+        {
+          id: "review-2",
+          text: "The rollback feature saved me when I accidentally organized the wrong folder. One click and everything was back to normal!",
+          author: "최*민",
+          avatarText: "최",
+          avatarColor: "bg-purple-500"
+        },
+        {
+          id: "review-3",
+          text: "I set it to run every night and wake up to a perfectly organized Downloads folder. It's like having a personal assistant.",
+          author: "이*현",
+          avatarText: "이",
+          avatarColor: "bg-green-500"
+        },
+        {
+          id: "review-4",
+          text: "Been using it for 2 weeks. My Desktop went from chaotic mess to perfectly organized. Best productivity tool this year.",
+          author: "이*찬",
+          avatarText: "이",
+          avatarColor: "bg-pink-500"
+        },
+        {
+          id: "review-5",
+          text: "The AI chatbot understands exactly what I mean, even when I explain things vaguely. Super intuitive!",
+          author: "문*원",
+          avatarText: "문",
+          avatarColor: "bg-indigo-500"
+        },
+        {
+          id: "review-6",
+          text: "Set it once, forget about it. My files organize themselves now. Seriously, why didn't this exist sooner?",
+          author: "임*진",
+          avatarText: "임",
+          avatarColor: "bg-cyan-500"
+        },
+        {
+          id: "review-7",
+          text: "The scheduled runs feature is genius. No more manual cleanup every weekend. It just happens automatically.",
+          author: "강*민",
+          avatarText: "강",
+          avatarColor: "bg-amber-500"
+        },
+        {
+          id: "review-8",
+          text: "Tried Hazel before but couldn't figure it out. Filient took me literally 60 seconds to set up. Game changer.",
+          author: "임*민",
+          avatarText: "임",
+          avatarColor: "bg-rose-500"
+        }
+      ]
     }
   },
   ko: {
@@ -473,6 +535,68 @@ export const translations = {
       kakaoChat: "오픈채팅 참여하기",
       xChat: "X에서 문의하기",
       copyright: "© {{year}} Filient. 모든 권리 보유."
+    },
+    testimonials: {
+      title: "사용자 후기",
+      subtitle: "수많은 사용자가 파일 관리 방식을 혁신했습니다",
+      reviews: [
+        {
+          id: "review-1",
+          text: "다운로드 폴더 날짜별로 정리해달라고 했더니 바로 몇 초만에 끝. 복잡한 규칙 설정 같은 거 없이 바로 되더라구요.",
+          author: "김*인",
+          avatarText: "김",
+          avatarColor: "bg-blue-500"
+        },
+        {
+          id: "review-2",
+          text: "실수로 잘못된 폴더 정리했는데 롤백 기능으로 한 번에 원상복구! 진짜 신기했어요.",
+          author: "최*민",
+          avatarText: "최",
+          avatarColor: "bg-purple-500"
+        },
+        {
+          id: "review-3",
+          text: "매일 밤 자동 실행 설정해놨더니 아침마다 깔끔하게 정리된 다운로드 폴더를 볼 수 있어요. 비서 고용한 기분.",
+          author: "이*현",
+          avatarText: "이",
+          avatarColor: "bg-green-500"
+        },
+        {
+          id: "review-4",
+          text: "2주 사용중인데 바탕화면이 지옥에서 천국으로. 올해 최고의 생산성 툴인듯.",
+          author: "이*찬",
+          avatarText: "이",
+          avatarColor: "bg-pink-500"
+        },
+        {
+          id: "review-5",
+          text: "AI 챗봇이 대충 설명해도 정확히 이해하더라구요. 진짜 직관적이에요!",
+          author: "문*원",
+          avatarText: "문",
+          avatarColor: "bg-indigo-500"
+        },
+        {
+          id: "review-6",
+          text: "한 번만 설정하면 끝. 이제 파일들이 알아서 정리돼요. 진심 왜 이제야 나온거죠?",
+          author: "임*진",
+          avatarText: "임",
+          avatarColor: "bg-cyan-500"
+        },
+        {
+          id: "review-7",
+          text: "주기적 실행 기능 진짜 천재적. 주말마다 정리하던 시간 이제 다른 일 해요.",
+          author: "강*민",
+          avatarText: "강",
+          avatarColor: "bg-amber-500"
+        },
+        {
+          id: "review-8",
+          text: "Hazel 써보다가 설정 너무 어려워서 포기했는데 Filient은 진짜 60초 걸렸어요. 게임 체인저.",
+          author: "임*민",
+          avatarText: "임",
+          avatarColor: "bg-rose-500"
+        }
+      ]
     }
   }
 } as const

@@ -60,33 +60,33 @@ export function Comparison() {
                   </th>
                 </tr>
               </thead>
-            <tbody>
-              {t.comparison.features.map((row, index) => (
-                <motion.tr
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
-                  className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors"
-                >
-                  <td className="p-4 text-center text-gray-800 font-semibold bg-white">{row.name}</td>
-                  <td className="p-4 bg-gradient-to-br from-blue-50/50 to-purple-50/50 border-l-4 border-blue-500">
-                    <div className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-900 font-semibold">{row.filient}</span>
-                    </div>
-                  </td>
-                  <td className="p-4 bg-white">
-                    <span className="text-gray-500">{row.hazel}</span>
-                  </td>
-                  <td className="p-4 bg-white">
-                    <span className="text-gray-500">{row.manual}</span>
-                  </td>
-                </motion.tr>
-              ))}
-            </tbody>
-          </table>
-        </motion.div>
+              <tbody>
+                {t.comparison.features.map((row, index) => (
+                  <motion.tr
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isVisible ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.2 + index * 0.05 }}
+                    className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors"
+                  >
+                    <td className="p-4 text-center text-gray-800 font-semibold bg-white">{row.name}</td>
+                    <td className="p-4 bg-gradient-to-br from-blue-50/50 to-purple-50/50 border-l-4 border-blue-500">
+                      <div className="flex items-start gap-2">
+                        <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                        <span className="text-gray-900 font-semibold">{row.filient}</span>
+                      </div>
+                    </td>
+                    <td className="p-4 bg-white">
+                      <span className="text-gray-500">{row.hazel}</span>
+                    </td>
+                    <td className="p-4 bg-white">
+                      <span className="text-gray-500">{row.manual}</span>
+                    </td>
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
+          </motion.div>
         </div>
       </div>
     </section>
