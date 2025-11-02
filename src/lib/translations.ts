@@ -126,26 +126,26 @@ export const translations = {
       features: [
         {
           name: "Setup complexity",
-          filient: "Write in plain English",
+          filient: "Chat like texting a friend",
           hazel: "Complex rule builder",
           manual: "No automation"
         },
         {
           name: "Learning curve",
-          filient: "Zero - just describe what you want",
-          hazel: "Steep - requires technical knowledge",
+          filient: "Start organizing right away",
+          hazel: "Takes time to get familiar",
           manual: "None"
         },
         {
           name: "Flexibility",
-          filient: "Natural language commands",
-          hazel: "Limited to predefined patterns",
-          manual: "Full manual control"
+          filient: "Any request, instantly understood",
+          hazel: "Limited to predefined rules",
+          manual: "All manual work"
         },
         {
           name: "Time to first rule",
-          filient: "< 1 minute",
-          hazel: "10-30 minutes",
+          filient: "Working in under 60 seconds",
+          hazel: "At least 10+ minutes",
           manual: "N/A"
         }
       ]
@@ -364,26 +364,26 @@ export const translations = {
       features: [
         {
           name: "설정 복잡도",
-          filient: "평범한 한국어로 작성",
-          hazel: "복잡한 규칙 빌더",
+          filient: "친구에게 말하듯 대화",
+          hazel: "복잡한 설정 필요",
           manual: "자동화 없음"
         },
         {
           name: "학습 곡선",
-          filient: "제로 - 원하는 것을 설명하기만",
-          hazel: "가파름 - 기술 지식 필요",
+          filient: "설치 후 바로 정리 시작",
+          hazel: "익숙해지기까지 시간 필요",
           manual: "없음"
         },
         {
           name: "유연성",
-          filient: "자연어 명령",
-          hazel: "미리 정의된 패턴으로 제한",
-          manual: "완전한 수동 제어"
+          filient: "모든 요청, 즉시 이해",
+          hazel: "정해진 규칙 안에서만",
+          manual: "모든 걸 직접"
         },
         {
           name: "첫 규칙까지 소요 시간",
-          filient: "< 1분",
-          hazel: "10-30분",
+          filient: "60초 안에 작동",
+          hazel: "최소 10분 이상",
           manual: "해당 없음"
         }
       ]
