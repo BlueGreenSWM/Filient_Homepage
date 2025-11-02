@@ -18,7 +18,11 @@ export const translations = {
         "Completely free - No credit card required",
         "Create automation rules through conversation",
         "1-minute setup"
-      ]
+      ],
+      press: {
+        title: "Featured in Leading Tech Media",
+        subtitle: "Covered by MediaEcon · MediaDale"
+      }
     },
     quickStart: {
       userGuide: {
@@ -318,7 +322,11 @@ export const translations = {
         "완전 무료 - 카드 등록 불필요",
         "대화만으로 자동 정리 규칙 생성",
         "1분만에 설치 완료"
-      ]
+      ],
+      press: {
+        title: "언론이 주목한 혁신적인 앱",
+        subtitle: "미디어경제뉴스 · 미디어데일 · seenthis 등에 소개"
+      }
     },
     quickStart: {
       userGuide: {

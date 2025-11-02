@@ -133,7 +133,7 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-[40%_60%] gap-12 items-center">
+        <div className="grid lg:grid-cols-[40%_60%] gap-12 items-start">
           {/* Left side - Text content */}
           <div className="text-left">
             {/* Eyebrow Text */}
@@ -243,7 +243,7 @@ export function Hero() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative hidden lg:block"
+            className="relative hidden lg:block mt-16"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <video
@@ -263,6 +263,61 @@ export function Hero() {
             </div>
           </motion.div>
         </div>
+
+        {/* Press Coverage Section - Full Width, Desktop Only */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
+          className="hidden lg:block -mt-8"
+        >
+          <div className="py-10 px-16 bg-gradient-to-r from-blue-50/20 via-purple-50/10 to-blue-50/20 rounded-2xl hover:bg-opacity-80 transition-all duration-300">
+            <div className="flex items-center justify-center gap-8">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                  <span className="text-2xl">✨</span>
+                </div>
+                <div className="text-left">
+                  <p className="text-lg font-bold text-gray-900">
+                    {t.hero.press.title}
+                  </p>
+                  <p className="text-sm text-gray-500 mt-0.5">
+                    {t.hero.press.subtitle}
+                  </p>
+                </div>
+              </div>
+
+              <div className="h-12 w-px bg-gray-300"></div>
+
+              <div className="flex gap-8">
+                <a
+                  href="https://mediaecon.com/news/view.php?bIdx=38142"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <img
+                    src="/news/mediaecon.png"
+                    alt="미디어경제뉴스"
+                    className="h-6 w-auto object-contain"
+                  />
+                </a>
+                <a
+                  href="https://seenthis.kr/newspageeng/4217"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  <img
+                    src="/news/seenthis.png"
+                    alt="seenthis"
+                    className="h-6 w-auto object-contain"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
 
       {/* Email Download Modal */}
