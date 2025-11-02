@@ -37,7 +37,7 @@ function FeaturesSection() {
   }
 
   return (
-    <section className="relative py-24 overflow-hidden bg-gray-50">
+    <section className="relative pt-16 pb-24 overflow-hidden bg-gray-50">
       {/* Very subtle gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50" />
 

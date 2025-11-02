@@ -173,7 +173,7 @@ export function Download() {
 
   return (
     <section
-      className="py-24 bg-gray-50 border-t border-gray-200"
+      className="py-16 bg-gray-50 border-t border-gray-200"
       ref={sectionRef as any}
       data-section="download"
     >

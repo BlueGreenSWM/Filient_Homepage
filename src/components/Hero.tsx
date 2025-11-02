@@ -294,24 +294,24 @@ export function Hero() {
                   href="https://mediaecon.com/news/view.php?bIdx=38142"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+                  className="group flex items-center gap-2 px-4 py-2 bg-white rounded-lg hover:bg-gray-50 hover:shadow-md transition-all duration-300 cursor-pointer"
                 >
                   <img
                     src="/news/mediaecon.png"
                     alt="미디어경제뉴스"
-                    className="h-6 w-auto object-contain"
+                    className="h-6 w-auto object-contain group-hover:scale-110 transition-transform duration-300"
                   />
                 </a>
                 <a
                   href="https://seenthis.kr/newspageeng/4217"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg hover:bg-gray-50 transition-colors"
+                  className="group flex items-center gap-2 px-4 py-2 bg-white rounded-lg hover:bg-gray-50 hover:shadow-md transition-all duration-300 cursor-pointer"
                 >
                   <img
                     src="/news/seenthis.png"
                     alt="seenthis"
-                    className="h-6 w-auto object-contain"
+                    className="h-6 w-auto object-contain group-hover:scale-110 transition-transform duration-300"
                   />
                 </a>
               </div>
