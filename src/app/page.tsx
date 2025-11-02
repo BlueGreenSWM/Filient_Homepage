@@ -3,7 +3,7 @@
 import { Hero } from '@/components/Hero'
 import { QuickStartSection } from '@/components/QuickStartSection'
 import { Stats } from '@/components/Stats'
-import { Features } from '@/components/Features'
+import { FeaturesSection } from '@/components/Features'
 import { Comparison } from '@/components/Comparison'
 import { HowItWorks } from '@/components/HowItWorks'
 import { Download } from '@/components/Download'
@@ -19,7 +19,7 @@ export default function Home() {
       <Hero />
       <QuickStartSection />
       <HowItWorks />
-      <Features />
+      <FeaturesSection />
       <Comparison />
       <Download />
       <Footer />

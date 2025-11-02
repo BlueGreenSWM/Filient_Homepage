@@ -43,9 +43,9 @@ export const translations = {
       ]
     },
     features: {
-      title: "Natural language,",
-      titleHighlight: "powerful automation",
-      subtitle: "No more clicking through complex UIs. Just describe what you want and let AI do the work.",
+      title: "Powerful features,",
+      titleHighlight: "effortless organization",
+      subtitle: "Four essential features that transform how you manage files forever",
       items: [
         {
           title: "AI Chatbot",
@@ -72,6 +72,19 @@ export const translations = {
         "\"Tag work-related files with red priority label\""
       ]
     },
+    featuresTitle: "Powerful Features",
+    featuresSubtitle: "Everything you need to automate your file organization",
+    feature1Title: "AI Chatbot",
+    feature1Desc: "Describe what you need in chat and Filient builds the right automation on the spot.",
+    feature2Title: "Rollback Safety",
+    feature2Desc: "Undo any automation with a single click and restore files exactly as they were.",
+    feature3Title: "Scheduled Runs",
+    feature3Desc: "Set a cadence and Filient keeps your folders tidy by running rules automatically.",
+    feature4Title: "AI Smart Renaming",
+    feature4Desc: "Let AI automatically rename and tag files based on their content for better organization.",
+    comingSoon: "Coming Soon",
+    comingSoonDesc: "This feature will be available soon",
+    nowPlaying: "Now Playing",
     howItWorks: {
       title: "Three steps to",
       titleHighlight: "perfect organization",
@@ -268,9 +281,9 @@ export const translations = {
       ]
     },
     features: {
-      title: "자연어로,",
-      titleHighlight: "강력한 자동화",
-      subtitle: "복잡한 UI를 클릭할 필요가 없습니다. 원하는 것을 설명하면 AI가 처리합니다.",
+      title: "강력한 기능으로,",
+      titleHighlight: "손쉬운 정리",
+      subtitle: "파일 관리 방식을 완전히 바꿔줄 4가지 핵심 기능",
       items: [
         {
           title: "AI 챗봇",
@@ -297,6 +310,19 @@ export const translations = {
         "\"업무 관련 파일에 빨간색 우선순위 라벨 지정\""
       ]
     },
+    featuresTitle: "강력한 기능들",
+    featuresSubtitle: "파일 정리 자동화에 필요한 모든 것",
+    feature1Title: "AI 챗봇",
+    feature1Desc: "챗봇에게 필요한 것을 설명하면 Filient가 즉시 적절한 자동화를 만들어줍니다.",
+    feature2Title: "롤백",
+    feature2Desc: "한 번의 클릭으로 적용한 자동화를 되돌리고, 원본 파일 상태를 그대로 복원합니다.",
+    feature3Title: "주기적 실행",
+    feature3Desc: "실행 주기를 설정하면 Filient가 자동으로 규칙을 실행해 폴더를 깔끔하게 유지합니다.",
+    feature4Title: "AI 스마트 이름 변경",
+    feature4Desc: "AI가 파일 내용을 분석하여 자동으로 이름을 변경하고 태그를 지정해 더 나은 정리를 제공합니다.",
+    comingSoon: "곧 출시",
+    comingSoonDesc: "이 기능은 곧 제공될 예정입니다",
+    nowPlaying: "재생 중",
     howItWorks: {
       title: "3단계로",
       titleHighlight: "완벽한 정리",
