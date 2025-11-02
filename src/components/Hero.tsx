@@ -33,17 +33,6 @@ export function Hero() {
       // Track email submission
       trackCTAClicked(`Email submitted: ${email}`, 'hero_email_modal', 'download')
 
-      // Save email to Airtable
-      await fetch('/api/collect-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          platform: platform.platform,
-          language
-        })
-      })
-
       // Trigger actual download
       const response = await fetch('/api/download')
       if (response.ok) {

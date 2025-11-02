@@ -1,8 +1,8 @@
 // Re-export new Features section components
 export { FeaturesSection } from './Features/FeaturesSection'
-export { FeatureCard } from './Features/FeatureCard'
-export { VideoPlayer } from './Features/VideoPlayer'
-export { VideoPlaceholder } from './Features/VideoPlaceholder'
+export { default as FeatureCard } from './Features/FeatureCard'
+export { default as VideoPlayer } from './Features/VideoPlayer'
+export { default as VideoPlaceholder } from './Features/VideoPlaceholder'
 
 // Re-export data and types
 export { FEATURES_CONFIG, VIDEO_SOURCES } from './Features/features.data'
