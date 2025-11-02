@@ -274,7 +274,7 @@ export const translations = {
       items: [
         {
           title: "AI 챗봇",
-          description: "챗봇과 대화하면서 원하는 정리 규칙을 자연어로 만들고 바로 실행할 수 있습니다.",
+          description: "챗봇에게 필요한 것을 설명하면 Filient가 즉시 적절한 자동화를 만들어줍니다.",
           videoKey: "AI_CHATBOT"
         },
         {
@@ -284,7 +284,7 @@ export const translations = {
         },
         {
           title: "주기적 실행",
-          description: "스케줄만 지정하면 Filient가 주기적으로 규칙을 실행해 폴더를 자동으로 정리합니다.",
+          description: "실행 주기를 설정하면 Filient가 자동으로 규칙을 실행해 폴더를 깔끔하게 유지합니다.",
           videoKey: "PERIODIC_EXECUTION"
         }
       ],
