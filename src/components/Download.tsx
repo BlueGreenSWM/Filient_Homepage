@@ -79,17 +79,6 @@ export function Download() {
     const downloadStartTime = Date.now()
 
     try {
-      // Save email to Airtable
-      await fetch('/api/collect-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          platform: platform.platform,
-          language
-        })
-      })
-
       // Track download started
       trackDownloadStarted(platform.platform, navigator.userAgent)
 
@@ -173,7 +162,7 @@ export function Download() {
 
   return (
     <section
-      className="py-24 bg-gray-50 border-t border-gray-200"
+      className="py-16 bg-gray-50 border-t border-gray-200"
       ref={sectionRef as any}
       data-section="download"
     >

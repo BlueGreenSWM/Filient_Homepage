@@ -19,8 +19,8 @@ export function DisquietLeaderBadge() {
           title="disquiet-badge"
           frameBorder="0"
           src="https://badge.disquiet.io/rank-badge?productUrlSlug=filient&mode=light&rank=gold"
-          className="h-[80px] w-auto border-0 block"
-          style={{ overflow: 'hidden', display: 'block' }}
+          className="h-[100px] w-[280px] border-0 block"
+          style={{ overflow: 'visible', display: 'block' }}
         />
       </div>
       <p className="text-sm font-bold text-gray-400 pt-1 -ml-8">

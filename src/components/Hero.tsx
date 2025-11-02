@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import { Button } from './common/Button'
 import { EmailDownloadModal } from './EmailDownloadModal'
 import { FeatureHighlights } from './FeatureHighlights'
-import { DisquietLeaderBadge } from './DisquietLeaderBadge'
 import { usePlatformDetection } from '@/hooks/usePlatformDetection'
 import { useSectionViewTracking } from '@/hooks/useSectionViewTracking'
 import { useLanguage } from '@/contexts/LanguageContext'
@@ -33,17 +32,6 @@ export function Hero() {
     try {
       // Track email submission
       trackCTAClicked(`Email submitted: ${email}`, 'hero_email_modal', 'download')
-
-      // Save email to Airtable
-      await fetch('/api/collect-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          platform: platform.platform,
-          language
-        })
-      })
 
       // Trigger actual download
       const response = await fetch('/api/download')
@@ -134,7 +122,7 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-[40%_60%] gap-12 items-center">
+        <div className="grid lg:grid-cols-[40%_60%] gap-12 items-start">
           {/* Left side - Text content */}
           <div className="text-left">
             {/* Eyebrow Text */}
@@ -218,8 +206,24 @@ export function Hero() {
               {/* Feature Highlights */}
               <FeatureHighlights />
 
-              {/* Disquiet Leader Badge */}
-              <DisquietLeaderBadge />
+              {/* Disquiet Rank Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.35 }}
+                className="mt-4 flex items-start"
+              >
+                <div className="flex-shrink-0">
+                  <iframe
+                    title="disquiet-badge"
+                    frameBorder="0"
+                    src="https://badge.disquiet.io/rank-badge?productUrlSlug=filient&mode=light&rank=gold"
+                  />
+                </div>
+                <p className="text-sm font-bold text-gray-400 pt-1 -ml-8">
+                  🏆 {t.hero.disquietBadge}
+                </p>
+              </motion.div>
             </motion.div>
           </div>
 
@@ -228,7 +232,7 @@ export function Hero() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative hidden lg:block"
+            className="relative hidden lg:block mt-16"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <video
@@ -248,6 +252,61 @@ export function Hero() {
             </div>
           </motion.div>
         </div>
+
+        {/* Press Coverage Section - Full Width, Desktop Only */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
+          className="hidden lg:block -mt-8"
+        >
+          <div className="py-10 px-16 bg-gradient-to-r from-blue-50/20 via-purple-50/10 to-blue-50/20 rounded-2xl hover:bg-opacity-80 transition-all duration-300">
+            <div className="flex items-center justify-center gap-8">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                  <span className="text-2xl">✨</span>
+                </div>
+                <div className="text-left">
+                  <p className="text-lg font-bold text-gray-900">
+                    {t.hero.press.title}
+                  </p>
+                  <p className="text-sm text-gray-500 mt-0.5">
+                    {t.hero.press.subtitle}
+                  </p>
+                </div>
+              </div>
+
+              <div className="h-12 w-px bg-gray-300"></div>
+
+              <div className="flex gap-8">
+                <a
+                  href="https://mediaecon.com/news/view.php?bIdx=38142"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2 px-4 py-2 bg-white rounded-lg hover:bg-gray-50 hover:shadow-md transition-all duration-300 cursor-pointer"
+                >
+                  <img
+                    src="/news/mediaecon.png"
+                    alt="미디어경제뉴스"
+                    className="h-6 w-auto object-contain group-hover:scale-110 transition-transform duration-300"
+                  />
+                </a>
+                <a
+                  href="https://seenthis.kr/newspageeng/4217"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2 px-4 py-2 bg-white rounded-lg hover:bg-gray-50 hover:shadow-md transition-all duration-300 cursor-pointer"
+                >
+                  <img
+                    src="/news/seenthis.png"
+                    alt="seenthis"
+                    className="h-6 w-auto object-contain group-hover:scale-110 transition-transform duration-300"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
 
       {/* Email Download Modal */}

@@ -13,12 +13,16 @@ export const translations = {
       downloadCta: "Download for Mac",
       waitlistCta: "Join Waitlist",
       watchDemo: "Watch Demo",
-      disquietBadge: "#1 Product on Disquiet Week 43",
+      disquietBadge: "#1 on Disquiet Product Leaderboard",
       highlights: [
         "Completely free - No credit card required",
         "Create automation rules through conversation",
         "1-minute setup"
-      ]
+      ],
+      press: {
+        title: "Featured in Leading Tech Media",
+        subtitle: "Covered by MediaEcon · MediaDale"
+      }
     },
     quickStart: {
       userGuide: {
@@ -43,9 +47,9 @@ export const translations = {
       ]
     },
     features: {
-      title: "Natural language,",
-      titleHighlight: "powerful automation",
-      subtitle: "No more clicking through complex UIs. Just describe what you want and let AI do the work.",
+      title: "Powerful features,",
+      titleHighlight: "effortless organization",
+      subtitle: "Four essential features that transform how you manage files forever",
       items: [
         {
           title: "AI Chatbot",
@@ -72,6 +76,19 @@ export const translations = {
         "\"Tag work-related files with red priority label\""
       ]
     },
+    featuresTitle: "Powerful Features",
+    featuresSubtitle: "Everything you need to automate your file organization",
+    feature1Title: "AI Chatbot",
+    feature1Desc: "Describe what you need in chat and Filient builds the right automation on the spot.",
+    feature2Title: "Rollback Safety",
+    feature2Desc: "Undo any automation with a single click and restore files exactly as they were.",
+    feature3Title: "Scheduled Runs",
+    feature3Desc: "Set a cadence and Filient keeps your folders tidy by running rules automatically.",
+    feature4Title: "AI Renaming/Tagging",
+    feature4Desc: "Let AI automatically rename and tag files based on their content for better organization.",
+    comingSoon: "Coming Soon",
+    comingSoonDesc: "This feature will be available soon",
+    nowPlaying: "Now Playing",
     howItWorks: {
       title: "Three steps to",
       titleHighlight: "perfect organization",
@@ -113,26 +130,26 @@ export const translations = {
       features: [
         {
           name: "Setup complexity",
-          filient: "Write in plain English",
+          filient: "Chat like texting a friend",
           hazel: "Complex rule builder",
           manual: "No automation"
         },
         {
           name: "Learning curve",
-          filient: "Zero - just describe what you want",
-          hazel: "Steep - requires technical knowledge",
+          filient: "Start organizing right away",
+          hazel: "Takes time to get familiar",
           manual: "None"
         },
         {
           name: "Flexibility",
-          filient: "Natural language commands",
-          hazel: "Limited to predefined patterns",
-          manual: "Full manual control"
+          filient: "Any request, instantly understood",
+          hazel: "Limited to predefined rules",
+          manual: "All manual work"
         },
         {
           name: "Time to first rule",
-          filient: "< 1 minute",
-          hazel: "10-30 minutes",
+          filient: "Working in under 60 seconds",
+          hazel: "At least 10+ minutes",
           manual: "N/A"
         }
       ]
@@ -191,7 +208,7 @@ export const translations = {
       subtitle: "Set it up once and it keeps organizing automatically",
       features: [
         "Safe undo",
-        "Korean language support"
+        "Korean/English support"
       ],
       downloadCta: "Download for Mac",
       requirements: "macOS 12.0+",
@@ -222,6 +239,68 @@ export const translations = {
       kakaoChat: "Join Open Chat",
       xChat: "Contact on X",
       copyright: "© {{year}} Filient. All rights reserved."
+    },
+    testimonials: {
+      title: "What People Are Saying",
+      subtitle: "Join many users who've revolutionized their file management",
+      reviews: [
+        {
+          id: "review-1",
+          text: "I just told it to organize my downloads by date, and boom - done in seconds. No complicated rules to set up.",
+          author: "김*인",
+          avatarText: "김",
+          avatarColor: "bg-blue-500"
+        },
+        {
+          id: "review-2",
+          text: "The rollback feature saved me when I accidentally organized the wrong folder. One click and everything was back to normal!",
+          author: "최*민",
+          avatarText: "최",
+          avatarColor: "bg-purple-500"
+        },
+        {
+          id: "review-3",
+          text: "I set it to run every night and wake up to a perfectly organized Downloads folder. It's like having a personal assistant.",
+          author: "이*현",
+          avatarText: "이",
+          avatarColor: "bg-green-500"
+        },
+        {
+          id: "review-4",
+          text: "Been using it for 2 weeks. My Desktop went from chaotic mess to perfectly organized. Best productivity tool this year.",
+          author: "이*찬",
+          avatarText: "이",
+          avatarColor: "bg-pink-500"
+        },
+        {
+          id: "review-5",
+          text: "The AI chatbot understands exactly what I mean, even when I explain things vaguely. Super intuitive!",
+          author: "문*원",
+          avatarText: "문",
+          avatarColor: "bg-indigo-500"
+        },
+        {
+          id: "review-6",
+          text: "Set it once, forget about it. My files organize themselves now. Seriously, why didn't this exist sooner?",
+          author: "임*진",
+          avatarText: "임",
+          avatarColor: "bg-cyan-500"
+        },
+        {
+          id: "review-7",
+          text: "The scheduled runs feature is genius. No more manual cleanup every weekend. It just happens automatically.",
+          author: "강*민",
+          avatarText: "강",
+          avatarColor: "bg-amber-500"
+        },
+        {
+          id: "review-8",
+          text: "Tried Hazel before but couldn't figure it out. Filient took me literally 60 seconds to set up. Game changer.",
+          author: "임*민",
+          avatarText: "임",
+          avatarColor: "bg-rose-500"
+        }
+      ]
     }
   },
   ko: {
@@ -238,12 +317,16 @@ export const translations = {
       downloadCta: "Mac용 다운로드",
       waitlistCta: "대기자 명단 등록",
       watchDemo: "데모 보기",
-      disquietBadge: "디스콰이엇 43주차 1위",
+      disquietBadge: "디스콰이엇 프로덕트 리더보드 1위",
       highlights: [
         "완전 무료 - 카드 등록 불필요",
         "대화만으로 자동 정리 규칙 생성",
         "1분만에 설치 완료"
-      ]
+      ],
+      press: {
+        title: "언론이 주목한 혁신적인 앱",
+        subtitle: "미디어경제뉴스 · 미디어데일 · seenthis 등에 소개"
+      }
     },
     quickStart: {
       userGuide: {
@@ -268,13 +351,13 @@ export const translations = {
       ]
     },
     features: {
-      title: "자연어로,",
-      titleHighlight: "강력한 자동화",
-      subtitle: "복잡한 UI를 클릭할 필요가 없습니다. 원하는 것을 설명하면 AI가 처리합니다.",
+      title: "강력한 기능으로,",
+      titleHighlight: "손쉬운 정리",
+      subtitle: "파일 관리 방식을 완전히 바꿔줄 4가지 핵심 기능",
       items: [
         {
           title: "AI 챗봇",
-          description: "챗봇과 대화하면서 원하는 정리 규칙을 자연어로 만들고 바로 실행할 수 있습니다.",
+          description: "챗봇에게 필요한 것을 설명하면 Filient가 즉시 적절한 자동화를 만들어줍니다.",
           videoKey: "AI_CHATBOT"
         },
         {
@@ -284,7 +367,7 @@ export const translations = {
         },
         {
           title: "주기적 실행",
-          description: "스케줄만 지정하면 Filient가 주기적으로 규칙을 실행해 폴더를 자동으로 정리합니다.",
+          description: "실행 주기를 설정하면 Filient가 자동으로 규칙을 실행해 폴더를 깔끔하게 유지합니다.",
           videoKey: "PERIODIC_EXECUTION"
         }
       ],
@@ -297,6 +380,19 @@ export const translations = {
         "\"업무 관련 파일에 빨간색 우선순위 라벨 지정\""
       ]
     },
+    featuresTitle: "강력한 기능들",
+    featuresSubtitle: "파일 정리 자동화에 필요한 모든 것",
+    feature1Title: "AI 챗봇",
+    feature1Desc: "챗봇에게 필요한 것을 설명하면 Filient가 즉시 적절한 자동화를 만들어줍니다.",
+    feature2Title: "롤백",
+    feature2Desc: "한 번의 클릭으로 적용한 자동화를 되돌리고, 원본 파일 상태를 그대로 복원합니다.",
+    feature3Title: "주기적 실행",
+    feature3Desc: "실행 주기를 설정하면 Filient가 자동으로 규칙을 실행해 폴더를 깔끔하게 유지합니다.",
+    feature4Title: "AI 이름변경/태깅",
+    feature4Desc: "AI가 파일 내용을 분석하여 자동으로 이름을 변경하고 태그를 지정해 더 나은 정리를 제공합니다.",
+    comingSoon: "곧 출시",
+    comingSoonDesc: "이 기능은 곧 제공될 예정입니다",
+    nowPlaying: "재생 중",
     howItWorks: {
       title: "3단계로",
       titleHighlight: "완벽한 정리",
@@ -338,26 +434,26 @@ export const translations = {
       features: [
         {
           name: "설정 복잡도",
-          filient: "평범한 한국어로 작성",
-          hazel: "복잡한 규칙 빌더",
+          filient: "친구에게 말하듯 대화",
+          hazel: "복잡한 설정 필요",
           manual: "자동화 없음"
         },
         {
           name: "학습 곡선",
-          filient: "제로 - 원하는 것을 설명하기만",
-          hazel: "가파름 - 기술 지식 필요",
+          filient: "설치 후 바로 정리 시작",
+          hazel: "익숙해지기까지 시간 필요",
           manual: "없음"
         },
         {
           name: "유연성",
-          filient: "자연어 명령",
-          hazel: "미리 정의된 패턴으로 제한",
-          manual: "완전한 수동 제어"
+          filient: "모든 요청, 즉시 이해",
+          hazel: "정해진 규칙 안에서만",
+          manual: "모든 걸 직접"
         },
         {
           name: "첫 규칙까지 소요 시간",
-          filient: "< 1분",
-          hazel: "10-30분",
+          filient: "60초 안에 작동",
+          hazel: "최소 10분 이상",
           manual: "해당 없음"
         }
       ]
@@ -416,7 +512,7 @@ export const translations = {
       subtitle: "한 번 설정하면 계속 자동 정리",
       features: [
         "안전한 되돌리기",
-        "한국어 지원"
+        "한국어/영어 지원"
       ],
       downloadCta: "Mac용 다운로드",
       requirements: "macOS 12.0+",
@@ -447,6 +543,68 @@ export const translations = {
       kakaoChat: "오픈채팅 참여하기",
       xChat: "X에서 문의하기",
       copyright: "© {{year}} Filient. 모든 권리 보유."
+    },
+    testimonials: {
+      title: "사용자 후기",
+      subtitle: "수많은 사용자가 파일 관리 방식을 혁신했습니다",
+      reviews: [
+        {
+          id: "review-1",
+          text: "다운로드 폴더 날짜별로 정리해달라고 했더니 바로 몇 초만에 끝. 복잡한 규칙 설정 같은 거 없이 바로 되더라구요.",
+          author: "김*인",
+          avatarText: "김",
+          avatarColor: "bg-blue-500"
+        },
+        {
+          id: "review-2",
+          text: "실수로 잘못된 폴더 정리했는데 롤백 기능으로 한 번에 원상복구! 진짜 신기했어요.",
+          author: "최*민",
+          avatarText: "최",
+          avatarColor: "bg-purple-500"
+        },
+        {
+          id: "review-3",
+          text: "매일 밤 자동 실행 설정해놨더니 아침마다 깔끔하게 정리된 다운로드 폴더를 볼 수 있어요. 비서 고용한 기분.",
+          author: "이*현",
+          avatarText: "이",
+          avatarColor: "bg-green-500"
+        },
+        {
+          id: "review-4",
+          text: "2주 사용중인데 바탕화면이 지옥에서 천국으로. 올해 최고의 생산성 툴인듯.",
+          author: "이*찬",
+          avatarText: "이",
+          avatarColor: "bg-pink-500"
+        },
+        {
+          id: "review-5",
+          text: "AI 챗봇이 대충 설명해도 정확히 이해하더라구요. 진짜 직관적이에요!",
+          author: "문*원",
+          avatarText: "문",
+          avatarColor: "bg-indigo-500"
+        },
+        {
+          id: "review-6",
+          text: "한 번만 설정하면 끝. 이제 파일들이 알아서 정리돼요. 진심 왜 이제야 나온거죠?",
+          author: "임*진",
+          avatarText: "임",
+          avatarColor: "bg-cyan-500"
+        },
+        {
+          id: "review-7",
+          text: "주기적 실행 기능 진짜 천재적. 주말마다 정리하던 시간 이제 다른 일 해요.",
+          author: "강*민",
+          avatarText: "강",
+          avatarColor: "bg-amber-500"
+        },
+        {
+          id: "review-8",
+          text: "Hazel 써보다가 설정 너무 어려워서 포기했는데 Filient은 진짜 60초 걸렸어요. 게임 체인저.",
+          author: "임*민",
+          avatarText: "임",
+          avatarColor: "bg-rose-500"
+        }
+      ]
     }
   }
 } as const
