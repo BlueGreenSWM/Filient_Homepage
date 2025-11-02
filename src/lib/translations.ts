@@ -204,7 +204,7 @@ export const translations = {
       subtitle: "Set it up once and it keeps organizing automatically",
       features: [
         "Safe undo",
-        "Korean language support"
+        "Korean/English support"
       ],
       downloadCta: "Download for Mac",
       requirements: "macOS 12.0+",
@@ -442,7 +442,7 @@ export const translations = {
       subtitle: "한 번 설정하면 계속 자동 정리",
       features: [
         "안전한 되돌리기",
-        "한국어 지원"
+        "한국어/영어 지원"
       ],
       downloadCta: "Mac용 다운로드",
       requirements: "macOS 12.0+",
