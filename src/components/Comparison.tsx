@@ -11,7 +11,7 @@ export function Comparison() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-24 bg-gray-50 border-t border-gray-200" ref={ref as any}>
+    <section className="pt-24 pb-12 bg-gray-50 border-t border-gray-200" ref={ref as any}>
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

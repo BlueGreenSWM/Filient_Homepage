@@ -14,7 +14,7 @@ export function HowItWorks() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-24 bg-white border-t border-gray-200" ref={ref as any}>
+    <section className="pt-16 pb-16 bg-white border-t border-gray-200" ref={ref as any}>
       <div className="max-w-[1440px] mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -90,10 +90,10 @@ export function HowItWorks() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16 text-center card p-8 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-100"
         >
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">
+          <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
             {t.howItWorks.noManualFiling}
           </h3>
-          <p className="text-gray-600">
+          <p className="text-base text-gray-600">
             {t.howItWorks.noManualFilingDesc}
           </p>
         </motion.div>

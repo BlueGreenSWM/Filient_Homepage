@@ -12,7 +12,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('en')
+  const [language, setLanguageState] = useState<Language>('ko')
 
   useEffect(() => {
     // Load saved language from localStorage
@@ -20,7 +20,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ko')) {
       setLanguageState(savedLanguage)
     }
-    // Default is 'en' (already set in initial state)
+    // Default is 'ko' (already set in initial state)
   }, [])
 
   const setLanguage = (lang: Language) => {

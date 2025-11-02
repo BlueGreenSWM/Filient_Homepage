@@ -17,8 +17,8 @@ export function QuickStartSection() {
   }
 
   return (
-    <section className="py-12 bg-gray-50">
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="pt-8 pb-12 bg-gray-50">
+      <div className="max-w-4xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-6">
           {/* User Guide Card */}
           <motion.div
@@ -32,7 +32,7 @@ export function QuickStartSection() {
             <div className="
               bg-white
               rounded-2xl
-              p-8
+              p-6
               border border-gray-200
               hover:border-gray-300
               hover:shadow-lg
@@ -41,8 +41,8 @@ export function QuickStartSection() {
               flex flex-col
             ">
               {/* Icon */}
-              <div className="text-center mb-4">
-                <span className="text-5xl">{t.quickStart.userGuide.icon}</span>
+              <div className="text-center mb-3">
+                <span className="text-4xl">{t.quickStart.userGuide.icon}</span>
               </div>
 
               {/* Title */}
@@ -51,7 +51,7 @@ export function QuickStartSection() {
               </h3>
 
               {/* Subtitle */}
-              <p className="text-sm text-gray-600 text-center mb-6 flex-grow">
+              <p className="text-sm text-gray-600 text-center mb-4 flex-grow">
                 {t.quickStart.userGuide.subtitle}
               </p>
 
@@ -86,7 +86,7 @@ export function QuickStartSection() {
             <div className="
               bg-white
               rounded-2xl
-              p-8
+              p-6
               border border-gray-200
               hover:border-gray-300
               hover:shadow-lg
@@ -95,8 +95,8 @@ export function QuickStartSection() {
               flex flex-col
             ">
               {/* Icon */}
-              <div className="text-center mb-4">
-                <span className="text-5xl">{t.quickStart.feedback.icon}</span>
+              <div className="text-center mb-3">
+                <span className="text-4xl">{t.quickStart.feedback.icon}</span>
               </div>
 
               {/* Title */}
@@ -105,7 +105,7 @@ export function QuickStartSection() {
               </h3>
 
               {/* Subtitle */}
-              <p className="text-sm text-gray-600 text-center mb-6 flex-grow">
+              <p className="text-sm text-gray-600 text-center mb-4 flex-grow">
                 {t.quickStart.feedback.subtitle}
               </p>
 
