@@ -14,6 +14,8 @@ export const translations = {
       waitlistCta: "Join Waitlist",
       watchDemo: "Watch Demo",
       disquietBadge: "#1 on Disquiet Product Leaderboard",
+      disquietPressLabel: "#1 on Disquiet\nProduct Leaderboard",
+      pressFeature: "Featured in Leading Media",
       highlights: [
         "Completely free - No credit card required",
         "Create automation rules through conversation",
@@ -318,6 +320,8 @@ export const translations = {
       waitlistCta: "대기자 명단 등록",
       watchDemo: "데모 보기",
       disquietBadge: "디스콰이엇 프로덕트 리더보드 1위",
+      disquietPressLabel: "디스콰이엇\n프로덕트 리더보드 1위",
+      pressFeature: "주요 언론 보도",
       highlights: [
         "완전 무료 - 카드 등록 불필요",
         "대화만으로 자동 정리 규칙 생성",
