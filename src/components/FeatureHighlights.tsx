@@ -17,7 +17,7 @@ export function FeatureHighlights() {
       {t.hero.highlights.map((highlight, index) => (
         <div
           key={index}
-          className="flex items-center gap-2 text-sm text-gray-600"
+          className="flex items-center gap-2 text-[15px] text-gray-600"
         >
           {/* Check Circle Icon */}
           <svg

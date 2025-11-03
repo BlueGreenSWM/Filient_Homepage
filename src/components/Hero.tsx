@@ -106,18 +106,8 @@ export function Hero() {
       data-section="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
-      {/* Light theme background with subtle pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50">
-        <div className="absolute inset-0 opacity-40">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgb(59, 130, 246)" strokeWidth="0.5" opacity="0.1"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-          </svg>
-        </div>
+      {/* White background */}
+      <div className="absolute inset-0 bg-white">
       </div>
 
       {/* Content */}
@@ -140,7 +130,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
+              <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
                 {t.hero.title}
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
@@ -170,12 +160,12 @@ export function Hero() {
               className="flex flex-col items-start"
             >
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 items-center">
+              <div className="flex flex-col sm:flex-row gap-4 items-start">
                 {platform.isMac ? (
                   <Button
                     variant="primary"
                     size="lg"
-                    className="min-w-[220px] h-[64px] text-xl font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                    className="min-w-[220px] h-[64px] text-xl font-semibold shadow-[0_8px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_12px_28px_rgba(59,130,246,0.5)] hover:-translate-y-0.5 transition-all duration-200 bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700"
                     onClick={handleDownloadClick}
                   >
                     {t.hero.downloadCta}
@@ -184,51 +174,16 @@ export function Hero() {
                   <Button
                     variant="primary"
                     size="lg"
-                    className="min-w-[220px] h-[64px] text-xl font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                    className="min-w-[220px] h-[64px] text-xl font-semibold shadow-[0_8px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_12px_28px_rgba(59,130,246,0.5)] hover:-translate-y-0.5 transition-all duration-200 bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700"
                     onClick={handleWaitlistClick}
                   >
                     {t.hero.waitlistCta}
                   </Button>
                 )}
-
-                {/* Disquiet Badge - 가로로 배치, 높이 맞춤 */}
-                <div className="flex items-center h-[72px]">
-                  <iframe
-                    title="disquiet-badge"
-                    src="https://badge.disquiet.io/vote-badge?productUrlSlug=filient&mode=light"
-                    className="h-[72px] w-[240px] border-0"
-                    style={{ overflow: 'hidden', pointerEvents: 'auto' }}
-                    scrolling="no"
-                  />
-                </div>
               </div>
 
               {/* Feature Highlights */}
               <FeatureHighlights />
-
-              {/* Disquiet Rank Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.35 }}
-                className="mt-4 flex items-center gap-2"
-              >
-                <a
-                  href="https://disquiet.io/product/filient"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-shrink-0 hover:opacity-80 transition-opacity duration-200"
-                >
-                  <img
-                    src="/images/disquiet_badge.png"
-                    alt="Disquiet Product of the Week"
-                    className="h-auto w-auto max-h-[100px]"
-                  />
-                </a>
-                <p className="text-[13px] font-bold text-gray-400">
-                  🏆 {t.hero.disquietBadge}
-                </p>
-              </motion.div>
             </motion.div>
           </div>
 
@@ -237,7 +192,7 @@ export function Hero() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative hidden lg:block mt-16"
+            className="relative hidden lg:block mt-8"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <video
@@ -266,7 +221,7 @@ export function Hero() {
           className="hidden lg:block mt-8"
         >
           <div className="py-10 px-16 bg-gradient-to-r from-blue-50/20 via-purple-50/10 to-blue-50/20 rounded-2xl hover:bg-opacity-80 transition-all duration-300">
-            <div className="flex items-center justify-center gap-8">
+            <div className="flex items-center justify-center gap-6">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
                   <span className="text-2xl">✨</span>
@@ -281,9 +236,9 @@ export function Hero() {
                 </div>
               </div>
 
-              <div className="h-12 w-px bg-gray-300"></div>
+              <div className="h-12 w-px bg-gray-300 opacity-60"></div>
 
-              <div className="flex gap-8">
+              <div className="flex gap-4 -ml-4">
                 <a
                   href="https://mediaecon.com/news/view.php?bIdx=38142"
                   target="_blank"
@@ -308,6 +263,27 @@ export function Hero() {
                     className="h-6 w-auto object-contain group-hover:scale-110 transition-transform duration-300"
                   />
                 </a>
+              </div>
+
+              <div className="h-12 w-px bg-gray-300"></div>
+
+              {/* Disquiet Badge */}
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://disquiet.io/product/filient"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 hover:opacity-80 transition-opacity duration-200"
+                >
+                  <img
+                    src="/images/disquiet_badge.png"
+                    alt="Disquiet Product of the Week"
+                    className="h-auto w-auto max-h-[85px]"
+                  />
+                </a>
+                <p className="text-sm text-gray-500 font-medium whitespace-pre-line">
+                  {t.hero.disquietPressLabel}
+                </p>
               </div>
             </div>
           </div>
