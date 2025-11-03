@@ -1,6 +1,8 @@
 // Google Analytics 4 Tracking Library
 // Growth Hacker Implementation - Comprehensive Event Tracking
 
+import { getUTMEventParams } from './utm'
+
 declare global {
   interface Window {
     gtag: (...args: any[]) => void
@@ -26,14 +28,21 @@ export const trackEvent = (
   params: EventParams = {}
 ) => {
   if (typeof window !== 'undefined' && window.gtag) {
+    const utmParams = getUTMEventParams()
+
     window.gtag('event', eventName, {
       event_category: eventCategory,
       ...params,
+      ...utmParams,
     })
 
     // Development logging
     if (process.env.NODE_ENV === 'development') {
-      console.log('📊 GA4 Event:', eventName, { eventCategory, ...params })
+      console.log('📊 GA4 Event:', eventName, {
+        eventCategory,
+        ...params,
+        ...utmParams,
+      })
     }
   }
 }
@@ -258,10 +267,15 @@ export const trackScrollDepth = (depthPercentage: number, deepestSection: string
 // FEATURE EXPLORATION
 // ============================================
 
-export const trackFeatureCardViewed = (featureName: string, index: number) => {
+export const trackFeatureCardViewed = (
+  featureName: string,
+  index: number,
+  hasVideo: boolean
+) => {
   trackEvent('feature_card_viewed', 'engagement', {
     feature_name: featureName,
     feature_index: index,
+    has_video: hasVideo,
   })
 }
 
@@ -276,6 +290,44 @@ export const trackExampleCommandViewed = (command: string, index: number) => {
   trackEvent('example_command_viewed', 'engagement', {
     command: command,
     command_index: index,
+  })
+}
+
+export const trackFeatureVideoLoaded = (
+  featureId: number,
+  featureName: string,
+  videoUrl: string
+) => {
+  trackEvent('feature_video_loaded', 'engagement', {
+    feature_id: featureId,
+    feature_name: featureName,
+    video_url: videoUrl,
+  })
+}
+
+export const trackFeatureVideoError = (
+  featureId: number,
+  featureName: string,
+  videoUrl: string
+) => {
+  trackEvent('feature_video_error', 'error', {
+    feature_id: featureId,
+    feature_name: featureName,
+    video_url: videoUrl,
+  })
+}
+
+export const trackFeatureVideoAutoplayFailed = (
+  featureId: number,
+  featureName: string,
+  videoUrl: string,
+  errorMessage: string
+) => {
+  trackEvent('feature_video_autoplay_failed', 'error', {
+    feature_id: featureId,
+    feature_name: featureName,
+    video_url: videoUrl,
+    error_message: errorMessage,
   })
 }
 
@@ -401,6 +453,28 @@ export const trackFooterLinkClicked = (linkText: string, linkUrl: string) => {
 export const trackSocialLinkClicked = (platform: string) => {
   trackEvent('social_link_clicked', 'engagement', {
     social_platform: platform,
+  })
+}
+
+// ============================================
+// TESTIMONIALS & SOCIAL PROOF
+// ============================================
+
+export const trackTestimonialsViewed = (reviewCount: number) => {
+  trackEvent('testimonials_viewed', 'engagement', {
+    review_count: reviewCount,
+  })
+}
+
+export const trackTestimonialsInteraction = (
+  action: 'pause' | 'resume',
+  reviewCount: number,
+  hoverDuration?: number
+) => {
+  trackEvent('testimonials_interaction', 'engagement', {
+    action,
+    review_count: reviewCount,
+    ...(hoverDuration !== undefined ? { hover_duration: hoverDuration } : {}),
   })
 }
 

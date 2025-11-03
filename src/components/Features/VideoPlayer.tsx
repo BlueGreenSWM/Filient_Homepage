@@ -1,14 +1,20 @@
-'use client'
+"use client"
 
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
+import {
+  trackFeatureVideoAutoplayFailed,
+  trackFeatureVideoError,
+  trackFeatureVideoLoaded,
+} from '@/lib/analytics'
 
 interface VideoPlayerProps {
+  featureId: number
   videoUrl: string
   title: string
 }
 
-export default function VideoPlayer({ videoUrl, title }: VideoPlayerProps) {
+export default function VideoPlayer({ featureId, videoUrl, title }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [hasError, setHasError] = useState(false)
@@ -22,14 +28,21 @@ export default function VideoPlayer({ videoUrl, title }: VideoPlayerProps) {
 
     const handleCanPlay = () => {
       setIsLoading(false)
-      video.play().catch((err) => {
-        console.error('Video autoplay failed:', err)
-      })
+      trackFeatureVideoLoaded(featureId, title, videoUrl)
+
+      video
+        .play()
+        .catch((err) => {
+          const errorMessage = err instanceof Error ? err.message : 'Unknown autoplay error'
+          trackFeatureVideoAutoplayFailed(featureId, title, videoUrl, errorMessage)
+          console.error('Video autoplay failed:', err)
+        })
     }
 
     const handleError = () => {
       setIsLoading(false)
       setHasError(true)
+      trackFeatureVideoError(featureId, title, videoUrl)
       console.error('Video load error:', videoUrl)
     }
 
@@ -43,7 +56,7 @@ export default function VideoPlayer({ videoUrl, title }: VideoPlayerProps) {
       video.removeEventListener('canplay', handleCanPlay)
       video.removeEventListener('error', handleError)
     }
-  }, [videoUrl])
+  }, [featureId, title, videoUrl])
 
   return (
     <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gray-900/50">

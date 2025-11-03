@@ -1,14 +1,18 @@
 "use client"
 
 import React, { useEffect, useRef } from 'react'
-import { motion, useAnimation } from 'framer-motion'
+import { motion, useAnimation, useInView } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { TestimonialCard } from './TestimonialCard'
+import { trackTestimonialsInteraction, trackTestimonialsViewed } from '@/lib/analytics'
 
 export function Testimonials() {
   const { t } = useLanguage()
   const controls = useAnimation()
   const containerRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+  const isInView = useInView(sectionRef, { once: true, amount: 0.4 })
+  const hoverStartRef = useRef<number | null>(null)
 
   const reviews = t.testimonials.reviews
 
@@ -29,8 +33,16 @@ export function Testimonials() {
     })
   }, [controls, scrollWidth])
 
+  useEffect(() => {
+    if (isInView) {
+      trackTestimonialsViewed(reviews.length)
+    }
+  }, [isInView, reviews.length])
+
   const handleMouseEnter = () => {
     controls.stop()
+    hoverStartRef.current = Date.now()
+    trackTestimonialsInteraction('pause', reviews.length)
   }
 
   const handleMouseLeave = () => {
@@ -42,10 +54,20 @@ export function Testimonials() {
         ease: "linear"
       }
     })
+    if (hoverStartRef.current) {
+      const hoverDuration = Math.round((Date.now() - hoverStartRef.current) / 1000)
+      trackTestimonialsInteraction('resume', reviews.length, hoverDuration)
+      hoverStartRef.current = null
+    } else {
+      trackTestimonialsInteraction('resume', reviews.length)
+    }
   }
 
   return (
-    <section className="py-16 bg-gray-50 overflow-hidden border-t border-gray-200">
+    <section
+      ref={sectionRef}
+      className="py-16 bg-gray-50 overflow-hidden border-t border-gray-200"
+    >
       <div className="max-w-7xl mx-auto px-6">
         {/* 타이틀 */}
         <motion.div

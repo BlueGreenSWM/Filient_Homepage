@@ -1,16 +1,18 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
 import FeatureCard from './FeatureCard'
 import VideoPlayer from './VideoPlayer'
 import VideoPlaceholder from './VideoPlaceholder'
 import { FEATURES_CONFIG, VIDEO_SOURCES } from './features.data'
+import { trackFeatureCardViewed } from '@/lib/analytics'
 
 function FeaturesSection() {
   const { t } = useLanguage()
   const [activeFeatureId, setActiveFeatureId] = useState(1)
+  const trackedFeaturesRef = useRef<Set<number>>(new Set())
 
   // Get active feature config
   const activeFeature = FEATURES_CONFIG.find((f) => f.id === activeFeatureId)
@@ -35,6 +37,19 @@ function FeaturesSection() {
       setActiveFeatureId(prevId)
     }
   }
+
+  // Track feature card view when active feature changes (once per feature)
+  useEffect(() => {
+    if (!activeFeature) return
+
+    const featureTitleKey = `feature${activeFeatureId}Title` as keyof typeof t
+    const featureTitle = t[featureTitleKey] as string
+
+    if (!trackedFeaturesRef.current.has(activeFeatureId)) {
+      trackFeatureCardViewed(featureTitle, activeFeatureId, activeFeature.hasVideo)
+      trackedFeaturesRef.current.add(activeFeatureId)
+    }
+  }, [activeFeature, activeFeatureId, t])
 
   return (
     <section className="relative pt-16 pb-24 overflow-hidden bg-gray-50">
@@ -142,6 +157,7 @@ function FeaturesSection() {
             >
               {activeFeature?.hasVideo && activeFeature.videoKey ? (
                 <VideoPlayer
+                  featureId={activeFeature.id}
                   videoUrl={VIDEO_SOURCES[activeFeature.videoKey]}
                   title={t[`feature${activeFeatureId}Title` as keyof typeof t] as string}
                 />

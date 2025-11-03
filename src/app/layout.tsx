@@ -5,6 +5,7 @@ import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { CookieConsent } from "@/components/CookieConsent";
+import { UTMTracker } from "@/components/analytics/UTMTracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -96,6 +97,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <LanguageProvider>
+          <UTMTracker />
           <LanguageToggle />
           {children}
           <CookieConsent />
