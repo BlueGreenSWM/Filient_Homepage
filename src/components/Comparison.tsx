@@ -46,15 +46,15 @@ export function Comparison() {
               <thead>
                 <tr className="border-b border-gray-200">
                   <th className="text-center px-4 py-3 text-gray-700 font-semibold bg-gray-50 w-[25%]"></th>
-                  <th className="px-4 py-3 text-left bg-gradient-to-br from-blue-50 to-purple-50 border-l-4 border-blue-500 w-[25%]">
+                  <th className="px-4 py-3 text-center bg-gradient-to-br from-blue-50 to-purple-50 border-l-4 border-blue-500 w-[25%]">
                     <div className="font-bold text-gray-900 text-xl">{t.comparison.tableHeaders.filient}</div>
                     <div className="text-xs text-blue-600 font-semibold mt-1">{t.comparison.tableHeaders.fillientSubtitle}</div>
                   </th>
-                  <th className="px-4 py-3 text-left bg-gray-50 w-[25%]">
+                  <th className="px-4 py-3 text-center bg-gray-50 w-[25%] border-l border-gray-200">
                     <div className="font-semibold text-gray-600">{t.comparison.tableHeaders.hazel}</div>
                     <div className="text-xs text-gray-500 mt-1">{t.comparison.tableHeaders.hazelSubtitle}</div>
                   </th>
-                  <th className="px-4 py-3 text-left bg-gray-50 w-[25%]">
+                  <th className="px-4 py-3 text-center bg-gray-50 w-[25%] border-l border-gray-200">
                     <div className="font-semibold text-gray-600">{t.comparison.tableHeaders.manual}</div>
                     <div className="text-xs text-gray-500 mt-1">{t.comparison.tableHeaders.manualSubtitle}</div>
                   </th>
@@ -76,10 +76,10 @@ export function Comparison() {
                         <span className="text-gray-900 font-semibold">{row.filient}</span>
                       </div>
                     </td>
-                    <td className="p-4 bg-white">
+                    <td className="p-4 bg-white border-l border-gray-200 text-center">
                       <span className="text-gray-500">{row.hazel}</span>
                     </td>
-                    <td className="p-4 bg-white">
+                    <td className="p-4 bg-white border-l border-gray-200 text-center">
                       <span className="text-gray-500">{row.manual}</span>
                     </td>
                   </motion.tr>

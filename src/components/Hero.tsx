@@ -122,7 +122,7 @@ export function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-[40%_60%] gap-12 items-start">
+        <div className="grid lg:grid-cols-[38%_62%] gap-12 items-start">
           {/* Left side - Text content */}
           <div className="text-left">
             {/* Eyebrow Text */}
@@ -211,16 +211,21 @@ export function Hero() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.35 }}
-                className="mt-4 flex items-start"
+                className="mt-4 flex items-center gap-2"
               >
-                <div className="flex-shrink-0">
-                  <iframe
-                    title="disquiet-badge"
-                    frameBorder="0"
-                    src="https://badge.disquiet.io/rank-badge?productUrlSlug=filient&mode=light&rank=gold"
+                <a
+                  href="https://disquiet.io/product/filient"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 hover:opacity-80 transition-opacity duration-200"
+                >
+                  <img
+                    src="/images/disquiet_badge.png"
+                    alt="Disquiet Product of the Week"
+                    className="h-auto w-auto max-h-[100px]"
                   />
-                </div>
-                <p className="text-sm font-bold text-gray-400 pt-1 -ml-8">
+                </a>
+                <p className="text-[13px] font-bold text-gray-400">
                   🏆 {t.hero.disquietBadge}
                 </p>
               </motion.div>
@@ -258,7 +263,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6 }}
-          className="hidden lg:block -mt-8"
+          className="hidden lg:block mt-8"
         >
           <div className="py-10 px-16 bg-gradient-to-r from-blue-50/20 via-purple-50/10 to-blue-50/20 rounded-2xl hover:bg-opacity-80 transition-all duration-300">
             <div className="flex items-center justify-center gap-8">

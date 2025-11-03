@@ -69,10 +69,10 @@ export function BeforeAfterSlider({
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="mt-4 text-center text-sm text-gray-500 flex items-center justify-center gap-2"
+        className="mt-4 text-center text-base text-gray-500 flex items-center justify-center gap-2"
       >
         <svg
-          className="w-4 h-4 text-gray-400"
+          className="w-5 h-5 text-gray-400"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
