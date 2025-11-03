@@ -130,7 +130,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
+              <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
                 {t.hero.title}
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
@@ -160,12 +160,12 @@ export function Hero() {
               className="flex flex-col items-start"
             >
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 items-center">
+              <div className="flex flex-col sm:flex-row gap-4 items-start">
                 {platform.isMac ? (
                   <Button
                     variant="primary"
                     size="lg"
-                    className="min-w-[220px] h-[64px] text-xl font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                    className="min-w-[220px] h-[64px] text-xl font-semibold shadow-[0_8px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_12px_28px_rgba(59,130,246,0.5)] hover:-translate-y-0.5 transition-all duration-200 bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700"
                     onClick={handleDownloadClick}
                   >
                     {t.hero.downloadCta}
@@ -174,42 +174,16 @@ export function Hero() {
                   <Button
                     variant="primary"
                     size="lg"
-                    className="min-w-[220px] h-[64px] text-xl font-semibold shadow-md hover:shadow-lg transition-all duration-200"
+                    className="min-w-[220px] h-[64px] text-xl font-semibold shadow-[0_8px_20px_rgba(59,130,246,0.4)] hover:shadow-[0_12px_28px_rgba(59,130,246,0.5)] hover:-translate-y-0.5 transition-all duration-200 bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700"
                     onClick={handleWaitlistClick}
                   >
                     {t.hero.waitlistCta}
                   </Button>
                 )}
-
-                {/* Disquiet Badge - 가로로 배치, 높이 맞춤 */}
-                <div className="flex items-center h-[72px]">
-                  <iframe
-                    title="disquiet-badge"
-                    src="https://badge.disquiet.io/vote-badge?productUrlSlug=filient&mode=light"
-                    className="h-[72px] w-[240px] border-0"
-                    style={{ overflow: 'hidden', pointerEvents: 'auto' }}
-                    scrolling="no"
-                  />
-                </div>
               </div>
 
               {/* Feature Highlights */}
               <FeatureHighlights />
-
-              {/* Disquiet Badge Text */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.35 }}
-                className="mt-8 space-y-1"
-              >
-                <p className="text-[13px] font-bold text-gray-400">
-                  🏆 {t.hero.disquietBadge}
-                </p>
-                <p className="text-[13px] font-bold text-gray-400">
-                  📰 {t.hero.pressFeature}
-                </p>
-              </motion.div>
             </motion.div>
           </div>
 
@@ -218,7 +192,7 @@ export function Hero() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative hidden lg:block mt-16"
+            className="relative hidden lg:block mt-8"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <video

@@ -1,14 +1,19 @@
 "use client"
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { Languages, BookOpen } from 'lucide-react'
-import { trackLanguageChanged, getCurrentSection, getTimeOnPage } from '@/lib/analytics'
+import { Languages, BookOpen, Download } from 'lucide-react'
+import { trackLanguageChanged, getCurrentSection, getTimeOnPage, trackCTAClicked } from '@/lib/analytics'
+import { usePlatformDetection } from '@/hooks/usePlatformDetection'
+import { EmailDownloadModal } from './EmailDownloadModal'
 import Link from 'next/link'
 
 export function LanguageToggle() {
   const { language, setLanguage, t } = useLanguage()
+  const platform = usePlatformDetection()
+  const [showEmailModal, setShowEmailModal] = useState(false)
+  const [isDownloading, setIsDownloading] = useState(false)
 
   const handleLanguageChange = (newLanguage: 'en' | 'ko') => {
     if (newLanguage !== language) {
@@ -19,9 +24,86 @@ export function LanguageToggle() {
     }
   }
 
+  const handleDownloadClick = () => {
+    trackCTAClicked(t?.hero?.downloadCta || 'Download', 'nav', 'download')
+    if (platform.isMac) {
+      setShowEmailModal(true)
+    }
+  }
+
+  const handleEmailSubmit = async (email: string) => {
+    setIsDownloading(true)
+    try {
+      trackCTAClicked(`Email submitted: ${email}`, 'nav_email_modal', 'download')
+      const response = await fetch('/api/download')
+      if (response.ok) {
+        const blob = await response.blob()
+        const url = window.URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = 'Filient.dmg'
+        document.body.appendChild(a)
+        a.click()
+        window.URL.revokeObjectURL(url)
+        document.body.removeChild(a)
+        setTimeout(() => {
+          setShowEmailModal(false)
+          setIsDownloading(false)
+        }, 1000)
+      } else {
+        console.error('Download failed:', await response.text())
+        setIsDownloading(false)
+      }
+    } catch (error) {
+      console.error('Download error:', error)
+      setIsDownloading(false)
+    }
+  }
+
+  const handleSkipEmail = async () => {
+    setIsDownloading(true)
+    try {
+      trackCTAClicked('Skip email download', 'nav_email_modal', 'skip')
+      const response = await fetch('/api/download')
+      if (response.ok) {
+        const blob = await response.blob()
+        const url = window.URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = 'Filient.dmg'
+        document.body.appendChild(a)
+        a.click()
+        window.URL.revokeObjectURL(url)
+        document.body.removeChild(a)
+        setTimeout(() => {
+          setShowEmailModal(false)
+          setIsDownloading(false)
+        }, 1000)
+      } else {
+        console.error('Download failed:', await response.text())
+        setIsDownloading(false)
+      }
+    } catch (error) {
+      console.error('Download error:', error)
+      setIsDownloading(false)
+    }
+  }
+
   return (
-    <div className="fixed top-6 right-6 z-50 flex items-center gap-3">
-      {/* User Guide Button */}
+    <>
+      <div className="fixed top-6 right-6 z-50 flex items-center gap-3">
+        {/* Download Button - Only show for Mac users */}
+        {platform.isMac && (
+          <button
+            onClick={handleDownloadClick}
+            className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg px-4 py-2 text-sm font-medium transition-all duration-200"
+          >
+            <Download className="w-4 h-4" />
+            <span>{language === 'ko' ? '다운로드' : 'Download'}</span>
+          </button>
+        )}
+
+        {/* User Guide Button */}
       <Link
         href="/docs"
         className="flex items-center gap-2 bg-white rounded-full shadow-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:border-blue-200 transition-all duration-200"
@@ -71,5 +153,15 @@ export function LanguageToggle() {
         </button>
       </div>
     </div>
+
+      {/* Email Download Modal */}
+      <EmailDownloadModal
+        isOpen={showEmailModal}
+        onClose={() => setShowEmailModal(false)}
+        onSubmit={handleEmailSubmit}
+        onSkipEmail={handleSkipEmail}
+        isLoading={isDownloading}
+      />
+    </>
   )
 }
