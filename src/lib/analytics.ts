@@ -194,10 +194,14 @@ export const trackVideoOpened = (triggerLocation: string, timeOnPage: number) =>
   })
 }
 
-export const trackVideoStart = (videoUrl: string) => {
+export const trackVideoStart = (
+  videoUrl: string,
+  interaction?: 'autoplay' | 'user'
+) => {
   trackEvent('video_start', 'engagement', {
     video_provider: 'youtube',
     video_url: videoUrl,
+    ...(interaction ? { interaction_type: interaction } : {}),
   })
 }
 

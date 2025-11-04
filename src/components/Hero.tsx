@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from './common/Button'
 import { EmailDownloadModal } from './EmailDownloadModal'
@@ -20,6 +20,9 @@ export function Hero() {
   const { t, language } = useLanguage()
   const [showEmailModal, setShowEmailModal] = useState(false)
   const [isDownloading, setIsDownloading] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const userInteractedRef = useRef(false)
+  const firstPlayHandledRef = useRef(false)
 
   const handleDownloadClick = () => {
     trackCTAClicked(t.hero.downloadCta, 'hero', 'primary')
@@ -196,6 +199,7 @@ export function Hero() {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <video
+                ref={videoRef}
                 src={VIDEO_ASSETS.DEMO.url}
                 poster={VIDEO_ASSETS.DEMO.thumbnail}
                 controls
@@ -204,7 +208,24 @@ export function Hero() {
                 loop
                 playsInline
                 className="w-full h-auto"
-                onPlay={() => trackVideoStart('hero_inline')}
+                onPlay={() => {
+                  // Distinguish autoplay vs user-initiated interest
+                  const isAutoplay = !!videoRef.current?.muted && !userInteractedRef.current
+                  if (!firstPlayHandledRef.current) {
+                    trackVideoStart('hero_inline', isAutoplay ? 'autoplay' : 'user')
+                    firstPlayHandledRef.current = true
+                  }
+                }}
+                onVolumeChange={() => {
+                  // If user unmutes before first play is handled, count as user interest
+                  if (!firstPlayHandledRef.current && videoRef.current && !videoRef.current.muted) {
+                    trackVideoStart('hero_inline', 'user')
+                    firstPlayHandledRef.current = true
+                  }
+                }}
+                onClick={() => {
+                  userInteractedRef.current = true
+                }}
               >
                 <track kind="captions" />
                 Your browser does not support the video tag.
