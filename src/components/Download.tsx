@@ -79,6 +79,21 @@ export function Download() {
     const downloadStartTime = Date.now()
 
     try {
+      // Save email to Airtable (non-blocking)
+      try {
+        await fetch('/api/collect-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            platform: platform.platform,
+            language
+          })
+        })
+      } catch (e) {
+        console.warn('Airtable collect-email failed (ignored):', e)
+      }
+
       // Track download started
       trackDownloadStarted(platform.platform, navigator.userAgent)
 
