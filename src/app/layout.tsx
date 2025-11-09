@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
+import { Suspense } from "react";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { LanguageToggle } from "@/components/LanguageToggle";
@@ -97,7 +98,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <LanguageProvider>
-          <UTMTracker />
+          <Suspense fallback={null}>
+            <UTMTracker />
+          </Suspense>
           <LanguageToggle />
           {children}
           <CookieConsent />
