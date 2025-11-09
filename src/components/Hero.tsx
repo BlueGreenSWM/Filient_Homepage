@@ -151,7 +151,7 @@ export function Hero() {
               <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
                 {t.hero.title}
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
                   {t.hero.titleHighlight}
                 </span>
               </h1>
@@ -256,10 +256,10 @@ export function Hero() {
           transition={{ delay: 0.9, duration: 0.6 }}
           className="hidden lg:block mt-8"
         >
-          <div className="py-10 px-16 bg-gradient-to-r from-blue-50/20 via-purple-50/10 to-blue-50/20 rounded-2xl hover:bg-opacity-80 transition-all duration-300">
+          <div className="py-10 px-16 bg-gradient-to-r from-blue-50/20 via-blue-50/10 to-blue-50/20 rounded-2xl hover:bg-opacity-80 transition-all duration-300">
             <div className="flex items-center justify-center gap-6">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
                   <span className="text-2xl">✨</span>
                 </div>
                 <div className="text-left">

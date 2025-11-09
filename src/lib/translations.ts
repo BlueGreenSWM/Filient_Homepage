@@ -258,7 +258,7 @@ export const translations = {
           text: "The rollback feature saved me when I accidentally organized the wrong folder. One click and everything was back to normal!",
           author: "최*민",
           avatarText: "최",
-          avatarColor: "bg-purple-500"
+          avatarColor: "bg-blue-500"
         },
         {
           id: "review-3",
@@ -564,7 +564,7 @@ export const translations = {
           text: "실수로 잘못된 폴더 정리했는데 롤백 기능으로 한 번에 원상복구! 진짜 신기했어요.",
           author: "최*민",
           avatarText: "최",
-          avatarColor: "bg-purple-500"
+          avatarColor: "bg-blue-500"
         },
         {
           id: "review-3",

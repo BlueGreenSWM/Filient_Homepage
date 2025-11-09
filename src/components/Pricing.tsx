@@ -53,7 +53,7 @@ export function Pricing() {
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             {t.pricing.title}{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
               {t.pricing.titleHighlight}
             </span>
           </h2>
@@ -67,7 +67,7 @@ export function Pricing() {
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-16 card p-8 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-100"
+          className="mb-16 card p-8 bg-gradient-to-r from-blue-50 to-blue-100 border-blue-100"
         >
           <div className="flex items-center gap-2 mb-6">
             <Calculator className="w-6 h-6 text-blue-600" />
@@ -117,7 +117,7 @@ export function Pricing() {
                 <Zap className="w-4 h-4" />
                 {t.pricing.calculator.yearlySavings}
               </div>
-              <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+              <div className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
                 ${formatNumber(Math.round(netSavings))}
               </div>
             </div>

@@ -22,7 +22,7 @@ export function Comparison() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             {t.comparison.title}
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
               {t.comparison.titleHighlight}
             </span>
           </h2>
@@ -31,7 +31,7 @@ export function Comparison() {
         <div className="relative">
           {/* Best Choice Badge - positioned above table */}
           <div className="absolute left-[25%] -top-4 w-[25%] flex justify-center z-20">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg whitespace-nowrap">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg whitespace-nowrap">
               ✨ Best Choice
             </span>
           </div>
@@ -46,7 +46,7 @@ export function Comparison() {
               <thead>
                 <tr className="border-b border-gray-200">
                   <th className="text-center px-4 py-3 text-gray-700 font-semibold bg-gray-50 w-[25%]"></th>
-                  <th className="px-4 py-3 text-center bg-gradient-to-br from-blue-50 to-purple-50 border-l-4 border-blue-500 w-[25%]">
+                  <th className="px-4 py-3 text-center bg-gradient-to-br from-blue-50 to-blue-100 border-l-4 border-blue-500 w-[25%]">
                     <div className="font-bold text-gray-900 text-xl">{t.comparison.tableHeaders.filient}</div>
                     <div className="text-xs text-blue-600 font-semibold mt-1">{t.comparison.tableHeaders.fillientSubtitle}</div>
                   </th>
@@ -70,7 +70,7 @@ export function Comparison() {
                     className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors"
                   >
                     <td className="p-4 text-center text-gray-800 font-semibold bg-white">{row.name}</td>
-                    <td className="p-4 bg-gradient-to-br from-blue-50/50 to-purple-50/50 border-l-4 border-blue-500">
+                    <td className="p-4 bg-gradient-to-br from-blue-50/50 to-blue-100/50 border-l-4 border-blue-500">
                       <div className="flex items-start gap-2">
                         <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                         <span className="text-gray-900 font-semibold">{row.filient}</span>
