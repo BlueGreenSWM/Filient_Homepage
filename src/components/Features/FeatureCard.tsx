@@ -100,7 +100,7 @@ export default function FeatureCard({
       )}
 
       {/* Hover effect overlay */}
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-500/0 via-blue-500/0 to-purple-500/0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none" />
+      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-500/0 via-blue-500/0 to-blue-700/0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none" />
     </motion.div>
   )
 }

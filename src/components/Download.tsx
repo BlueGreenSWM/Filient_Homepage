@@ -79,6 +79,21 @@ export function Download() {
     const downloadStartTime = Date.now()
 
     try {
+      // Save email to Airtable (non-blocking)
+      try {
+        await fetch('/api/collect-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            platform: platform.platform,
+            language
+          })
+        })
+      } catch (e) {
+        console.warn('Airtable collect-email failed (ignored):', e)
+      }
+
       // Track download started
       trackDownloadStarted(platform.platform, navigator.userAgent)
 
@@ -175,7 +190,7 @@ export function Download() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             {t.download.title}
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
               {t.download.titleHighlight}
             </span>
           </h2>

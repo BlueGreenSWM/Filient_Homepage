@@ -53,7 +53,7 @@ export function Features() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             {t.features.title}
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
               {t.features.titleHighlight}
             </span>
           </h2>

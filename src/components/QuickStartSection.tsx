@@ -112,7 +112,7 @@ export function QuickStartSection() {
               {/* Button */}
               <Button
                 variant="outline"
-                className="w-full group-hover:bg-purple-50 group-hover:border-purple-300 transition-all duration-300"
+                className="w-full group-hover:bg-blue-50 group-hover:border-blue-300 transition-all duration-300"
                 onClick={handleFeedbackClick}
               >
                 {t.quickStart.feedback.cta}

@@ -70,7 +70,8 @@ export const storeUTMParamsFromUrl = (search: string, referrer: string) => {
     content: coerce(params.get('utm_content')),
     gclid: coerce(params.get('gclid')),
     fbclid: coerce(params.get('fbclid')),
-    referrer: coerce(referrer || document.referrer || undefined),
+    // Ensure type matches MaybeString (string | null)
+    referrer: coerce((referrer || document.referrer) || null),
     capturedAt: new Date().toISOString(),
   }
 

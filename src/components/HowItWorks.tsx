@@ -25,7 +25,7 @@ export function HowItWorks() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             {t.howItWorks.title}
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
               {t.howItWorks.titleHighlight}
             </span>
           </h2>
@@ -88,7 +88,7 @@ export function HowItWorks() {
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16 text-center card p-8 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-100"
+          className="mt-16 text-center card p-8 bg-gradient-to-r from-blue-50 to-blue-100 border-blue-100"
         >
           <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
             {t.howItWorks.noManualFiling}

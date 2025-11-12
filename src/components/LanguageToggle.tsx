@@ -35,6 +35,20 @@ export function LanguageToggle() {
     setIsDownloading(true)
     try {
       trackCTAClicked(`Email submitted: ${email}`, 'nav_email_modal', 'download')
+      // Save email to Airtable (non-blocking)
+      try {
+        await fetch('/api/collect-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            platform: platform.platform,
+            language
+          })
+        })
+      } catch (e) {
+        console.warn('Airtable collect-email failed (ignored):', e)
+      }
       const response = await fetch('/api/download')
       if (response.ok) {
         const blob = await response.blob()

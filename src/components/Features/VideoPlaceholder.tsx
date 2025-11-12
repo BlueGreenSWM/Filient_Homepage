@@ -14,7 +14,7 @@ export default function VideoPlaceholder({
   comingSoonDescription = 'This feature will be available soon',
 }: VideoPlaceholderProps) {
   return (
-    <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50">
+    <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-blue-50 via-blue-50 to-blue-100">
       {/* Animated grid background */}
       <div className="absolute inset-0 opacity-30">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +40,7 @@ export default function VideoPlaceholder({
 
       {/* Animated gradient orb */}
       <motion.div
-        className="absolute top-1/2 left-1/2 w-64 h-64 rounded-full bg-gradient-to-br from-blue-300/30 via-purple-300/30 to-pink-300/30 blur-3xl"
+        className="absolute top-1/2 left-1/2 w-64 h-64 rounded-full bg-gradient-to-br from-blue-300/30 via-blue-300/30 to-blue-400/30 blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
           x: ['-50%', '-45%', '-50%'],
@@ -136,7 +136,7 @@ export default function VideoPlaceholder({
 
         {/* Decorative elements */}
         <div className="absolute top-8 right-8 w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-        <div className="absolute bottom-8 left-8 w-2 h-2 rounded-full bg-purple-500 animate-pulse delay-75" />
+        <div className="absolute bottom-8 left-8 w-2 h-2 rounded-full bg-blue-500 animate-pulse delay-75" />
         <div className="absolute top-1/4 left-12 w-1 h-1 rounded-full bg-pink-500 animate-pulse delay-150" />
         <div className="absolute bottom-1/4 right-12 w-1 h-1 rounded-full bg-blue-500 animate-pulse delay-300" />
       </div>
