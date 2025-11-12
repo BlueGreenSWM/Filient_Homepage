@@ -22,6 +22,11 @@ export const metadata: Metadata = {
   description: "Stop wasting 230 hours a year searching for files. Filient uses AI to automatically organize your files - no complex rules needed. Better than Hazel.",
   keywords: "file organizer, Hazel alternative, AI file management, automatic file organization, file automation, macOS file organizer",
   authors: [{ name: "Filient Team" }],
+  verification: {
+    other: {
+      'naver-site-verification': '7e28ee577559d22250efcfcdb00cb0934cbc56e0',
+    },
+  },
   openGraph: {
     title: "Filient - AI-Powered File Organization",
     description: "Save 230 hours a year with AI-powered file organization. No complex rules needed.",
