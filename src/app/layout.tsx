@@ -28,14 +28,15 @@ export const metadata: Metadata = {
       'naver-site-verification': '7e28ee577559d22250efcfcdb00cb0934cbc56e0',
     },
   },
+  metadataBase: new URL('https://filient.ai'),
   openGraph: {
     title: "Filient - AI-Powered File Organization",
     description: "Save 230 hours a year with AI-powered file organization. No complex rules needed.",
-    url: "https://filient.app",
+    url: "https://filient.ai",
     siteName: "Filient",
     images: [
       {
-        url: "https://filient.app/og-image.png",
+        url: "https://filient.ai/og-image.png",
         width: 1200,
         height: 630,
       },
@@ -47,7 +48,15 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Filient - AI-Powered File Organization",
     description: "Save 230 hours a year with AI-powered file organization",
-    images: ["https://filient.app/twitter-image.png"],
+    images: ["https://filient.ai/twitter-image.png"],
+  },
+  alternates: {
+    canonical: '/',
+    languages: {
+      'ko': '/?lang=ko',
+      'en': '/?lang=en',
+      'x-default': '/',
+    },
   },
   robots: {
     index: true,
@@ -68,7 +77,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Google Analytics 4 */}
         <Script
@@ -95,6 +104,16 @@ export default function RootLayout({
               gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
                 page_path: window.location.pathname,
               });
+            `,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const lang = localStorage.getItem('language') || 'en';
+                document.documentElement.lang = lang;
+              })();
             `,
           }}
         />

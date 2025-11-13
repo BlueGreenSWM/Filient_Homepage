@@ -12,20 +12,44 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('ko')
+  const [language, setLanguageState] = useState<Language>('en')
 
   useEffect(() => {
-    // Load saved language from localStorage
+    // Priority 1: Check URL parameter (?lang=ko or ?lang=en)
+    const urlParams = new URLSearchParams(window.location.search)
+    const urlLang = urlParams.get('lang') as Language
+
+    if (urlLang && (urlLang === 'en' || urlLang === 'ko')) {
+      setLanguageState(urlLang)
+      localStorage.setItem('language', urlLang)
+      // Update HTML lang attribute
+      document.documentElement.lang = urlLang
+      return
+    }
+
+    // Priority 2: Check localStorage (user's saved preference)
     const savedLanguage = localStorage.getItem('language') as Language
     if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'ko')) {
       setLanguageState(savedLanguage)
+      // Update HTML lang attribute
+      document.documentElement.lang = savedLanguage
+      return
     }
-    // Default is 'ko' (already set in initial state)
+
+    // Priority 3: Auto-detect browser language
+    const browserLang = navigator.language.toLowerCase()
+    const detectedLang: Language = browserLang.startsWith('ko') ? 'ko' : 'en'
+    setLanguageState(detectedLang)
+    localStorage.setItem('language', detectedLang)
+    // Update HTML lang attribute
+    document.documentElement.lang = detectedLang
   }, [])
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang)
     localStorage.setItem('language', lang)
+    // Update HTML lang attribute dynamically
+    document.documentElement.lang = lang
   }
 
   const value: LanguageContextType = {
