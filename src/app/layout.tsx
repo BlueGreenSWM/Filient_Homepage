@@ -19,9 +19,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Filient - AI-Powered File Organization | Save 230 Hours a Year",
-  description: "Stop wasting 230 hours a year searching for files. Filient uses AI to automatically organize your files - no complex rules needed. Better than Hazel.",
-  keywords: "file organizer, Hazel alternative, AI file management, automatic file organization, file automation, macOS file organizer",
+  title: "Filient - AI 파일 정리 앱 | AI-Powered File Organization",
+  description: "연간 230시간 절약하는 AI 파일 정리 앱. Mac용 스마트 파일 관리 자동화. Stop wasting 230 hours a year searching for files. AI-powered file organization for macOS.",
+  keywords: "파일 정리 앱, 맥 파일관리, 파일 자동화, AI 파일정리, 맥북 파일정리, 파일 자동 분류, 다운로드 폴더 정리, 파일 관리 프로그램, file organizer, mac file management, Hazel alternative, AI file organization, automatic file sorting, download folder organizer, macOS productivity",
   authors: [{ name: "Filient Team" }],
   verification: {
     other: {
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://filient.ai'),
   openGraph: {
-    title: "Filient - AI-Powered File Organization",
-    description: "Save 230 hours a year with AI-powered file organization. No complex rules needed.",
+    title: "Filient - AI 파일 정리 앱 | AI File Organization",
+    description: "연간 230시간 절약하는 Mac용 AI 파일 정리. Save 230 hours a year with AI-powered file organization.",
     url: "https://filient.ai",
     siteName: "Filient",
     images: [
@@ -41,13 +41,14 @@ export const metadata: Metadata = {
         height: 630,
       },
     ],
-    locale: "en_US",
+    locale: "ko_KR",
+    alternateLocale: ["en_US"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Filient - AI-Powered File Organization",
-    description: "Save 230 hours a year with AI-powered file organization",
+    title: "Filient - AI 파일 정리 앱 | AI File Organization",
+    description: "연간 230시간 절약하는 Mac용 AI 파일 정리. Save 230 hours a year with AI-powered file organization.",
     images: ["https://filient.ai/twitter-image.png"],
   },
   alternates: {
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
     languages: {
       'ko': '/?lang=ko',
       'en': '/?lang=en',
-      'x-default': '/',
+      'x-default': '/?lang=ko',
     },
   },
   robots: {
@@ -77,7 +78,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="ko" suppressHydrationWarning>
       <head>
         {/* Google Analytics 4 */}
         <Script
@@ -111,7 +112,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                const lang = localStorage.getItem('language') || 'en';
+                const lang = localStorage.getItem('language') || 'ko';
                 document.documentElement.lang = lang;
               })();
             `,
