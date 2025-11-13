@@ -34,11 +34,20 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isL
           scroll_depth: getCurrentScrollDepth()
         })
 
+        // Track virtual pageview for GA4 (for URL-based funnel analysis)
+        if (window.location.hash === '#download') {
+          window.gtag('config', process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!, {
+            page_path: '/#download',
+            page_title: 'Download Modal - Email Collection'
+          })
+        }
+
         if (process.env.NODE_ENV === 'development') {
           console.log('📊 GA4 Event: email_modal_opened', {
             time_on_page: getTimeOnPage(),
             scroll_depth: getCurrentScrollDepth()
           })
+          console.log('📄 GA4 Virtual Pageview: /#download')
         }
       }
     }
@@ -101,7 +110,7 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isL
     onSubmit(email)
   }
 
-  const handleClose = (trigger: 'x_button' | 'background_click' | 'esc_key' = 'x_button') => {
+  const handleClose = (trigger: 'x_button' | 'background_click' | 'esc_key' | 'browser_back' = 'x_button') => {
     if (!isLoading) {
       const timeOnModal = Date.now() - modalOpenTime.current
       const hasEnteredEmail = email.length > 0
@@ -129,6 +138,11 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isL
         }
       }
 
+      // Remove hash from URL
+      if (typeof window !== 'undefined' && window.location.hash === '#download') {
+        history.replaceState(null, '', window.location.pathname + window.location.search)
+      }
+
       // Reset state
       setEmail('')
       setError('')
@@ -149,6 +163,20 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isL
     if (isOpen) {
       window.addEventListener('keydown', handleEscape)
       return () => window.removeEventListener('keydown', handleEscape)
+    }
+  }, [isOpen, isLoading, email, error])
+
+  // Handle browser back button (hash change) to close modal
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (typeof window !== 'undefined' && window.location.hash !== '#download' && isOpen && !isLoading) {
+        handleClose('browser_back')
+      }
+    }
+
+    if (isOpen) {
+      window.addEventListener('hashchange', handleHashChange)
+      return () => window.removeEventListener('hashchange', handleHashChange)
     }
   }, [isOpen, isLoading, email, error])
 

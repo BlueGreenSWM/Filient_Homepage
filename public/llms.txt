@@ -1,0 +1,148 @@
+# Filient
+> AI 파일 정리 앱 - 연간 230시간 절약하는 맥용 스마트 파일 관리 자동화
+> AI-Powered File Organization App - Save 230 hours/year with smart automation for macOS
+
+## Overview
+Filient는 macOS용 AI 파일 정리 앱입니다. 복잡한 규칙 설정 없이 대화로 자동화 규칙을 만들고, 파일을 스마트하게 정리합니다.
+
+Filient is an AI-powered file organization app for macOS. Create automation rules through natural conversation without complex setup, and organize files intelligently.
+
+## Key Features
+- 🤖 **AI 챗봇 (AI Chatbot)**: 대화로 규칙 생성, 기술 지식 불필요 / Create rules through conversation, no technical knowledge required
+- 🔄 **안전한 롤백 (Rollback Safety)**: 클릭 한 번으로 모든 작업 되돌리기 / Undo any automation with a single click
+- ⏰ **스케줄러 (Scheduled Runs)**: 자동 주기 실행으로 폴더 항상 깔끔 / Automatic periodic execution keeps folders tidy
+- 📁 **폴더 관리 (Folder Management)**: 조건 기반 필터링으로 스마트 파일 분류 / Smart file classification with condition-based filtering
+- 📚 **템플릿 라이브러리 (Template Library)**: 일반적인 정리 시나리오를 위한 사전 정의 템플릿 / Pre-defined templates for common organization scenarios
+- 📊 **히스토리 추적 (History Tracking)**: 모든 파일 작업 기록 보관 / Track all file operations with complete history
+
+## Use Cases
+
+### 📥 다운로드 폴더 정리 (Downloads Folder Organization)
+- 파일 유형별 자동 분류 / Auto-classify by file type
+- 오래된 파일 자동 삭제 / Auto-delete old files
+- 설치 파일 정리 / Organize installer files
+
+### 📸 사진 관리 (Photo Management)
+- 촬영 날짜별 사진 자동 분류 / Organize photos by date taken
+- 카메라 모델별 폴더 생성 / Create folders by camera model
+- 중복 사진 정리 / Clean up duplicate photos
+
+### 📄 문서 관리 (Document Management)
+- 프로젝트별 문서 분류 / Classify documents by project
+- 날짜별 보고서 정리 / Organize reports by date
+- PDF, Word, Excel 파일 자동 분류 / Auto-classify PDF, Word, Excel files
+
+### 🎵 미디어 파일 정리 (Media File Organization)
+- 음악 파일 아티스트/앨범별 정리 / Organize music by artist/album
+- 비디오 파일 해상도별 분류 / Classify videos by resolution
+- 팟캐스트 에피소드 정리 / Organize podcast episodes
+
+## How It Works
+
+**3단계로 완벽한 정리 (Three steps to perfect organization)**
+
+1. **Filient 설치 (Install Filient)**: 1분 이내 설치 완료, macOS Monterey 이상 지원 / Install in under a minute, works with macOS Monterey and later
+
+2. **원하는 것 말하기 (Tell it what to do)**: 대화로 규칙 생성, 기술 지식 불필요 / Create rules through conversation, no technical knowledge required
+   - 예시: "모든 송장을 회계 폴더에 넣고 날짜로 이름 변경해줘"
+   - Example: "Put all invoices in the Accounting folder and rename them with the date"
+
+3. **파일이 스스로 정리됨 (Files organize themselves)**: 백그라운드 자동 실행, 스케줄 설정 기반 / Runs in background automatically based on schedule settings
+   - 결과: Invoice_2024.pdf → Accounting/2024-01-15_Invoice.pdf
+
+## AI Chatbot Examples
+
+사용자가 AI와 대화로 만들 수 있는 명령어 예시:
+- "제품명이 포함된 모든 파일 삭제" / "Delete all files with 'product' in their name"
+- "생성일 기준으로 모든 파일 정리" / "Organize all files by date created"
+- "7일 이상 된 파일 삭제" / "Delete files older than 7 days"
+- "업무 관련 파일에 빨간색 우선순위 태그 지정" / "Tag work-related files with red priority label"
+
+## Comparison with Alternatives
+
+### vs Hazel (유료 $42)
+- **설정 복잡도**: Filient은 친구와 문자하듯 대화 / Hazel은 복잡한 규칙 빌더
+- **학습 곡선**: Filient은 바로 시작 / Hazel은 익숙해지는데 시간 필요
+- **유연성**: Filient은 모든 요청 즉시 이해 / Hazel은 사전 정의된 규칙에 제한
+- **첫 규칙까지 시간**: Filient 60초 이내 / Hazel 10분 이상
+
+### vs 수동 정리 (Manual Organization)
+- 연간 230시간 절약 / Save 230 hours per year
+- 파일 탐색 시간 54% 감소 / 54% less time exploring files
+- 1000개 이상 파일 자동 정리 / 1000+ auto-organized files
+
+## System Requirements
+- **운영체제 (Operating System)**: macOS 13.0 (Ventura) or later
+- **메모리 (Memory)**: 4GB RAM 이상 권장 / 4GB RAM or more recommended
+- **저장공간 (Storage)**: 100MB 이상의 여유 공간 / 100MB or more free space
+- **권한 (Permissions)**: 전체 디스크 접근 권한 필요 / Full Disk Access permission required
+- **가격 (Price)**: 완전 무료 / Completely free - No credit card required
+- **현재 버전 (Current Version)**: 1.2.3
+
+## Technical Features
+
+### 조건 시스템 (Condition System)
+- 파일명, 확장자, 크기, 날짜, 태그 기반 필터링
+- Filter by filename, extension, size, date, tags
+- 정규식 지원 / Regular expression support
+- 하위 폴더 포함 옵션 / Subfolder inclusion option
+
+### 액션 시스템 (Action System)
+- 파일 이동, 복사, 이름 변경 / Move, copy, rename files
+- 태그 및 주석 추가 / Add tags and comments
+- 파일 삭제 (휴지통/영구) / Delete files (trash/permanent)
+- Finder 태그 자동 지정 / Auto-assign Finder tags
+
+### 안전 기능 (Safety Features)
+- 모든 작업 히스토리 추적 / Track all operations history
+- 30일 이내 롤백 가능 (설정 가능) / Rollback within 30 days (configurable)
+- 승인 워크플로우 / Approval workflow
+- 테스트 실행 모드 / Test run mode
+
+## Links
+- **Homepage**: https://filient.ai
+- **Download**: https://filient.ai#download
+- **Documentation**: https://filient.ai/docs
+- **Getting Started**: https://filient.ai/docs/01-introduction
+- **Installation Guide**: https://filient.ai/docs/02-installation
+- **First Rule Tutorial**: https://filient.ai/docs/03-first-rule
+- **Features Guide**: https://filient.ai/docs/features/01-folder-management
+- **FAQ**: https://filient.ai/docs/reference/05-faq
+- **Privacy Policy**: https://filient.ai/privacy
+
+## Press Coverage
+- 미디어경제뉴스 보도 / Featured in MediaEcon News: https://mediaecon.com/news/view.php?bIdx=38142
+- Disquiet Product of the Week #1 선정 / #1 on Disquiet Product Leaderboard: https://disquiet.io/product/filient
+- seenthis 기술 미디어 소개 / Featured in seenthis Tech Media: https://seenthis.kr/newspageeng/4217
+
+## Support
+- **Email**: support@filient.com
+- **Website**: https://filient.ai
+- **Community**: https://community.filient.com
+- **Response Time**: 1-2 영업일 / 1-2 business days
+
+## Frequently Asked Questions
+
+**Q: macOS 버전 요구사항은? / What macOS version is required?**
+A: macOS 13.0 (Ventura) 이상 / macOS 13.0 (Ventura) or later
+
+**Q: iCloud Drive 파일도 정리 가능한가요? / Can I organize iCloud Drive files?**
+A: 예, 가능합니다. 다운로드된 파일만 처리됩니다. / Yes, only downloaded files will be processed.
+
+**Q: 실수로 파일을 삭제했어요. 복구 가능한가요? / I accidentally deleted files. Can I recover them?**
+A: 히스토리 페이지에서 롤백 가능합니다. / You can rollback from History page.
+
+**Q: 외장 하드나 네트워크 드라이브도 사용 가능한가요? / Can I use external drives or network drives?**
+A: 예, 지원됩니다. 네트워크 속도에 따라 느릴 수 있습니다. / Yes, supported. May be slower depending on network speed.
+
+**Q: 한 번에 몇 개의 파일을 처리할 수 있나요? / How many files can be processed at once?**
+A: 일반 파일 10,000개, 대용량 파일 1,000개 권장 / Recommended: 10,000 regular files, 1,000 large files
+
+**Q: 유료 버전이 있나요? / Is there a paid version?**
+A: 현재는 완전 무료입니다. 향후 Pro 버전 출시 가능 / Currently completely free. Pro version may be released in the future.
+
+## Keywords
+파일 정리 앱, 맥 파일관리, 파일 자동화, AI 파일정리, 맥북 파일정리, 파일 자동 분류, 다운로드 폴더 정리, 파일 관리 프로그램, file organizer, mac file management, AI file organization, automatic file sorting, download folder organizer, macOS productivity, Hazel alternative
+
+## Last Updated
+2025-01-13
