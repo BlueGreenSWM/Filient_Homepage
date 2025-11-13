@@ -32,7 +32,7 @@ export function LanguageToggle() {
     }
   }
 
-  const handleEmailSubmit = async (email: string) => {
+  const handleEmailSubmit = async (email: string, marketingConsent: boolean) => {
     setIsDownloading(true)
     try {
       trackCTAClicked(`Email submitted: ${email}`, 'nav_email_modal', 'download')
@@ -44,7 +44,8 @@ export function LanguageToggle() {
           body: JSON.stringify({
             email,
             platform: platform.platform,
-            language
+            language,
+            marketingConsent
           })
         })
       } catch (e) {

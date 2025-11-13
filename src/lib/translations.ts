@@ -228,7 +228,9 @@ export const translations = {
       startDownload: "Start Download",
       downloading: "Downloading...",
       privacyNote: "We respect your privacy. No spam, ever.",
-      downloadWithoutEmail: "Download without email"
+      downloadWithoutEmail: "Download without email",
+      marketingConsent: "I'd like to receive product updates and tips (Optional)",
+      marketingConsentDetail: "New features, file organization tips, and special events."
     },
     footer: {
       links: {
@@ -534,7 +536,9 @@ export const translations = {
       startDownload: "다운로드 시작",
       downloading: "다운로드 중...",
       privacyNote: "개인정보를 존중합니다. 스팸 메일을 보내지 않습니다.",
-      downloadWithoutEmail: "이메일 없이 다운로드"
+      downloadWithoutEmail: "이메일 없이 다운로드",
+      marketingConsent: "제품 업데이트 소식 및 유용한 팁 받기 (선택)",
+      marketingConsentDetail: "새로운 기능 출시, 파일 정리 팁, 특별 이벤트 소식"
     },
     footer: {
       links: {
