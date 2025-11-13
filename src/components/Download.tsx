@@ -84,7 +84,7 @@ export function Download() {
     setShowEmailModal(true)
   }
 
-  const handleEmailSubmit = async (email: string) => {
+  const handleEmailSubmit = async (email: string, marketingConsent: boolean) => {
     setIsDownloading(true)
     const downloadStartTime = Date.now()
 
@@ -97,7 +97,8 @@ export function Download() {
           body: JSON.stringify({
             email,
             platform: platform.platform,
-            language
+            language,
+            marketingConsent
           })
         })
       } catch (e) {

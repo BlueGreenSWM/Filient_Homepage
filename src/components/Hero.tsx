@@ -30,7 +30,7 @@ export function Hero() {
     setShowEmailModal(true)
   }
 
-  const handleEmailSubmit = async (email: string) => {
+  const handleEmailSubmit = async (email: string, marketingConsent: boolean) => {
     setIsDownloading(true)
 
     try {
@@ -45,7 +45,8 @@ export function Hero() {
           body: JSON.stringify({
             email,
             platform: platform.platform,
-            language
+            language,
+            marketingConsent
           })
         })
       } catch (e) {

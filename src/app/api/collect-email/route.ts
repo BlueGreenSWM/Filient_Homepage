@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    const { email, platform, language } = body || {}
+    const { email, platform, language, marketingConsent } = body || {}
 
     if (!email || typeof email !== 'string') {
       return NextResponse.json(
@@ -40,6 +40,7 @@ export async function POST(request: NextRequest) {
       Email: email,
       Platform: platform || 'unknown',
       Language: language || 'en',
+      Marketing_Consent: marketingConsent || false,
     })
 
     return NextResponse.json({ success: true, recordId: record.id }, { status: 200 })

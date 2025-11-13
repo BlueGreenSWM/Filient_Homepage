@@ -9,7 +9,7 @@ import { getTimeOnPage, getCurrentScrollDepth } from '@/lib/analytics'
 interface EmailDownloadModalProps {
   isOpen: boolean
   onClose: () => void
-  onSubmit: (email: string) => void
+  onSubmit: (email: string, marketingConsent: boolean) => void
   onSkipEmail: () => void
   isLoading?: boolean
 }
@@ -17,6 +17,7 @@ interface EmailDownloadModalProps {
 export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isLoading = false }: EmailDownloadModalProps) {
   const { t } = useLanguage()
   const [email, setEmail] = useState('')
+  const [marketingConsent, setMarketingConsent] = useState(false)
   const [error, setError] = useState('')
   const modalOpenTime = useRef<number>(0)
   const emailInputStarted = useRef(false)
@@ -107,7 +108,7 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isL
 
     // Clear error and submit
     setError('')
-    onSubmit(email)
+    onSubmit(email, marketingConsent)
   }
 
   const handleClose = (trigger: 'x_button' | 'background_click' | 'esc_key' | 'browser_back' = 'x_button') => {
@@ -271,6 +272,27 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isL
                   {error && (
                     <p className="mt-2 text-sm text-red-600">{error}</p>
                   )}
+                </div>
+
+                {/* Marketing Consent Checkbox */}
+                <div className="mb-4 mt-3">
+                  <label className="flex items-start gap-2 cursor-pointer group">
+                    <input
+                      type="checkbox"
+                      checked={marketingConsent}
+                      onChange={(e) => setMarketingConsent(e.target.checked)}
+                      disabled={isLoading}
+                      className="mt-[1px] w-3.5 h-3.5 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-500 cursor-pointer disabled:opacity-50 flex-shrink-0"
+                    />
+                    <div className="flex-1">
+                      <span className="text-xs text-gray-700 group-hover:text-gray-900 transition-colors leading-[14px] block">
+                        {t.download?.marketingConsent || 'I\'d like to receive Filient updates and helpful tips via email (Optional)'}
+                      </span>
+                      <p className="text-[11px] text-gray-500 mt-0.5 leading-tight whitespace-pre-line">
+                        {t.download?.marketingConsentDetail || 'You\'ll receive new feature announcements, file organization tips, and special events. Unsubscribe anytime.'}
+                      </p>
+                    </div>
+                  </label>
                 </div>
 
                 {/* Submit Button */}
