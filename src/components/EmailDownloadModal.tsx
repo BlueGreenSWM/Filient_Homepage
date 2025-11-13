@@ -288,7 +288,7 @@ export function EmailDownloadModal({ isOpen, onClose, onSubmit, onSkipEmail, isL
                       <span className="text-xs text-gray-700 group-hover:text-gray-900 transition-colors leading-[14px] block">
                         {t.download?.marketingConsent || 'I\'d like to receive Filient updates and helpful tips via email (Optional)'}
                       </span>
-                      <p className="text-[11px] text-gray-500 mt-0.5 leading-tight">
+                      <p className="text-[11px] text-gray-500 mt-0.5 leading-tight whitespace-pre-line">
                         {t.download?.marketingConsentDetail || 'You\'ll receive new feature announcements, file organization tips, and special events. Unsubscribe anytime.'}
                       </p>
                     </div>
