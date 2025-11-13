@@ -51,6 +51,13 @@ export function Download() {
     fetchLatestVersion()
   }, [])
 
+  // Auto-open modal if hash is #download on page load
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash === '#download') {
+      setShowEmailModal(true)
+    }
+  }, [])
+
   // Track waitlist form view for non-Mac users
   useEffect(() => {
     if (!platform.isMac && platform.platform !== 'unknown') {
@@ -71,6 +78,9 @@ export function Download() {
   const handleDownloadClick = () => {
     const scrollDepth = getCurrentScrollDepth()
     trackDownloadInitiated('download', platform.platform, language, scrollDepth)
+
+    // Add hash to URL for better UX (back button support) and tracking
+    window.location.hash = 'download'
     setShowEmailModal(true)
   }
 
