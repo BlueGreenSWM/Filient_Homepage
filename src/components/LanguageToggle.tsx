@@ -27,6 +27,7 @@ export function LanguageToggle() {
   const handleDownloadClick = () => {
     trackCTAClicked(t?.hero?.downloadCta || 'Download', 'nav', 'download')
     if (platform.isMac) {
+      window.location.hash = 'download'
       setShowEmailModal(true)
     }
   }

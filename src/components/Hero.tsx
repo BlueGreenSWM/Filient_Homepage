@@ -26,6 +26,7 @@ export function Hero() {
 
   const handleDownloadClick = () => {
     trackCTAClicked(t.hero.downloadCta, 'hero', 'primary')
+    window.location.hash = 'download'
     setShowEmailModal(true)
   }
 
