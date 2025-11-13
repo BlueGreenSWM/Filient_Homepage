@@ -118,6 +118,34 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Structured Data (Schema.org) for Rich Snippets */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "SoftwareApplication",
+              "name": "Filient",
+              "description": "연간 230시간 절약하는 AI 파일 정리 앱. Mac용 스마트 파일 관리 자동화.",
+              "applicationCategory": "UtilitiesApplication",
+              "operatingSystem": "macOS 13.0 or later",
+              "softwareVersion": "1.2.3",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/InStock"
+              },
+              "downloadUrl": "https://filient.ai#download",
+              "author": {
+                "@type": "Organization",
+                "name": "Filient Team"
+              },
+              "url": "https://filient.ai",
+              "screenshot": "https://filient.ai/og-image.png"
+            })
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

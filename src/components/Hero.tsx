@@ -283,7 +283,7 @@ export function Hero() {
                 >
                   <img
                     src="/news/mediaecon.png"
-                    alt="미디어경제뉴스"
+                    alt="미디어경제뉴스 - Filient AI 파일 정리 앱 언론 보도"
                     className="h-6 w-auto object-contain group-hover:scale-110 transition-transform duration-300"
                   />
                 </a>
@@ -295,7 +295,7 @@ export function Hero() {
                 >
                   <img
                     src="/news/seenthis.png"
-                    alt="seenthis"
+                    alt="seenthis - Filient AI 파일 정리 앱 언론 보도"
                     className="h-6 w-auto object-contain group-hover:scale-110 transition-transform duration-300"
                   />
                 </a>
@@ -313,7 +313,7 @@ export function Hero() {
                 >
                   <img
                     src="/images/disquiet_badge.png"
-                    alt="Disquiet Product of the Week"
+                    alt="Disquiet Product of the Week - Filient AI 파일 정리 앱 선정"
                     className="h-auto w-auto max-h-[85px]"
                   />
                 </a>
